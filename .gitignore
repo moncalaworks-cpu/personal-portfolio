@@ -1,0 +1,53 @@
+# Local by Flywheel
+/conf/
+/logs/
+
+# WordPress core files
+/app/public/wp-admin/
+/app/public/wp-includes/
+/app/public/wp-*.php
+/app/public/index.php
+/app/public/license.txt
+/app/public/readme.html
+/app/public/.htaccess
+/app/public/wp-config.php
+/app/public/xmlrpc.php
+
+# WordPress content exclusions
+/app/public/wp-content/uploads/
+/app/public/wp-content/upgrade/
+/app/public/wp-content/backup-*
+/app/public/wp-content/cache/
+
+# WordPress default themes (managed by WordPress)
+/app/public/wp-content/themes/twentytwent*/
+
+# Keep only wp-content structure for custom code
+!/app/public/wp-content/
+!/app/public/wp-content/plugins/
+!/app/public/wp-content/themes/
+!/app/public/wp-content/plugins/index.php
+!/app/public/wp-content/themes/index.php
+!/app/public/wp-content/index.php
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (if added later)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Local development
+.env.local
+.env.*.local
