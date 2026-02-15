@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-// WordPress credentials
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = 'password';
+// Load WordPress credentials from environment
+const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.local';
+const ADMIN_USER = process.env.WORDPRESS_ADMIN_USER || 'admin';
+const ADMIN_PASS = process.env.WORDPRESS_ADMIN_PASSWORD || 'password';
 
 /**
  * Database Explorer Plugin Tests
@@ -16,34 +17,61 @@ const ADMIN_PASS = 'password';
  * - Using WP_Query to retrieve and filter posts
  */
 
+/**
+ * Improved login function with better error handling
+ */
+async function loginToWordPress(page) {
+	try {
+		// Navigate to login page
+		await page.goto(`${WORDPRESS_URL}/wp-login.php`, { waitUntil: 'networkidle' });
+
+		// Wait for login form to be visible
+		const usernameField = page.locator('input[name="log"]');
+		await usernameField.waitFor({ state: 'visible', timeout: 5000 });
+
+		// Fill in credentials
+		await usernameField.fill(ADMIN_USER);
+		await page.locator('input[name="pwd"]').fill(ADMIN_PASS);
+
+		// Submit form
+		const submitButton = page.locator('input[type="submit"]');
+		await submitButton.click();
+
+		// Wait for redirect to complete - check if we're logged in
+		// Look for wp-admin dashboard elements
+		const dashboardElement = page.locator('.wp-admin, .wp-heading-inline, h1.wp-heading-inline');
+		await dashboardElement.first().waitFor({ state: 'visible', timeout: 10000 });
+
+	} catch (error) {
+		console.error('Login failed:', error.message);
+		throw new Error(`Failed to login to WordPress admin. Username: ${ADMIN_USER}, URL: ${WORDPRESS_URL}/wp-login.php`);
+	}
+}
+
 test.describe('Database Explorer Plugin', () => {
 	// Login to WordPress admin before each test
-	test.beforeEach(async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-login.php`);
-		await page.fill('input[name="log"]', ADMIN_USER);
-		await page.fill('input[name="pwd"]', ADMIN_PASS);
-		await page.click('input[type="submit"]');
-		await page.waitForURL('**/wp-admin/');
+	test.beforeEach(async ({ page }) => {
+		await loginToWordPress(page);
 	});
 
-	test('Plugin should be installed and activated', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/plugins.php`);
+	test('Plugin should be installed and activated', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
 
 		// Check for the plugin in the list
 		const pluginRow = await page.locator('text=Database Explorer').first();
 		await expect(pluginRow).toBeVisible();
 	});
 
-	test('Plugin should register admin menu item', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/`);
+	test('Plugin should register admin menu item', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/`);
 
 		// Look for Database Explorer in the left menu
 		const menuItem = await page.locator('text=Database Explorer');
 		await expect(menuItem).toBeVisible();
 	});
 
-	test('Admin page should display options data', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page should display options data', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for WordPress Options heading
 		await expect(page.locator('h2:has-text("WordPress Options")')).toBeVisible();
@@ -61,8 +89,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(page.locator('text=Yes')).toBeVisible();
 	});
 
-	test('Admin page should display posts and post meta data', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page should display posts and post meta data', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Posts section heading
 		await expect(page.locator('h2:has-text("Posts and Post Meta")')).toBeVisible();
@@ -84,8 +112,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(page.locator('text=Project 3')).toBeVisible();
 	});
 
-	test('Admin page should display post meta filtering results', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page should display post meta filtering results', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Verify the WP_Query results show posts with 'completed' status
 		const rows = page.locator('table.wp-list-table tbody tr');
@@ -99,8 +127,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(firstRowStatus).toContainText('completed');
 	});
 
-	test('Admin page should display taxonomies and terms', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page should display taxonomies and terms', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Taxonomies section
 		await expect(page.locator('h2:has-text("Taxonomies & Terms")')).toBeVisible();
@@ -115,8 +143,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(page.locator('th:has-text("Description")')).toBeVisible();
 	});
 
-	test('Admin page should display users and capabilities', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page should display users and capabilities', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Users section
 		await expect(page.locator('h2:has-text("Users & Capabilities")')).toBeVisible();
@@ -132,8 +160,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(page.locator('text=admin')).toBeVisible();
 	});
 
-	test('Admin page layout should be responsive', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin page layout should be responsive', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check that all major sections are visible
 		const sections = page.locator('.card');
@@ -149,9 +177,9 @@ test.describe('Database Explorer Plugin', () => {
 		}
 	});
 
-	test('Post meta should filter results correctly', async ({ page, baseURL }) => {
+	test('Post meta should filter results correctly', async ({ page }) => {
 		// Navigate to Database Explorer
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Get all rows in the posts table
 		const rows = page.locator('table.wp-list-table tbody tr');
@@ -170,8 +198,8 @@ test.describe('Database Explorer Plugin', () => {
 		}
 	});
 
-	test('WP_Query should order results by priority', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('WP_Query should order results by priority', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Get all priority cells (5th column)
 		const priorityCells = page.locator('table.wp-list-table tbody tr td:nth-child(5)');
@@ -193,8 +221,8 @@ test.describe('Database Explorer Plugin', () => {
 		}
 	});
 
-	test('Portfolio category should be linked to sample posts', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Portfolio category should be linked to sample posts', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Get the terms section
 		const termsTable = page.locator('h2:has-text("Taxonomies & Terms")').locator('..').locator('table');
@@ -209,8 +237,8 @@ test.describe('Database Explorer Plugin', () => {
 		expect(count).toBeGreaterThanOrEqual(3);
 	});
 
-	test('Admin user should have edit_posts capability', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Admin user should have edit_posts capability', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Find the admin user row
 		const adminRow = page.locator('text=admin').locator('..').locator('..');
@@ -221,8 +249,8 @@ test.describe('Database Explorer Plugin', () => {
 		expect(canEdit).toContain('Yes');
 	});
 
-	test('Sample posts should have correct meta values', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Sample posts should have correct meta values', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check Project 1 row
 		const project1Row = page.locator('text=Project 1').locator('..').locator('..');
@@ -237,17 +265,17 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(tagsCell).toContainText('php');
 	});
 
-	test('Access control should prevent non-admin users', async ({ page, baseURL }) => {
+	test('Access control should prevent non-admin users', async ({ page }) => {
 		// This test verifies current_user_can check
 		// By default we're logged in as admin, so we should see the page
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Page should load successfully
 		await expect(page.locator('h1:has-text("Database Explorer")')).toBeVisible();
 	});
 
-	test('Plugin should store and retrieve options correctly', async ({ page, baseURL }) => {
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+	test('Plugin should store and retrieve options correctly', async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Verify all three options are displayed
 		const titleOption = page.locator('text=Database Explorer').first();
@@ -259,9 +287,9 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(enabledOption).toBeVisible();
 	});
 
-	test('Database Explorer page should load in reasonable time', async ({ page, baseURL }) => {
+	test('Database Explorer page should load in reasonable time', async ({ page }) => {
 		const startTime = Date.now();
-		await page.goto(`${baseURL}/wp-admin/admin.php?page=de-explorer`);
+		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 		const endTime = Date.now();
 
 		const loadTime = endTime - startTime;
