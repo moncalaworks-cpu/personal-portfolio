@@ -1,65 +1,55 @@
-# Hello World Plugin
+# Hello World
+Contributors: Kau-Boy  
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
+Tags: hello, dolly, yoda, world, lyrics  
+Tested up to: 6.9  
+Requires PHP: 5.2  
+Stable tag: 2.2.0  
+License: GPLv3  
+License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-A simple WordPress plugin that creates a "Hello World" page to demonstrate core WordPress development concepts.
+Similar to "Hello Dolly", this plugin lets you choose from some lyrics files, of which one line is shown in your dashboard on every page load.
 
-## What This Plugin Teaches
+## Description
 
-### Plugin Structure
-- **Plugin Header Comments** - Plugin metadata and information
-- **Plugin Files** - Basic plugin file organization
-- **Text Domain** - Internationalization setup
+In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
 
-### WordPress Hooks & Actions
-- **init Hook** - Plugin initialization and post type registration
-- **wp_enqueue_scripts** - Frontend resource management
-- **the_content Filter** - Content modification and filtering
+## Frequently Asked Questions
 
-### WordPress Functions Demonstrated
-- `add_action()` - Register functions to hooks
-- `add_filter()` - Modify content through filters
-- `wp_insert_post()` - Create posts/pages programmatically
-- `get_page_by_title()` - Query pages by title
-- `wp_enqueue_style()` - Load stylesheets properly
-- `is_page()` - Conditional checks
-- `register_activation_hook()` - Plugin lifecycle management
-- `register_deactivation_hook()` - Cleanup on deactivation
-- `plugin_dir_url()` - Get plugin directory path
+### Can I add my own lyrics?
 
-### Key Concepts
-1. **Direct File Access Prevention** - Security practice with `ABSPATH` check
-2. **Plugin Lifecycle** - Activation and deactivation hooks
-3. **Frontend Resource Management** - Proper stylesheet enqueueing
-4. **Content Filtering** - Modifying output with filters
-5. **Post Creation** - Programmatic page creation
+Yes, you can! Just create a folder `wp-content/uploads/hello-world-lyrics` and save your lyric file there, with one "quote" per line.
 
-## How It Works
+### Where do I report security bugs found in this plugin? ###
 
-1. **Activation** - When activated, creates a page titled "Hello World"
-2. **Initialization** - Registers the page on the init hook
-3. **Styling** - Enqueues custom CSS for the Hello World page
-4. **Display** - Filters page content to add custom styling and messaging
+Please report security bugs found in the source code of the Hello World plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/6c798e4f-cc8b-44f3-9140-6d74f065bc2a). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
-## Files
+## Changelog
 
-- `hello-world.php` - Main plugin file with all functionality
-- `css/hello-world.css` - Custom styling for the Hello World page
-- `README.md` - This documentation
+### 2.2.1
+* Fix wrong escape function
+* Time invested for this release: 15min
 
-## Installation
+### 2.2.0
+* **SECURITY:** Fix issue with arbitrary paths
+* Time invested for this release: 120min
 
-1. This plugin is already installed in `wp-content/plugins/hello-world/`
-2. Activate via WordPress admin or CLI
+### 2.1.1
+* Add blueprint.json file for live demo
+* Time invested for this release: 30min
 
-## Usage
+### 2.1.0
+* Update CSS from Hello Dolly
+* Make the output more accessible
+* Time invested for this release: 30min
 
-Once activated:
-1. A page titled "Hello World" will be created automatically
-2. Visit the Hello World page to see the plugin in action
-3. The page displays with custom styling and messaging
+### 2.0.1
+* Make plugin fully translatable
 
-## Learning Notes
+### 2.0.0
+* New major release enabling custom lyrics saved to `wp-content/uploads/hello-world-lyrics`
+* Time invested for this release: 90min
 
-- Check `/debug.log` for activation/deactivation messages
-- This demonstrates the "hooks and filters" architecture that powers WordPress
-- All output is escaped and sanitized for security
-- The plugin follows WordPress Coding Standards
+### 1.0.0
+* First stable release with lyrics for "Hello World", "Yoda quotes" and the original "Hello Dolly" lyrics
+* Time invested for this release: 120min

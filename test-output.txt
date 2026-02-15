@@ -1,0 +1,247 @@
+
+> personal-portfolio@1.0.0 test
+> playwright test tests/database-explorer.spec.ts --reporter=list
+
+
+Running 16 tests using 4 workers
+
+🔐 Global Setup: Logging in to WordPress...
+✅ Successfully logged in to WordPress admin
+✅ Auth state saved to /Users/kenshinzato/Local Sites/personal-portfolio/tests/auth.json
+  [32m✓[39m  [2m4 [22m[chromium] › database-explorer.spec.ts:39:6 › Database Explorer Plugin › Plugin should register admin menu item[2m (1.3s)[22m
+  [32m✓[39m  [2m2 [22m[chromium] › database-explorer.spec.ts:31:6 › Database Explorer Plugin › Plugin should be installed and activated[2m (1.5s)[22m
+  [31m✘[39m  [2m3 [22m[31m[chromium] › database-explorer.spec.ts:70:6 › Database Explorer Plugin › Admin page should display posts and post meta data[39m[2m (1.7s)[22m
+  [32m✓[39m  [2m1 [22m[chromium] › database-explorer.spec.ts:47:6 › Database Explorer Plugin › Admin page should display options data[2m (1.7s)[22m
+  [32m✓[39m  [2m5 [22m[chromium] › database-explorer.spec.ts:95:6 › Database Explorer Plugin › Admin page should display post meta filtering results[2m (981ms)[22m
+  [31m✘[39m  [2m6 [22m[31m[chromium] › database-explorer.spec.ts:112:6 › Database Explorer Plugin › Admin page should display taxonomies and terms[39m[2m (1.1s)[22m
+  [32m✓[39m  [2m7 [22m[chromium] › database-explorer.spec.ts:155:6 › Database Explorer Plugin › Admin page layout should be responsive[2m (1.0s)[22m
+  [31m✘[39m  [2m9 [22m[31m[chromium] › database-explorer.spec.ts:172:6 › Database Explorer Plugin › Post meta should filter results correctly[39m[2m (1.0s)[22m
+  [31m✘[39m  [2m8 [22m[31m[chromium] › database-explorer.spec.ts:133:6 › Database Explorer Plugin › Admin page should display users and capabilities[39m[2m (1.2s)[22m
+  [31m✘[39m  [2m11 [22m[31m[chromium] › database-explorer.spec.ts:195:6 › Database Explorer Plugin › WP_Query should order results by priority[39m[2m (1.0s)[22m
+  [32m✓[39m  [2m14 [22m[chromium] › database-explorer.spec.ts:278:6 › Database Explorer Plugin › Access control should prevent non-admin users[2m (1.1s)[22m
+  [32m✓[39m  [2m15 [22m[chromium] › database-explorer.spec.ts:287:6 › Database Explorer Plugin › Plugin should store and retrieve options correctly[2m (681ms)[22m
+  [32m✓[39m  [2m16 [22m[chromium] › database-explorer.spec.ts:300:6 › Database Explorer Plugin › Database Explorer page should load in reasonable time[2m (563ms)[22m
+  [31m✘[39m  [2m13 [22m[31m[chromium] › database-explorer.spec.ts:257:6 › Database Explorer Plugin › Sample posts should have correct meta values[39m[2m (6.0s)[22m
+  [31m✘[39m  [2m10 [22m[31m[chromium] › database-explorer.spec.ts:222:6 › Database Explorer Plugin › Portfolio category should be linked to sample posts[39m[2m (30.0s)[22m
+  [31m✘[39m  [2m12 [22m[31m[chromium] › database-explorer.spec.ts:240:6 › Database Explorer Plugin › Admin user should have edit_posts capability[39m[2m (30.0s)[22m
+
+
+[31m  1) [chromium] › database-explorer.spec.ts:70:6 › Database Explorer Plugin › Admin page should display posts and post meta data [39m
+
+    expect.toBeVisible: Error: strict mode violation: locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table') resolved to 3 elements:
+        1) <table class="wp-list-table widefat">…</table> aka getByText('IDTitleStatusDatePriorityTags 7 Project 1 completed 2025-01-15 1 wordpress,php,d')
+        2) <table class="wp-list-table widefat">…</table> aka getByText('Term IDNameSlugDescriptionPost Count 2 Portfolio portfolio Portfolio projects an')
+        3) <table class="wp-list-table widefat">…</table> aka getByText('User IDUsernameEmailRoleCan Edit Posts 1 admin dev-email@wpengine.local administ')
+
+    =========================== logs ===========================
+    expect.toBeVisible with timeout 5000ms
+    waiting for locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table')
+    ============================================================
+
+      78 | 		const postsCard = postsHeading.locator('..').locator('..');
+      79 | 		const table = postsCard.locator('table.wp-list-table');
+    > 80 | 		await expect(table).toBeVisible();
+         | 		                    ^
+      81 |
+      82 | 		// Verify table headers exist within this table
+      83 | 		await expect(table.locator('th:has-text("Title")')).toBeVisible();
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:80:23[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Admin-page-should-display-posts-and-post-meta-data-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  2) [chromium] › database-explorer.spec.ts:112:6 › Database Explorer Plugin › Admin page should display taxonomies and terms [39m
+
+    expect.toBeVisible: Error: strict mode violation: locator('h2:has-text("Taxonomies & Terms")').locator('xpath=..').locator('xpath=..').locator('td:has-text("Portfolio")') resolved to 3 elements:
+        1) <td>Portfolio</td> aka getByRole('cell', { name: 'Portfolio', exact: true })
+        2) <td>portfolio</td> aka getByRole('cell', { name: 'portfolio', exact: true })
+        3) <td>Portfolio projects and case studies</td> aka getByRole('cell', { name: 'Portfolio projects and case studies' })
+
+    =========================== logs ===========================
+    expect.toBeVisible with timeout 5000ms
+    waiting for locator('h2:has-text("Taxonomies & Terms")').locator('xpath=..').locator('xpath=..').locator('td:has-text("Portfolio")')
+    ============================================================
+
+      121 |
+      122 | 		// Verify Portfolio category is displayed in this card
+    > 123 | 		await expect(taxCard.locator('td:has-text("Portfolio")')).toBeVisible();
+          | 		                                                          ^
+      124 |
+      125 | 		// Verify table headers for terms in this card
+      126 | 		const table = taxCard.locator('table.wp-list-table');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:123:61[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Admin-page-should-display-taxonomies-and-terms-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  3) [chromium] › database-explorer.spec.ts:133:6 › Database Explorer Plugin › Admin page should display users and capabilities [39m
+
+    expect.toBeVisible: Error: strict mode violation: locator('h2:has-text("Users & Capabilities")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("admin")') resolved to 2 elements:
+        1) <td>admin</td> aka getByRole('cell', { name: 'admin', exact: true })
+        2) <td>administrator</td> aka getByRole('cell', { name: 'administrator' })
+
+    =========================== logs ===========================
+    expect.toBeVisible with timeout 5000ms
+    waiting for locator('h2:has-text("Users & Capabilities")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("admin")')
+    ============================================================
+
+      150 |
+      151 | 		// Verify admin user is displayed in this table
+    > 152 | 		await expect(table.locator('td:has-text("admin")')).toBeVisible();
+          | 		                                                    ^
+      153 | 	});
+      154 |
+      155 | 	test('Admin page layout should be responsive', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:152:55[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Admin-page-should-display-users-and-capabilities-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  4) [chromium] › database-explorer.spec.ts:172:6 › Database Explorer Plugin › Post meta should filter results correctly [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected substring: [32m"completed"[39m
+    Received string:    [31m"portfolio"[39m
+
+      189 | 			const statusCell = row.locator('td:nth-child(3)');
+      190 | 			const statusText = await statusCell.textContent();
+    > 191 | 			expect(statusText).toContain('completed');
+          | 			                   ^
+      192 | 		}
+      193 | 	});
+      194 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:191:23[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Post-meta-should-filter-results-correctly-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  5) [chromium] › database-explorer.spec.ts:195:6 › Database Explorer Plugin › WP_Query should order results by priority [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m3[39m
+    Received:    [31m1[39m
+
+      215 | 			// Verify they are in ascending order
+      216 | 			for (let i = 1; i < priorities.length; i++) {
+    > 217 | 				expect(priorities[i]).toBeGreaterThanOrEqual(priorities[i - 1]);
+          | 				                      ^
+      218 | 			}
+      219 | 		}
+      220 | 	});
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:217:27[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-WP-Query-should-order-results-by-priority-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  6) [chromium] › database-explorer.spec.ts:222:6 › Database Explorer Plugin › Portfolio category should be linked to sample posts [39m
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    locator.textContent: Target closed
+    =========================== logs ===========================
+    waiting for locator('h2:has-text("Taxonomies & Terms")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('tbody tr').filter({ has: locator('h2:has-text("Taxonomies & Terms")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("Portfolio")') }).locator('td:nth-child(5)')
+    ============================================================
+
+      232 | 		const postCountCell = portfolioRow.locator('td:nth-child(5)');
+      233 |
+    > 234 | 		const postCount = await postCountCell.textContent();
+          | 		                                      ^
+      235 | 		// Should have at least 3 posts assigned
+      236 | 		const count = parseInt(postCount || '0');
+      237 | 		expect(count).toBeGreaterThanOrEqual(3);
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:234:41[22m
+
+    Pending operations:
+      - locator.textContent at tests/database-explorer.spec.ts:234:41
+
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Portfolio-category-should-be-linked-to-sample-posts-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  7) [chromium] › database-explorer.spec.ts:240:6 › Database Explorer Plugin › Admin user should have edit_posts capability [39m
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    locator.textContent: Target closed
+    =========================== logs ===========================
+    waiting for locator('h2:has-text("Users & Capabilities")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('tbody tr').filter({ has: locator('h2:has-text("Users & Capabilities")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("admin")') }).locator('td:nth-child(5)')
+    ============================================================
+
+      251 | 		const canEditCell = adminRow.locator('td:nth-child(5)');
+      252 |
+    > 253 | 		const canEdit = await canEditCell.textContent();
+          | 		                                  ^
+      254 | 		expect(canEdit).toContain('Yes');
+      255 | 	});
+      256 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:253:37[22m
+
+    Pending operations:
+      - locator.textContent at tests/database-explorer.spec.ts:253:37
+
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Admin-user-should-have-edit-posts-capability-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[31m  8) [chromium] › database-explorer.spec.ts:257:6 › Database Explorer Plugin › Sample posts should have correct meta values [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected string: [32m"completed"[39m
+    Received string: [31m""[39m
+    Call log:
+      [2m- expect.toContainText with timeout 5000ms[22m
+    [2m  - waiting for locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('tbody tr').filter({ has: locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("Project 1")') }).locator('td:nth-child(3)')[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  - waiting for locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('tbody tr').filter({ has: locator('h2:has-text("Posts and Post Meta")').locator('xpath=..').locator('xpath=..').locator('table.wp-list-table').locator('td:has-text("Project 1")') }).locator('td:nth-child(3)')[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+    [2m  -   unexpected value "undefined"[22m
+
+
+      268 | 		// Status should be 'completed'
+      269 | 		const statusCell = project1Row.locator('td:nth-child(3)');
+    > 270 | 		await expect(statusCell).toContainText('completed');
+          | 		                         ^
+      271 |
+      272 | 		// Tags should contain project tags
+      273 | 		const tagsCell = project1Row.locator('td:nth-child(6)');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/database-explorer.spec.ts:270:28[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/database-explorer-Database-Explorer-Plugin-Sample-posts-should-have-correct-meta-values-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[31m  8 failed[39m
+[31m    [chromium] › database-explorer.spec.ts:70:6 › Database Explorer Plugin › Admin page should display posts and post meta data [39m
+[31m    [chromium] › database-explorer.spec.ts:112:6 › Database Explorer Plugin › Admin page should display taxonomies and terms [39m
+[31m    [chromium] › database-explorer.spec.ts:133:6 › Database Explorer Plugin › Admin page should display users and capabilities [39m
+[31m    [chromium] › database-explorer.spec.ts:172:6 › Database Explorer Plugin › Post meta should filter results correctly [39m
+[31m    [chromium] › database-explorer.spec.ts:195:6 › Database Explorer Plugin › WP_Query should order results by priority [39m
+[31m    [chromium] › database-explorer.spec.ts:222:6 › Database Explorer Plugin › Portfolio category should be linked to sample posts [39m
+[31m    [chromium] › database-explorer.spec.ts:240:6 › Database Explorer Plugin › Admin user should have edit_posts capability [39m
+[31m    [chromium] › database-explorer.spec.ts:257:6 › Database Explorer Plugin › Sample posts should have correct meta values [39m
+[32m  8 passed[39m[2m (36.1s)[22m

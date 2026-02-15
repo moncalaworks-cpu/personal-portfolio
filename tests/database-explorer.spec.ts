@@ -75,7 +75,7 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(postsHeading).toBeVisible();
 
 		// Get the card containing posts section and find table within it
-		const postsCard = postsHeading.locator('..').locator('..');
+		const postsCard = postsHeading.locator('..');
 		const table = postsCard.locator('table.wp-list-table');
 		await expect(table).toBeVisible();
 
@@ -117,10 +117,7 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(taxHeading).toBeVisible();
 
 		// Get the taxonomies card
-		const taxCard = taxHeading.locator('..').locator('..');
-
-		// Verify Portfolio category is displayed in this card
-		await expect(taxCard.locator('td:has-text("Portfolio")')).toBeVisible();
+		const taxCard = taxHeading.locator('..');
 
 		// Verify table headers for terms in this card
 		const table = taxCard.locator('table.wp-list-table');
@@ -128,6 +125,9 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(table.locator('th:has-text("Name")')).toBeVisible();
 		await expect(table.locator('th:has-text("Slug")')).toBeVisible();
 		await expect(table.locator('th:has-text("Description")')).toBeVisible();
+
+		// Verify Portfolio category is displayed in Name column (2nd column)
+		await expect(table.locator('td:nth-child(2):has-text("Portfolio")')).toBeVisible();
 	});
 
 	test('Admin page should display users and capabilities', async ({ page }) => {
@@ -138,7 +138,7 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(usersHeading).toBeVisible();
 
 		// Get the users card
-		const usersCard = usersHeading.locator('..').locator('..');
+		const usersCard = usersHeading.locator('..');
 		const table = usersCard.locator('table.wp-list-table');
 
 		// Verify table headers for users
@@ -148,8 +148,8 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(table.locator('th:has-text("Role")')).toBeVisible();
 		await expect(table.locator('th:has-text("Can Edit Posts")')).toBeVisible();
 
-		// Verify admin user is displayed in this table
-		await expect(table.locator('td:has-text("admin")')).toBeVisible();
+		// Verify admin user is displayed in this table (username column is 2nd column)
+		await expect(table.locator('td:nth-child(2):has-text("admin")')).toBeVisible();
 	});
 
 	test('Admin page layout should be responsive', async ({ page }) => {

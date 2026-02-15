@@ -18,6 +18,7 @@
   "author": "moncalaworks-cpu",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "@playwright/test": "1.30.0"
+    "@playwright/test": "1.30.0",
+    "dotenv": "^16.6.1"
   }
 }
