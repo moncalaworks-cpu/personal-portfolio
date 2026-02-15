@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+// Load .env file
+dotenv.config();
 
 /**
  * Hello World Plugin - Automated Tests

@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+// Load .env file
+dotenv.config();
 
 // Load WordPress credentials from environment
 const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.local';
