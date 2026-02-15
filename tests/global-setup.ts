@@ -35,6 +35,20 @@ async function globalSetup(config: FullConfig) {
 
     console.log('✅ Successfully logged in to WordPress admin');
 
+    // Activate post-editor-showcase plugin if not already active
+    await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`, { waitUntil: 'networkidle' });
+
+    // Check if plugin needs activation
+    const activateLink = page.locator('a[href*="post-editor-showcase"]').filter({ hasText: /activate|activate plugin/i }).first();
+    if (await activateLink.count() > 0) {
+      console.log('📦 Activating post-editor-showcase plugin...');
+      await activateLink.click();
+      await page.waitForLoadState('networkidle');
+      console.log('✅ Plugin activated');
+    } else {
+      console.log('ℹ️  Post-editor-showcase plugin already active');
+    }
+
     // Save authentication state
     await context.storageState({ path: authFile });
     console.log(`✅ Auth state saved to ${authFile}`);
