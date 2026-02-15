@@ -4,10 +4,8 @@ import * as dotenv from 'dotenv';
 // Load .env file
 dotenv.config();
 
-// Load WordPress credentials from environment
+// Load WordPress URL from environment variable
 const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.local';
-const ADMIN_USER = process.env.WORDPRESS_ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.WORDPRESS_ADMIN_PASSWORD || 'password';
 
 /**
  * Database Explorer Plugin Tests
@@ -19,46 +17,12 @@ const ADMIN_PASS = process.env.WORDPRESS_ADMIN_PASSWORD || 'password';
  * - User roles and capabilities
  * - WordPress options for settings storage
  * - Using WP_Query to retrieve and filter posts
+ *
+ * Authentication is handled by global setup (tests/global-setup.ts)
+ * so all tests automatically have an authenticated session.
  */
-
-/**
- * Improved login function with better error handling
- */
-async function loginToWordPress(page) {
-	try {
-		// Navigate to login page
-		await page.goto(`${WORDPRESS_URL}/wp-login.php`, { waitUntil: 'networkidle' });
-
-		// Wait for login form to be visible
-		const usernameField = page.locator('input[name="log"]');
-		await usernameField.waitFor({ state: 'visible', timeout: 5000 });
-
-		// Fill in credentials
-		await usernameField.fill(ADMIN_USER);
-		await page.locator('input[name="pwd"]').fill(ADMIN_PASS);
-
-		// Submit form
-		const submitButton = page.locator('input[type="submit"]');
-		await submitButton.click();
-
-		// Wait for redirect - use URL pattern and page load state
-		// More reliable than looking for specific elements
-		await Promise.race([
-			page.waitForURL(`**\/wp-admin\/**`, { timeout: 15000 }),
-			page.waitForLoadState('networkidle', { timeout: 15000 })
-		]);
-
-	} catch (error) {
-		console.error('Login failed:', error.message);
-		throw new Error(`Failed to login to WordPress admin. Username: ${ADMIN_USER}, URL: ${WORDPRESS_URL}/wp-login.php`);
-	}
-}
 
 test.describe('Database Explorer Plugin', () => {
-	// Login to WordPress admin before each test
-	test.beforeEach(async ({ page }) => {
-		await loginToWordPress(page);
-	});
 
 	test('Plugin should be installed and activated', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
