@@ -175,7 +175,7 @@ test.describe('Database Explorer Plugin', () => {
 
 		// Get the posts section card
 		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
-		const postsCard = postsHeading.locator('..').locator('..');
+		const postsCard = postsHeading.locator('..');
 		const rows = postsCard.locator('table.wp-list-table tbody tr');
 		const rowCount = await rows.count();
 
@@ -197,7 +197,7 @@ test.describe('Database Explorer Plugin', () => {
 
 		// Get the posts section card
 		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
-		const postsCard = postsHeading.locator('..').locator('..');
+		const postsCard = postsHeading.locator('..');
 
 		// Get all priority cells (5th column) from this card's table
 		const priorityCells = postsCard.locator('table.wp-list-table tbody tr td:nth-child(5)');
@@ -224,11 +224,14 @@ test.describe('Database Explorer Plugin', () => {
 
 		// Get the taxonomies card
 		const taxHeading = page.locator('h2:has-text("Taxonomies & Terms")');
-		const taxCard = taxHeading.locator('..').locator('..');
+		const taxCard = taxHeading.locator('..');
 		const table = taxCard.locator('table.wp-list-table');
 
-		// Find Portfolio row in this table and check post count (5th column)
-		const portfolioRow = table.locator('tbody tr').filter({ has: table.locator('td:has-text("Portfolio")') });
+		// Get all Portfolio rows and extract post count from the exact match (Name column)
+		const portfolioNameCells = table.locator('td:nth-child(2):has-text("Portfolio")');
+		expect(portfolioNameCells).toHaveCount(1);
+
+		const portfolioRow = portfolioNameCells.locator('..'); // Get parent tr
 		const postCountCell = portfolioRow.locator('td:nth-child(5)');
 
 		const postCount = await postCountCell.textContent();
@@ -242,11 +245,14 @@ test.describe('Database Explorer Plugin', () => {
 
 		// Get the users card
 		const usersHeading = page.locator('h2:has-text("Users & Capabilities")');
-		const usersCard = usersHeading.locator('..').locator('..');
+		const usersCard = usersHeading.locator('..');
 		const table = usersCard.locator('table.wp-list-table');
 
-		// Find the admin user row in this table
-		const adminRow = table.locator('tbody tr').filter({ has: table.locator('td:has-text("admin")') });
+		// Find the admin user by exact match in Username column (2nd column)
+		const adminNameCells = table.locator('td:nth-child(2):has-text("admin")');
+		expect(adminNameCells).toHaveCount(1);
+
+		const adminRow = adminNameCells.locator('..'); // Get parent tr
 		// Check the "Can Edit Posts" column (5th column)
 		const canEditCell = adminRow.locator('td:nth-child(5)');
 
@@ -259,11 +265,14 @@ test.describe('Database Explorer Plugin', () => {
 
 		// Get the posts section card
 		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
-		const postsCard = postsHeading.locator('..').locator('..');
+		const postsCard = postsHeading.locator('..');
 		const table = postsCard.locator('table.wp-list-table');
 
-		// Check Project 1 row in this table
-		const project1Row = table.locator('tbody tr').filter({ has: table.locator('td:has-text("Project 1")') });
+		// Find Project 1 row by exact match in Title column (2nd column)
+		const project1TitleCells = table.locator('td:nth-child(2):has-text("Project 1")');
+		expect(project1TitleCells).toHaveCount(1);
+
+		const project1Row = project1TitleCells.locator('..'); // Get parent tr
 
 		// Status should be 'completed'
 		const statusCell = project1Row.locator('td:nth-child(3)');
