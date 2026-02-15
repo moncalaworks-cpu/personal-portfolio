@@ -19,12 +19,37 @@ import { test, expect } from '@playwright/test';
  * ✅ Styles are enqueued correctly (wp_enqueue_style)
  */
 
-// Update this with your local WordPress URL
-const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.test';
+// Load WordPress URL from environment variable (.env file)
+const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.local';
+const WORDPRESS_ADMIN_USER = process.env.WORDPRESS_ADMIN_USER || 'admin';
+const WORDPRESS_ADMIN_PASSWORD = process.env.WORDPRESS_ADMIN_PASSWORD || 'password';
+
+/**
+ * Helper function to login to WordPress admin
+ * Required for accessing /wp-admin/ pages
+ */
+async function loginToWordPress(page) {
+  await page.goto(`${WORDPRESS_URL}/wp-login.php`);
+  await page.waitForLoadState('networkidle');
+
+  // Fill login form
+  await page.fill('input[name="log"]', WORDPRESS_ADMIN_USER);
+  await page.fill('input[name="pwd"]', WORDPRESS_ADMIN_PASSWORD);
+
+  // Click login button
+  await page.click('input[type="submit"]');
+
+  // Wait for redirect to admin
+  await page.waitForURL(`${WORDPRESS_URL}/wp-admin/**`);
+  await page.waitForLoadState('networkidle');
+}
 
 test.describe('Hello World Plugin', () => {
 
   test('Plugin is visible in WordPress admin', async ({ page }) => {
+    // Login to WordPress first
+    await loginToWordPress(page);
+
     // Navigate to WordPress plugins page
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
 
@@ -41,6 +66,9 @@ test.describe('Hello World Plugin', () => {
   });
 
   test('Hello World page exists and is published', async ({ page }) => {
+    // Login to WordPress first
+    await loginToWordPress(page);
+
     // Navigate to Pages section in admin
     await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
 
@@ -62,7 +90,8 @@ test.describe('Hello World Plugin', () => {
       `${WORDPRESS_URL}/?page_id=`,
     ];
 
-    // Try to find the page by search
+    // Try to find the page by search - login first
+    await loginToWordPress(page);
     await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
     await page.waitForLoadState('networkidle');
 
@@ -273,6 +302,9 @@ test.describe('Hello World Plugin - Error Handling', () => {
   });
 
   test('Admin area works correctly', async ({ page }) => {
+    // Login to WordPress first
+    await loginToWordPress(page);
+
     // Navigate to WordPress admin
     await page.goto(`${WORDPRESS_URL}/wp-admin/`);
 
@@ -293,6 +325,7 @@ test.describe('Issue #1 - Core Codebase Overview - Validation', () => {
   test('✅ Issue #1: Core File Structure demonstrated', async ({ page }) => {
     // Plugin is in correct directory structure
     // This test just verifies it loads (structure is correct)
+    await loginToWordPress(page);
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
     await page.waitForLoadState('networkidle');
 
@@ -331,6 +364,7 @@ test.describe('Issue #1 - Core Codebase Overview - Validation', () => {
     // Evidence: Code uses init hook (happens during bootstrap)
 
     // If init hook works, bootstrap is understood
+    await loginToWordPress(page);
     await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
     await page.waitForLoadState('networkidle');
 
