@@ -86,10 +86,10 @@ test.describe('Database Explorer Plugin', () => {
 		await expect(table.locator('th:has-text("Priority")')).toBeVisible();
 		await expect(table.locator('th:has-text("Tags")')).toBeVisible();
 
-		// Verify sample projects are displayed in this table
-		await expect(table.locator('text=Project 1')).toBeVisible();
-		await expect(table.locator('text=Project 2')).toBeVisible();
-		await expect(table.locator('text=Project 3')).toBeVisible();
+		// Verify sample projects are displayed in this table (using :has-text in table cells)
+		await expect(table.locator('td:has-text("Project 1")')).toBeVisible();
+		await expect(table.locator('td:has-text("Project 2")')).toBeVisible();
+		await expect(table.locator('td:has-text("Project 3")')).toBeVisible();
 	});
 
 	test('Admin page should display post meta filtering results', async ({ page }) => {
@@ -291,10 +291,10 @@ test.describe('Database Explorer Plugin', () => {
 		const optionsHeading = page.locator('h2:has-text("WordPress Options")');
 		const optionsCard = optionsHeading.locator('..').locator('..');
 
-		// Verify all three options are displayed in this card
-		await expect(optionsCard.locator('text=Database Explorer')).toBeVisible();
-		await expect(optionsCard.locator('text=1.0.0')).toBeVisible();
-		await expect(optionsCard.locator('text=Enabled: Yes')).toBeVisible();
+		// Verify all three options are displayed in this card using specific paragraph selectors
+		await expect(optionsCard.locator('p:has-text("Plugin Title"):has-text("Database Explorer")')).toBeVisible();
+		await expect(optionsCard.locator('p:has-text("Plugin Version"):has-text("1.0.0")')).toBeVisible();
+		await expect(optionsCard.locator('p:has-text("Enabled"):has-text("Yes")')).toBeVisible();
 	});
 
 	test('Database Explorer page should load in reasonable time', async ({ page }) => {
