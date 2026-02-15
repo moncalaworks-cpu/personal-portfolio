@@ -1,0 +1,7 @@
+
+> personal-portfolio@1.0.0 test
+> playwright test
+
+You are running Node.js 16.20.2.
+Playwright requires Node.js 18 or higher. 
+Please update your version of Node.js.
