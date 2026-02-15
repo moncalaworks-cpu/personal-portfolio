@@ -37,10 +37,12 @@ async function loginToWordPress(page) {
 		const submitButton = page.locator('input[type="submit"]');
 		await submitButton.click();
 
-		// Wait for redirect to complete - check if we're logged in
-		// Look for wp-admin dashboard elements
-		const dashboardElement = page.locator('.wp-admin, .wp-heading-inline, h1.wp-heading-inline');
-		await dashboardElement.first().waitFor({ state: 'visible', timeout: 10000 });
+		// Wait for redirect - use URL pattern and page load state
+		// More reliable than looking for specific elements
+		await Promise.race([
+			page.waitForURL(`**\/wp-admin\/**`, { timeout: 15000 }),
+			page.waitForLoadState('networkidle', { timeout: 15000 })
+		]);
 
 	} catch (error) {
 		console.error('Login failed:', error.message);
