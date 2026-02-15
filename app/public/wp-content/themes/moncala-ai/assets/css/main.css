@@ -1204,3 +1204,334 @@ img {
 		font-size: var(--font-size-2xl);
 	}
 }
+
+/**
+ * PHASE 4: Blog Post & Archive Styles
+ */
+
+/**
+ * Single Post Template
+ */
+.single-post {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-header {
+	padding: var(--spacing-12) 0;
+	border-bottom: 1px solid var(--color-border);
+	margin-bottom: var(--spacing-12);
+}
+
+.post-header .container {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-meta-top {
+	display: flex;
+	gap: var(--spacing-2);
+	margin-bottom: var(--spacing-4);
+	flex-wrap: wrap;
+}
+
+.post-title {
+	font-size: var(--font-size-4xl);
+	margin: 0 0 var(--spacing-6) 0;
+	line-height: var(--line-height-tight);
+}
+
+.post-meta {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+	flex-wrap: wrap;
+	font-size: var(--font-size-sm);
+	color: var(--color-muted-text);
+	margin-bottom: var(--spacing-6);
+}
+
+.post-author,
+.post-date,
+.post-readtime {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-2);
+}
+
+.post-featured-image {
+	margin: 0;
+	margin-top: var(--spacing-6);
+	padding: 0;
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+.featured-image {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.post-content {
+	flex: 1;
+	padding: 0;
+	margin-bottom: var(--spacing-16);
+}
+
+.post-body {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* Post content typography adjustments */
+.post-body {
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-relaxed);
+}
+
+.post-body > h2 {
+	margin-top: var(--spacing-12);
+	margin-bottom: var(--spacing-6);
+	font-size: var(--font-size-2xl);
+}
+
+.post-body > h3 {
+	margin-top: var(--spacing-10);
+	margin-bottom: var(--spacing-4);
+	font-size: var(--font-size-xl);
+}
+
+.post-body > p {
+	margin-bottom: var(--spacing-6);
+}
+
+.post-body > ul,
+.post-body > ol {
+	margin-bottom: var(--spacing-6);
+}
+
+.post-body li {
+	margin-bottom: var(--spacing-3);
+	line-height: var(--line-height-relaxed);
+}
+
+.post-body blockquote {
+	margin: var(--spacing-6) 0;
+	padding: var(--spacing-4) var(--spacing-6);
+	background-color: var(--color-dark-surface);
+	border-left: 4px solid var(--color-primary);
+	border-radius: var(--radius-base);
+}
+
+.post-body pre {
+	margin: var(--spacing-6) 0;
+	background-color: var(--color-dark-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	overflow-x: auto;
+}
+
+.post-body code {
+	background-color: var(--color-dark-surface);
+	color: var(--color-primary);
+	padding: var(--spacing-1) var(--spacing-2);
+	border-radius: var(--radius-sm);
+}
+
+.post-body pre code {
+	background-color: transparent;
+	color: inherit;
+	padding: 0;
+}
+
+.post-body table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: var(--spacing-6) 0;
+}
+
+.post-body thead {
+	background-color: var(--color-dark-surface);
+}
+
+.post-body th,
+.post-body td {
+	padding: var(--spacing-3) var(--spacing-4);
+	text-align: left;
+	border: 1px solid var(--color-border);
+}
+
+.post-body thead th {
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-primary);
+}
+
+.post-footer {
+	padding: var(--spacing-12) 0;
+	border-top: 1px solid var(--color-border);
+}
+
+.post-tags {
+	margin-bottom: var(--spacing-12);
+}
+
+.post-tags h3 {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--spacing-4);
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-2);
+}
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	padding: var(--spacing-2) var(--spacing-4);
+	background-color: rgba(0, 217, 255, 0.1);
+	color: var(--color-primary);
+	border-radius: var(--radius-full);
+	font-size: var(--font-size-xs);
+	text-decoration: none;
+	transition: all var(--transition-fast);
+	border: 1px solid var(--color-border);
+}
+
+.tag:hover {
+	background-color: rgba(0, 217, 255, 0.2);
+	border-color: var(--color-primary);
+	transform: translateY(-1px);
+}
+
+.post-navigation {
+	margin-top: var(--spacing-12);
+}
+
+.post-navigation h3 {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--spacing-6);
+}
+
+.post-nav-links {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--spacing-6);
+}
+
+.post-nav-item {
+	padding: 0;
+}
+
+.post-nav-item a {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+	padding: var(--spacing-6);
+	background-color: var(--color-dark-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	color: var(--color-light-text);
+	text-decoration: none;
+	transition: all var(--transition-base);
+}
+
+.post-nav-item a:hover {
+	border-color: var(--color-primary);
+	background-color: rgba(0, 217, 255, 0.05);
+	transform: translateY(-2px);
+}
+
+.post-nav-prev a {
+	flex-direction: row;
+}
+
+.post-nav-next a {
+	flex-direction: row-reverse;
+}
+
+.nav-arrow {
+	font-size: var(--font-size-xl);
+	color: var(--color-primary);
+	font-weight: bold;
+}
+
+.nav-label {
+	font-size: var(--font-size-xs);
+	color: var(--color-muted-text);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.nav-title {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-light-text);
+	line-height: var(--line-height-tight);
+}
+
+.post-comments {
+	padding: var(--spacing-12) 0;
+}
+
+/**
+ * Archive Page
+ */
+.archive-header {
+	padding: var(--spacing-12) 0;
+	border-bottom: 1px solid var(--color-border);
+	margin-bottom: var(--spacing-12);
+	background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(123, 97, 255, 0.05) 100%);
+}
+
+.archive-title {
+	font-size: var(--font-size-3xl);
+	margin: 0 0 var(--spacing-4) 0;
+}
+
+.archive-description {
+	font-size: var(--font-size-lg);
+	margin: 0;
+}
+
+.no-posts {
+	text-align: center;
+	padding: var(--spacing-16) 0;
+}
+
+.no-posts h2 {
+	font-size: var(--font-size-2xl);
+	margin-bottom: var(--spacing-4);
+}
+
+.no-posts p {
+	font-size: var(--font-size-lg);
+	color: var(--color-muted-text);
+	margin-bottom: var(--spacing-8);
+}
+
+/**
+ * Responsive adjustments
+ */
+@media (max-width: 768px) {
+	.post-title {
+		font-size: var(--font-size-2xl);
+	}
+
+	.post-meta {
+		font-size: var(--font-size-xs);
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--spacing-2);
+	}
+
+	.post-nav-links {
+		grid-template-columns: 1fr;
+	}
+
+	.archive-title {
+		font-size: var(--font-size-2xl);
+	}
+}
