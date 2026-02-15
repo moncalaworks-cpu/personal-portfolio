@@ -23,6 +23,10 @@ const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.lo
  */
 
 test.describe('Database Explorer Plugin', () => {
+	// Navigate to admin before each test to establish session
+	test.beforeEach(async ({ page }) => {
+		await page.goto(`${WORDPRESS_URL}/wp-admin/`);
+	});
 
 	test('Plugin should be installed and activated', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
