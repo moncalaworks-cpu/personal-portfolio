@@ -166,9 +166,10 @@ class Activator {
 	/**
 	 * Initialize plugin settings
 	 *
-	 * Stores default settings in wp_options
+	 * Stores default settings in wp_options and initializes database version
 	 */
 	private static function initialize_settings() {
+		// Initialize plugin settings
 		$existing_settings = get_option( 'tm_settings' );
 
 		if ( ! $existing_settings ) {
@@ -180,6 +181,15 @@ class Activator {
 			];
 
 			add_option( 'tm_settings', $default_settings );
+		}
+
+		// Initialize database version if not already set
+		$existing_db_version = get_option( 'tm_db_version' );
+
+		if ( ! $existing_db_version ) {
+			// If this is a fresh install, set to current version
+			// Otherwise, migrations will update it
+			add_option( 'tm_db_version', '1.0.0' );
 		}
 	}
 }

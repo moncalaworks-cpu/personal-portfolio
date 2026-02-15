@@ -11,8 +11,8 @@
  *
  * @wordpress-plugin
  * Plugin Name: Task Manager
- * Version: 1.0.0
- * Description: A custom task management system demonstrating advanced WordPress plugin development
+ * Version: 1.1.0
+ * Description: A custom task management system demonstrating advanced WordPress plugin development with versioning, migrations, and caching
  * Author: Learning Project
  * License: GPL v2 or later
  * Text Domain: task-manager
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'TM_VERSION', '1.0.0' );
+define( 'TM_VERSION', '1.1.0' );
 define( 'TM_PLUGIN_FILE', __FILE__ );
 define( 'TM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'TM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -37,6 +37,7 @@ define( 'TM_TEXT_DOMAIN', 'task-manager' );
  * Maps namespace to directory structure:
  * TaskManager\Core\Activator => includes/class-activator.php
  * TaskManager\Admin\AdminPages => admin/class-admin-pages.php
+ * TaskManager\Migrations\Migration_110 => includes/migrations/class-migration-110.php
  */
 spl_autoload_register(
 	function ( $class ) {
@@ -60,6 +61,8 @@ spl_autoload_register(
 			$base_dir = TM_PLUGIN_DIR . 'admin/';
 		} elseif ( 'Security' === $parts[0] ) {
 			$base_dir = TM_PLUGIN_DIR . 'security/';
+		} elseif ( 'Migrations' === $parts[0] ) {
+			$base_dir = TM_PLUGIN_DIR . 'includes/migrations/';
 		}
 
 		// Remove first part (namespace level)
@@ -79,6 +82,63 @@ spl_autoload_register(
 // Load and initialize plugin
 require_once TM_PLUGIN_DIR . 'includes/class-database.php';
 require_once TM_PLUGIN_DIR . 'includes/class-task.php';
+require_once TM_PLUGIN_DIR . 'includes/class-migrator.php';
+require_once TM_PLUGIN_DIR . 'includes/class-logger.php';
+require_once TM_PLUGIN_DIR . 'includes/class-cache.php';
+
+/**
+ * Check plugin requirements
+ *
+ * Verifies that WordPress and PHP versions meet minimum requirements
+ */
+function tm_check_requirements() {
+	// Minimum requirements
+	$min_php       = '7.4.0';
+	$min_wordpress = '5.8.0';
+
+	// Check PHP version
+	if ( version_compare( PHP_VERSION, $min_php, '<' ) ) {
+		add_action( 'admin_notices', function () use ( $min_php ) {
+			echo wp_kses_post(
+				'<div class="notice notice-error"><p>' .
+				sprintf(
+					__( 'Task Manager plugin requires PHP %s or higher. You are running PHP %s.', 'task-manager' ),
+					$min_php,
+					PHP_VERSION
+				) .
+				'</p></div>'
+			);
+		} );
+		return false;
+	}
+
+	// Check WordPress version
+	global $wp_version;
+	if ( version_compare( $wp_version, $min_wordpress, '<' ) ) {
+		add_action( 'admin_notices', function () use ( $min_wordpress ) {
+			echo wp_kses_post(
+				'<div class="notice notice-error"><p>' .
+				sprintf(
+					__( 'Task Manager plugin requires WordPress %s or higher. You are running WordPress %s.', 'task-manager' ),
+					$min_wordpress,
+					get_bloginfo( 'version' )
+				) .
+				'</p></div>'
+			);
+		} );
+		return false;
+	}
+
+	return true;
+}
+
+// Check requirements on plugin load
+if ( ! tm_check_requirements() ) {
+	add_action( 'admin_init', function () {
+		deactivate_plugins( plugin_basename( TM_PLUGIN_FILE ) );
+	} );
+	return;
+}
 
 /**
  * Initialize plugin on plugins_loaded hook
@@ -96,25 +156,38 @@ add_action(
 /**
  * Plugin activation hook
  *
- * Creates database table, adds capabilities, initializes settings
+ * Creates database table, adds capabilities, initializes settings, and runs migrations
  */
 register_activation_hook(
 	TM_PLUGIN_FILE,
 	function () {
 		require_once TM_PLUGIN_DIR . 'includes/class-activator.php';
+
+		// Run activation
 		TaskManager\Core\Activator::activate();
+
+		// Run database migrations
+		TaskManager\Migrator::run_migrations();
+
+		// Log activation
+		TaskManager\Logger::info( 'Task Manager plugin activated', [ 'version' => TM_VERSION ] );
 	}
 );
 
 /**
  * Plugin deactivation hook
  *
- * Removes custom capabilities (table retained for data persistence)
+ * Removes custom capabilities (table retained for data persistence) and logs deactivation
  */
 register_deactivation_hook(
 	TM_PLUGIN_FILE,
 	function () {
 		require_once TM_PLUGIN_DIR . 'includes/class-activator.php';
+
+		// Log deactivation
+		TaskManager\Logger::info( 'Task Manager plugin deactivated', [ 'version' => TM_VERSION ] );
+
+		// Run deactivation
 		TaskManager\Core\Activator::deactivate();
 	}
 );

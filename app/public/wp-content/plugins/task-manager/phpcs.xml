@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ruleset name="Task Manager WordPress Standards">
+	<description>WordPress Coding Standards for Task Manager Plugin</description>
+
+	<!-- Include WordPress coding standards -->
+	<rule ref="WordPress">
+		<!-- Exclude file name rules for class files with 'class-' prefix -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+	</rule>
+
+	<!-- Include WordPress security and WP-specific rules -->
+	<rule ref="WordPress.Security"/>
+	<rule ref="WordPress.WP.EnqueuedResources"/>
+
+	<!-- Files to analyze -->
+	<file>.</file>
+
+	<!-- Exclude external dependencies and build directories -->
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<exclude-pattern>/tests/</exclude-pattern>
+
+	<!-- Configuration for WordPress-specific files -->
+	<config name="minimum_supported_wp_version">5.8.0</config>
+	<config name="testVersion">7.4-</config>
+
+	<!-- Allow PSR-4 autoloading -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false"/>
+		</properties>
+	</rule>
+</ruleset>
