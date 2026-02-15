@@ -711,56 +711,34 @@ img {
 
 .hero-title {
 	font-size: var(--font-size-5xl);
-	font-weight: 800;
-	letter-spacing: -0.02em;
+	font-weight: 700;
+	letter-spacing: 0;
 	margin-bottom: var(--spacing-6);
 	animation: fadeInDown 0.8s ease-out;
-
-	/* Multiple text shadows for depth and glow */
-	text-shadow:
-		0 0 30px rgba(0, 217, 255, 0.8),
-		0 0 60px rgba(123, 97, 255, 0.6),
-		2px 2px 4px rgba(0, 0, 0, 0.8),
-		-2px -2px 4px rgba(0, 0, 0, 0.8),
-		4px 4px 20px rgba(0, 0, 0, 0.9);
-
-	/* Gradient text with strong colors */
-	background: linear-gradient(135deg, #00D9FF 0%, #00FFA3 50%, #7B61FF 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-
-	/* Create a subtle stroke effect */
-	filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.7)) drop-shadow(0 0 16px rgba(123, 97, 255, 0.5));
+	color: #FFFFFF;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
 	font-size: var(--font-size-2xl);
-	color: #00D9FF;
+	color: #FFFFFF;
 	margin-bottom: var(--spacing-4);
-	font-weight: 700;
-	letter-spacing: 0.05em;
-	text-shadow:
-		0 0 20px rgba(0, 217, 255, 0.7),
-		0 0 40px rgba(123, 97, 255, 0.4),
-		1px 1px 2px rgba(0, 0, 0, 0.9);
-	filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+	font-weight: 600;
+	letter-spacing: 0;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
 	max-width: 700px;
 	font-size: var(--font-size-lg);
-	color: #E8EBF7;
+	color: #FFFFFF;
 	margin-bottom: var(--spacing-8);
 	line-height: var(--line-height-relaxed);
-	font-weight: 500;
-	text-shadow:
-		0 0 10px rgba(0, 0, 0, 0.9),
-		1px 1px 2px rgba(0, 0, 0, 0.8);
-	background: rgba(10, 14, 39, 0.2);
-	padding: var(--spacing-4) var(--spacing-6);
-	border-radius: var(--radius-lg);
-	backdrop-filter: blur(5px);
+	font-weight: 400;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
@@ -771,17 +749,15 @@ img {
 }
 
 .hero-buttons .btn {
-	font-weight: 700;
+	font-weight: 600;
 	font-size: var(--font-size-base);
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	box-shadow: 0 0 20px rgba(0, 217, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 	transition: all var(--transition-base);
 }
 
 .hero-buttons .btn:hover {
-	box-shadow: 0 0 30px rgba(0, 217, 255, 0.8), 0 8px 30px rgba(0, 0, 0, 0.4);
-	transform: translateY(-3px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+	transform: translateY(-2px);
 }
 
 .hero-visual {
