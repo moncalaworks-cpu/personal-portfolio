@@ -214,7 +214,7 @@ function de_render_admin_page() {
 				echo '<thead><tr><th>User ID</th><th>Username</th><th>Email</th><th>Role</th><th>Can Edit Posts</th></tr></thead><tbody>';
 
 				foreach ( $users as $user ) {
-					$can_edit = user_can( $user->ID, 'edit_posts' ) ? 'Yes' : 'No';
+					$can_edit = $user->has_cap( 'edit_posts' ) ? 'Yes' : 'No';
 					$role = isset( $user->roles[0] ) ? $user->roles[0] : 'none';
 					?>
 					<tr>
