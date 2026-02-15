@@ -25,37 +25,68 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="page" class="site">
 		<header id="masthead" class="site-header" role="banner">
-			<div class="site-branding">
-				<?php
-				if ( has_custom_logo() ) {
-					the_custom_logo();
-				} else {
-					?>
-					<h1 class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php bloginfo( 'name' ); ?>
-						</a>
-					</h1>
+			<div class="header-content">
+				<div class="site-branding">
 					<?php
-					$moncala_description = get_bloginfo( 'description', 'display' );
-					if ( $moncala_description ) {
+					if ( has_custom_logo() ) {
+						the_custom_logo();
+					} else {
 						?>
-						<p class="site-description"><?php echo esc_html( $moncala_description ); ?></p>
+						<h1 class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</h1>
 						<?php
+						$moncala_description = get_bloginfo( 'description', 'display' );
+						if ( $moncala_description ) {
+							?>
+							<p class="site-description"><?php echo esc_html( $moncala_description ); ?></p>
+							<?php
+						}
 					}
-				}
-				?>
-			</div>
+					?>
+				</div>
 
-			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'moncala-ai' ); ?>">
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'menu_id'        => 'primary-menu',
-					'fallback_cb'    => 'wp_page_menu',
-				) );
-				?>
-			</nav>
+				<!-- Mobile menu toggle button -->
+				<button class="mobile-menu-toggle" aria-label="<?php esc_attr_e( 'Toggle Menu', 'moncala-ai' ); ?>" aria-expanded="false">
+					<span class="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</button>
+
+				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'moncala-ai' ); ?>">
+					<ul id="primary-menu" class="menu">
+						<li class="menu-item">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+								<?php esc_html_e( 'Home', 'moncala-ai' ); ?>
+							</a>
+						</li>
+						<li class="menu-item">
+							<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">
+								<?php esc_html_e( 'Blog', 'moncala-ai' ); ?>
+							</a>
+						</li>
+						<li class="menu-item">
+							<a href="<?php echo esc_url( home_url( '/portfolio' ) ); ?>">
+								<?php esc_html_e( 'Portfolio', 'moncala-ai' ); ?>
+							</a>
+						</li>
+						<li class="menu-item">
+							<a href="<?php echo esc_url( home_url( '/about' ) ); ?>">
+								<?php esc_html_e( 'About', 'moncala-ai' ); ?>
+							</a>
+						</li>
+						<li class="menu-item">
+							<a href="<?php echo esc_url( home_url( '/resume' ) ); ?>">
+								<?php esc_html_e( 'Resume', 'moncala-ai' ); ?>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 
 		<div id="content" class="site-content">
