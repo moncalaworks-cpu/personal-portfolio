@@ -67,37 +67,41 @@ test.describe('Database Explorer Plugin', () => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Posts section heading
-		await expect(page.locator('h2:has-text("Posts and Post Meta")')).toBeVisible();
+		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
+		await expect(postsHeading).toBeVisible();
 
-		// Verify the table displays
-		const table = page.locator('table.wp-list-table');
+		// Get the card containing posts section and find table within it
+		const postsCard = postsHeading.locator('..').locator('..');
+		const table = postsCard.locator('table.wp-list-table');
 		await expect(table).toBeVisible();
 
-		// Verify table headers
-		await expect(page.locator('th:has-text("Title")')).toBeVisible();
-		await expect(page.locator('th:has-text("Status")')).toBeVisible();
-		await expect(page.locator('th:has-text("Date")')).toBeVisible();
-		await expect(page.locator('th:has-text("Priority")')).toBeVisible();
-		await expect(page.locator('th:has-text("Tags")')).toBeVisible();
+		// Verify table headers exist within this table
+		await expect(table.locator('th:has-text("Title")')).toBeVisible();
+		await expect(table.locator('th:has-text("Status")')).toBeVisible();
+		await expect(table.locator('th:has-text("Date")')).toBeVisible();
+		await expect(table.locator('th:has-text("Priority")')).toBeVisible();
+		await expect(table.locator('th:has-text("Tags")')).toBeVisible();
 
-		// Verify sample projects are displayed
-		await expect(page.locator('text=Project 1')).toBeVisible();
-		await expect(page.locator('text=Project 2')).toBeVisible();
-		await expect(page.locator('text=Project 3')).toBeVisible();
+		// Verify sample projects are displayed in this table
+		await expect(table.locator('text=Project 1')).toBeVisible();
+		await expect(table.locator('text=Project 2')).toBeVisible();
+		await expect(table.locator('text=Project 3')).toBeVisible();
 	});
 
 	test('Admin page should display post meta filtering results', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Verify the WP_Query results show posts with 'completed' status
-		const rows = page.locator('table.wp-list-table tbody tr');
+		// Get the posts section card (Posts and Post Meta)
+		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
+		const postsCard = postsHeading.locator('..').locator('..');
+		const rows = postsCard.locator('table.wp-list-table tbody tr');
 		const rowCount = await rows.count();
 
 		// Should have at least our sample projects
 		expect(rowCount).toBeGreaterThanOrEqual(3);
 
 		// Verify first row has "completed" status
-		const firstRowStatus = await rows.first().locator('td:nth-child(3)');
+		const firstRowStatus = rows.first().locator('td:nth-child(3)');
 		await expect(firstRowStatus).toContainText('completed');
 	});
 
@@ -105,33 +109,43 @@ test.describe('Database Explorer Plugin', () => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Taxonomies section
-		await expect(page.locator('h2:has-text("Taxonomies & Terms")')).toBeVisible();
+		const taxHeading = page.locator('h2:has-text("Taxonomies & Terms")');
+		await expect(taxHeading).toBeVisible();
 
-		// Verify Portfolio category is displayed
-		await expect(page.locator('text=Portfolio')).toBeVisible();
+		// Get the taxonomies card
+		const taxCard = taxHeading.locator('..').locator('..');
 
-		// Verify table headers for terms
-		await expect(page.locator('th:has-text("Term ID")')).toBeVisible();
-		await expect(page.locator('th:has-text("Name")')).toBeVisible();
-		await expect(page.locator('th:has-text("Slug")')).toBeVisible();
-		await expect(page.locator('th:has-text("Description")')).toBeVisible();
+		// Verify Portfolio category is displayed in this card
+		await expect(taxCard.locator('td:has-text("Portfolio")')).toBeVisible();
+
+		// Verify table headers for terms in this card
+		const table = taxCard.locator('table.wp-list-table');
+		await expect(table.locator('th:has-text("Term ID")')).toBeVisible();
+		await expect(table.locator('th:has-text("Name")')).toBeVisible();
+		await expect(table.locator('th:has-text("Slug")')).toBeVisible();
+		await expect(table.locator('th:has-text("Description")')).toBeVisible();
 	});
 
 	test('Admin page should display users and capabilities', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for Users section
-		await expect(page.locator('h2:has-text("Users & Capabilities")')).toBeVisible();
+		const usersHeading = page.locator('h2:has-text("Users & Capabilities")');
+		await expect(usersHeading).toBeVisible();
+
+		// Get the users card
+		const usersCard = usersHeading.locator('..').locator('..');
+		const table = usersCard.locator('table.wp-list-table');
 
 		// Verify table headers for users
-		await expect(page.locator('th:has-text("User ID")')).toBeVisible();
-		await expect(page.locator('th:has-text("Username")')).toBeVisible();
-		await expect(page.locator('th:has-text("Email")')).toBeVisible();
-		await expect(page.locator('th:has-text("Role")')).toBeVisible();
-		await expect(page.locator('th:has-text("Can Edit Posts")')).toBeVisible();
+		await expect(table.locator('th:has-text("User ID")')).toBeVisible();
+		await expect(table.locator('th:has-text("Username")')).toBeVisible();
+		await expect(table.locator('th:has-text("Email")')).toBeVisible();
+		await expect(table.locator('th:has-text("Role")')).toBeVisible();
+		await expect(table.locator('th:has-text("Can Edit Posts")')).toBeVisible();
 
-		// Verify admin user is displayed
-		await expect(page.locator('text=admin')).toBeVisible();
+		// Verify admin user is displayed in this table
+		await expect(table.locator('td:has-text("admin")')).toBeVisible();
 	});
 
 	test('Admin page layout should be responsive', async ({ page }) => {
@@ -155,8 +169,10 @@ test.describe('Database Explorer Plugin', () => {
 		// Navigate to Database Explorer
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Get all rows in the posts table
-		const rows = page.locator('table.wp-list-table tbody tr');
+		// Get the posts section card
+		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
+		const postsCard = postsHeading.locator('..').locator('..');
+		const rows = postsCard.locator('table.wp-list-table tbody tr');
 		const rowCount = await rows.count();
 
 		// Verify we have the sample posts
@@ -175,8 +191,12 @@ test.describe('Database Explorer Plugin', () => {
 	test('WP_Query should order results by priority', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Get all priority cells (5th column)
-		const priorityCells = page.locator('table.wp-list-table tbody tr td:nth-child(5)');
+		// Get the posts section card
+		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
+		const postsCard = postsHeading.locator('..').locator('..');
+
+		// Get all priority cells (5th column) from this card's table
+		const priorityCells = postsCard.locator('table.wp-list-table tbody tr td:nth-child(5)');
 		const priorityCount = await priorityCells.count();
 
 		if (priorityCount > 0) {
@@ -198,11 +218,13 @@ test.describe('Database Explorer Plugin', () => {
 	test('Portfolio category should be linked to sample posts', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Get the terms section
-		const termsTable = page.locator('h2:has-text("Taxonomies & Terms")').locator('..').locator('table');
+		// Get the taxonomies card
+		const taxHeading = page.locator('h2:has-text("Taxonomies & Terms")');
+		const taxCard = taxHeading.locator('..').locator('..');
+		const table = taxCard.locator('table.wp-list-table');
 
-		// Find Portfolio row and check post count
-		const portfolioRow = page.locator('text=Portfolio').locator('..').locator('..');
+		// Find Portfolio row in this table and check post count (5th column)
+		const portfolioRow = table.locator('tbody tr').filter({ has: table.locator('td:has-text("Portfolio")') });
 		const postCountCell = portfolioRow.locator('td:nth-child(5)');
 
 		const postCount = await postCountCell.textContent();
@@ -214,8 +236,13 @@ test.describe('Database Explorer Plugin', () => {
 	test('Admin user should have edit_posts capability', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Find the admin user row
-		const adminRow = page.locator('text=admin').locator('..').locator('..');
+		// Get the users card
+		const usersHeading = page.locator('h2:has-text("Users & Capabilities")');
+		const usersCard = usersHeading.locator('..').locator('..');
+		const table = usersCard.locator('table.wp-list-table');
+
+		// Find the admin user row in this table
+		const adminRow = table.locator('tbody tr').filter({ has: table.locator('td:has-text("admin")') });
 		// Check the "Can Edit Posts" column (5th column)
 		const canEditCell = adminRow.locator('td:nth-child(5)');
 
@@ -226,8 +253,13 @@ test.describe('Database Explorer Plugin', () => {
 	test('Sample posts should have correct meta values', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Check Project 1 row
-		const project1Row = page.locator('text=Project 1').locator('..').locator('..');
+		// Get the posts section card
+		const postsHeading = page.locator('h2:has-text("Posts and Post Meta")');
+		const postsCard = postsHeading.locator('..').locator('..');
+		const table = postsCard.locator('table.wp-list-table');
+
+		// Check Project 1 row in this table
+		const project1Row = table.locator('tbody tr').filter({ has: table.locator('td:has-text("Project 1")') });
 
 		// Status should be 'completed'
 		const statusCell = project1Row.locator('td:nth-child(3)');
@@ -251,14 +283,14 @@ test.describe('Database Explorer Plugin', () => {
 	test('Plugin should store and retrieve options correctly', async ({ page }) => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
-		// Verify all three options are displayed
-		const titleOption = page.locator('text=Database Explorer').first();
-		const versionOption = page.locator('text=1.0.0');
-		const enabledOption = page.locator('text=Yes');
+		// Get the WordPress Options card
+		const optionsHeading = page.locator('h2:has-text("WordPress Options")');
+		const optionsCard = optionsHeading.locator('..').locator('..');
 
-		await expect(titleOption).toBeVisible();
-		await expect(versionOption).toBeVisible();
-		await expect(enabledOption).toBeVisible();
+		// Verify all three options are displayed in this card
+		await expect(optionsCard.locator('text=Database Explorer')).toBeVisible();
+		await expect(optionsCard.locator('text=1.0.0')).toBeVisible();
+		await expect(optionsCard.locator('text=Enabled: Yes')).toBeVisible();
 	});
 
 	test('Database Explorer page should load in reasonable time', async ({ page }) => {
