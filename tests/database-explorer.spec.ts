@@ -48,19 +48,23 @@ test.describe('Database Explorer Plugin', () => {
 		await page.goto(`${WORDPRESS_URL}/wp-admin/admin.php?page=de-explorer`);
 
 		// Check for WordPress Options heading
-		await expect(page.locator('h2:has-text("WordPress Options")')).toBeVisible();
+		const optionsHeading = page.locator('h2:has-text("WordPress Options")');
+		await expect(optionsHeading).toBeVisible();
 
-		// Verify plugin title option is displayed
-		await expect(page.locator('text=Plugin Title')).toBeVisible();
-		await expect(page.locator('text=Database Explorer')).toBeVisible();
+		// Get the options card (parent of heading)
+		const optionsCard = optionsHeading.locator('..').locator('..');
 
-		// Verify plugin version option is displayed
-		await expect(page.locator('text=Plugin Version')).toBeVisible();
-		await expect(page.locator('text=1.0.0')).toBeVisible();
+		// Verify plugin title option is displayed within the card
+		await expect(optionsCard.locator('p:has-text("Plugin Title")')).toBeVisible();
+		await expect(optionsCard.locator('p:has-text("Plugin Title"):has-text("Database Explorer")')).toBeVisible();
 
-		// Verify enabled option is displayed
-		await expect(page.locator('text=Enabled')).toBeVisible();
-		await expect(page.locator('text=Yes')).toBeVisible();
+		// Verify plugin version option is displayed within the card
+		await expect(optionsCard.locator('p:has-text("Plugin Version")')).toBeVisible();
+		await expect(optionsCard.locator('p:has-text("Plugin Version"):has-text("1.0.0")')).toBeVisible();
+
+		// Verify enabled option is displayed within the card
+		await expect(optionsCard.locator('p:has-text("Enabled")')).toBeVisible();
+		await expect(optionsCard.locator('p:has-text("Enabled"):has-text("Yes")')).toBeVisible();
 	});
 
 	test('Admin page should display posts and post meta data', async ({ page }) => {
