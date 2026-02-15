@@ -136,7 +136,6 @@ function de_render_admin_page() {
 				'meta_key'       => 'project_status',
 				'meta_value'     => 'completed',
 				'orderby'        => 'meta_value_num',
-				'meta_key'       => 'project_priority',
 				'order'          => 'ASC',
 			];
 
