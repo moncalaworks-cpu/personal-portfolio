@@ -60,3 +60,4 @@ playwright/.cache/
 .env.local
 .env.*.local
 .env
+tests/auth.json
