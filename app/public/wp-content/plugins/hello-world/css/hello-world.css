@@ -1,0 +1,45 @@
+.hello-world-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hello-world-title {
+  margin: 0 0 20px 0;
+  font-size: 2.5em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.hello-world-subtitle {
+  margin: 0 0 20px 0;
+  font-size: 1.2em;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.hello-world-content {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .hello-world-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .hello-world-title {
+    font-size: 1.8em;
+  }
+
+  .hello-world-subtitle {
+    font-size: 1em;
+  }
+}

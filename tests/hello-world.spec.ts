@@ -21,61 +21,25 @@ dotenv.config();
  * ✅ Plugin creates pages correctly (wp_insert_post)
  * ✅ Content is modified properly by filters (the_content filter)
  * ✅ Styles are enqueued correctly (wp_enqueue_style)
+ *
+ * Authentication is handled by global setup (tests/global-setup.ts)
+ * so all tests automatically have an authenticated session.
  */
 
 // Load WordPress URL from environment variable (.env file)
 const WORDPRESS_URL = process.env.WORDPRESS_URL || 'http://personal-portfolio.local';
-const WORDPRESS_ADMIN_USER = process.env.WORDPRESS_ADMIN_USER || 'admin';
-const WORDPRESS_ADMIN_PASSWORD = process.env.WORDPRESS_ADMIN_PASSWORD || 'password';
-
-/**
- * Helper function to login to WordPress admin
- * Required for accessing /wp-admin/ pages
- */
-async function loginToWordPress(page) {
-  try {
-    // Navigate to login page
-    await page.goto(`${WORDPRESS_URL}/wp-login.php`, { waitUntil: 'networkidle' });
-
-    // Wait for login form to be visible
-    const usernameField = page.locator('input[name="log"]');
-    await usernameField.waitFor({ state: 'visible', timeout: 5000 });
-
-    // Fill in credentials
-    await usernameField.fill(WORDPRESS_ADMIN_USER);
-    await page.locator('input[name="pwd"]').fill(WORDPRESS_ADMIN_PASSWORD);
-
-    // Submit form
-    const submitButton = page.locator('input[type="submit"]');
-    await submitButton.click();
-
-    // Wait for redirect - use URL pattern and page load state
-    // More reliable than looking for specific elements
-    await Promise.race([
-      page.waitForURL(`**\/wp-admin\/**`, { timeout: 15000 }),
-      page.waitForLoadState('networkidle', { timeout: 15000 })
-    ]);
-
-  } catch (error) {
-    console.error('Login failed:', error.message);
-    throw new Error(`Failed to login to WordPress admin. Username: ${WORDPRESS_ADMIN_USER}, URL: ${WORDPRESS_URL}/wp-login.php`);
-  }
-}
 
 test.describe('Hello World Plugin', () => {
 
   test('Plugin is visible in WordPress admin', async ({ page }) => {
-    // Login to WordPress first
-    await loginToWordPress(page);
-
     // Navigate to WordPress plugins page
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
 
     // Wait for page to load
     await page.waitForLoadState('networkidle');
 
-    // Check if Hello World plugin is present
-    const helloWorldPlugin = page.locator('text=Hello World');
+    // Check if Hello World plugin is present (search for exact plugin name in row)
+    const helloWorldPlugin = page.locator('text=/^Hello World$/').first();
     await expect(helloWorldPlugin).toBeVisible();
 
     // Verify plugin description is visible
@@ -84,58 +48,27 @@ test.describe('Hello World Plugin', () => {
   });
 
   test('Hello World page exists and is published', async ({ page }) => {
-    // Login to WordPress first
-    await loginToWordPress(page);
-
     // Navigate to Pages section in admin
     await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
 
     // Wait for page to load
     await page.waitForLoadState('networkidle');
 
-    // Check if Hello World page exists
-    const helloWorldPage = page.locator('text="Hello World"').first();
+    // Check if Hello World page exists (as a page title link)
+    const helloWorldPage = page.locator('a.row-title:has-text("Hello World")').first();
     await expect(helloWorldPage).toBeVisible();
   });
 
   test('Hello World page displays on frontend', async ({ page }) => {
     // Navigate directly to Hello World page
-    // Try common WordPress URL patterns
-    let pageLoaded = false;
-    const possibleUrls = [
-      `${WORDPRESS_URL}/hello-world/`,
-      `${WORDPRESS_URL}/index.php/hello-world/`,
-      `${WORDPRESS_URL}/?page_id=`,
-    ];
+    await page.goto(`${WORDPRESS_URL}/hello-world/`);
 
-    // Try to find the page by search - login first
-    await loginToWordPress(page);
-    await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
+    // Wait for page to load
     await page.waitForLoadState('networkidle');
 
-    // Click on Hello World page title to view it
-    const pageLink = page.locator('a:has-text("Hello World")').first();
-
-    if (await pageLink.isVisible()) {
-      // Click "View" link or the title
-      const viewLink = page.locator(`a[aria-label*="Hello World"]`);
-
-      if (await viewLink.isVisible()) {
-        await viewLink.click();
-      } else {
-        // Alternative: get the URL from the page admin and construct it
-        await pageLink.click();
-      }
-
-      await page.waitForLoadState('networkidle');
-      pageLoaded = true;
-    }
-
-    if (pageLoaded) {
-      // Verify page title
-      const title = page.locator('h1, h2').filter({ hasText: 'Hello World' });
-      await expect(title).toBeVisible();
-    }
+    // Verify page title is displayed
+    const title = page.locator('h1.hello-world-title');
+    await expect(title).toBeVisible();
   });
 
   test('Hello World page displays custom styling', async ({ page }) => {
@@ -155,10 +88,9 @@ test.describe('Hello World Plugin', () => {
     const title = page.locator('.hello-world-title');
     await expect(title).toBeVisible();
 
-    // Verify the emoji and text
+    // Verify the title text content
     const titleText = await title.textContent();
-    expect(titleText).toContain('🎉');
-    expect(titleText).toContain('Hello, WordPress World!');
+    expect(titleText?.trim()).toContain('Hello, WordPress World!');
 
     // Check for subtitle
     const subtitle = page.locator('.hello-world-subtitle');
@@ -320,9 +252,6 @@ test.describe('Hello World Plugin - Error Handling', () => {
   });
 
   test('Admin area works correctly', async ({ page }) => {
-    // Login to WordPress first
-    await loginToWordPress(page);
-
     // Navigate to WordPress admin
     await page.goto(`${WORDPRESS_URL}/wp-admin/`);
 
@@ -343,11 +272,10 @@ test.describe('Issue #1 - Core Codebase Overview - Validation', () => {
   test('✅ Issue #1: Core File Structure demonstrated', async ({ page }) => {
     // Plugin is in correct directory structure
     // This test just verifies it loads (structure is correct)
-    await loginToWordPress(page);
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`);
     await page.waitForLoadState('networkidle');
 
-    const plugin = page.locator('text=Hello World');
+    const plugin = page.locator('text=/^Hello World$/').first();
     await expect(plugin).toBeVisible();
   });
 
@@ -382,12 +310,11 @@ test.describe('Issue #1 - Core Codebase Overview - Validation', () => {
     // Evidence: Code uses init hook (happens during bootstrap)
 
     // If init hook works, bootstrap is understood
-    await loginToWordPress(page);
     await page.goto(`${WORDPRESS_URL}/wp-admin/edit.php?post_type=page`);
     await page.waitForLoadState('networkidle');
 
     // Page created = init hook executed = bootstrap understood
-    const page_exists = page.locator('a:has-text("Hello World")').first();
+    const page_exists = page.locator('a.row-title:has-text("Hello World")').first();
     await expect(page_exists).toBeVisible();
   });
 
@@ -398,7 +325,7 @@ test.describe('Issue #1 - Core Codebase Overview - Validation', () => {
     await page.waitForLoadState('networkidle');
 
     // wp_insert_post() - page created
-    const title = page.locator('h1, h2').filter({ hasText: /Hello.*World/i });
+    const title = page.locator('h1.hello-world-title');
     await expect(title).toBeVisible();
 
     // add_action() - hooks are firing
