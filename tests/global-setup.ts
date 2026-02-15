@@ -35,18 +35,30 @@ async function globalSetup(config: FullConfig) {
 
     console.log('✅ Successfully logged in to WordPress admin');
 
-    // Activate post-editor-showcase plugin if not already active
+    // Activate plugins if not already active
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`, { waitUntil: 'networkidle' });
 
-    // Check if plugin needs activation
-    const activateLink = page.locator('a[href*="post-editor-showcase"]').filter({ hasText: /activate|activate plugin/i }).first();
-    if (await activateLink.count() > 0) {
+    // Activate post-editor-showcase plugin
+    const activateLink1 = page.locator('a[href*="post-editor-showcase"]').filter({ hasText: /activate|activate plugin/i }).first();
+    if (await activateLink1.count() > 0) {
       console.log('📦 Activating post-editor-showcase plugin...');
-      await activateLink.click();
+      await activateLink1.click();
       await page.waitForLoadState('networkidle');
-      console.log('✅ Plugin activated');
+      console.log('✅ post-editor-showcase activated');
     } else {
-      console.log('ℹ️  Post-editor-showcase plugin already active');
+      console.log('ℹ️  post-editor-showcase already active');
+    }
+
+    // Activate task-manager plugin
+    await page.reload({ waitUntil: 'networkidle' });
+    const activateLink2 = page.locator('a[href*="task-manager"]').filter({ hasText: /activate|activate plugin/i }).first();
+    if (await activateLink2.count() > 0) {
+      console.log('📦 Activating task-manager plugin...');
+      await activateLink2.click();
+      await page.waitForLoadState('networkidle');
+      console.log('✅ task-manager activated');
+    } else {
+      console.log('ℹ️  task-manager already active');
     }
 
     // Save authentication state

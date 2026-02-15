@@ -1,0 +1,223 @@
+/**
+ * Task Manager Admin Styles
+ *
+ * Styles for Task Manager admin pages
+ */
+
+/* Status Badges */
+.status-todo {
+	background-color: #f9f1f6 !important;
+	color: #d63384;
+	border-left: 4px solid #d63384;
+	padding-left: 8px;
+}
+
+.status-in-progress {
+	background-color: #fff3cd !important;
+	color: #856404;
+	border-left: 4px solid #ffc107;
+	padding-left: 8px;
+}
+
+.status-done {
+	background-color: #d4edda !important;
+	color: #155724;
+	border-left: 4px solid #28a745;
+	padding-left: 8px;
+}
+
+/* Priority Badges */
+.priority-low {
+	background-color: #e8f4f8 !important;
+	color: #0c5460;
+	border-left: 4px solid #17a2b8;
+	padding-left: 8px;
+}
+
+.priority-medium {
+	background-color: #fff3cd !important;
+	color: #856404;
+	border-left: 4px solid #ffc107;
+	padding-left: 8px;
+}
+
+.priority-high {
+	background-color: #f8d7da !important;
+	color: #721c24;
+	border-left: 4px solid #dc3545;
+	padding-left: 8px;
+}
+
+/* Task Manager Statistics */
+.tm-statistics {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.tm-statistics .postbox {
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	transition: all 0.2s ease;
+}
+
+.tm-statistics .postbox:hover {
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tm-statistics .postbox h2 {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0 0 10px 0;
+	padding: 0;
+	color: #23282d;
+}
+
+/* Admin Tables */
+.wp-list-table td {
+	vertical-align: middle;
+}
+
+.wp-list-table .button-small {
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+/* Filter Form */
+.wp-clearfix {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+}
+
+.wp-clearfix select {
+	min-width: 150px;
+}
+
+/* Form Styles */
+.form-table th {
+	font-weight: 600;
+	width: 200px;
+}
+
+.form-table input[type="text"],
+.form-table input[type="date"],
+.form-table select,
+.form-table textarea {
+	max-width: 400px;
+}
+
+.form-table .required {
+	color: #dc3545;
+	font-weight: bold;
+}
+
+.form-table .description {
+	font-size: 13px;
+	color: #666;
+	margin-top: 5px;
+	display: block;
+}
+
+/* WP Editor */
+.wp-editor-area {
+	font-family: Consolas, Monaco, 'Courier New', monospace;
+	font-size: 13px;
+}
+
+/* Submit Buttons */
+.submit {
+	margin-top: 20px;
+	padding-top: 15px;
+	border-top: 1px solid #eee;
+}
+
+.submit .button {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.submit .button-primary {
+	background-color: #2271b1;
+	border-color: #1f58a5;
+	color: white;
+	text-shadow: none;
+}
+
+.submit .button-primary:hover {
+	background-color: #135e96;
+	border-color: #0f4a6f;
+}
+
+.submit .button-link-delete {
+	color: #dc3545;
+}
+
+.submit .button-link-delete:hover {
+	color: #c82333;
+	border-color: #c82333;
+}
+
+/* Admin Notices */
+.notice {
+	margin: 15px 0;
+	border-left: 4px solid #ccc;
+	padding: 12px;
+	background-color: #fff;
+}
+
+.notice-success {
+	border-left-color: #28a745;
+}
+
+.notice-success p {
+	color: #155724;
+}
+
+.notice-error {
+	border-left-color: #dc3545;
+}
+
+.notice-error p {
+	color: #721c24;
+}
+
+.notice-error ul {
+	margin-bottom: 10px;
+	color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.tm-statistics {
+		grid-template-columns: 1fr 1fr !important;
+	}
+
+	.wp-clearfix {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.wp-clearfix select {
+		width: 100%;
+	}
+
+	.form-table input[type="text"],
+	.form-table input[type="date"],
+	.form-table select,
+	.form-table textarea {
+		max-width: 100%;
+	}
+
+	.wp-list-table {
+		font-size: 13px;
+	}
+
+	.wp-list-table .button {
+		display: block;
+		width: 100%;
+		margin-bottom: 5px;
+	}
+}
