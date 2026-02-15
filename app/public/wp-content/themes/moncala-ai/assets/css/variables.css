@@ -1,0 +1,132 @@
+/**
+ * MonCala AI Theme - Design System Variables
+ *
+ * CSS custom properties defining the complete design system:
+ * - Color palette (dark tech with cyan/purple accents)
+ * - Typography scale
+ * - Spacing scale
+ * - Shadows and effects
+ *
+ * @since 1.0.0
+ */
+
+:root {
+	/* Color Palette: Dark Tech with AI Accents */
+	--color-dark-bg: #0A0E27;          /* Deep navy background */
+	--color-dark-surface: #141B3A;     /* Elevated surfaces */
+	--color-dark-surface-2: #1F2647;   /* Secondary surfaces */
+	--color-light-text: #E8EBF7;       /* Primary text */
+	--color-muted-text: #9BA3C3;       /* Secondary text */
+	--color-border: #2A3150;           /* Border color */
+
+	/* Primary Accent Colors */
+	--color-primary: #00D9FF;          /* Cyan - AI/tech primary */
+	--color-primary-hover: #00BFDB;    /* Cyan hover state */
+	--color-secondary: #7B61FF;        /* Purple - gradient support */
+	--color-secondary-hover: #6A4FDD;  /* Purple hover state */
+	--color-success: #00FFA3;          /* Green - positive actions */
+	--color-warning: #FFB800;          /* Amber - warnings */
+	--color-error: #FF3860;            /* Red - errors/destructive */
+
+	/* Gradients */
+	--gradient-primary: linear-gradient(135deg, #00D9FF 0%, #7B61FF 100%);
+	--gradient-hero: linear-gradient(135deg, #00D9FF 0%, #7B61FF 50%, #FF3860 100%);
+	--gradient-text: linear-gradient(135deg, #00D9FF, #7B61FF);
+
+	/* Typography Scale */
+	--font-family-heading: "Space Grotesk", system-ui, sans-serif;
+	--font-family-body: "Inter", system-ui, sans-serif;
+	--font-family-code: "Fira Code", "Courier New", monospace;
+
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	/* Fluid typography using clamp() */
+	--font-size-xs: clamp(0.75rem, 1vw, 0.875rem);
+	--font-size-sm: clamp(0.875rem, 1.2vw, 1rem);
+	--font-size-base: clamp(1rem, 1.5vw, 1.125rem);
+	--font-size-lg: clamp(1.125rem, 2vw, 1.375rem);
+	--font-size-xl: clamp(1.375rem, 2.5vw, 1.75rem);
+	--font-size-2xl: clamp(1.75rem, 3vw, 2.25rem);
+	--font-size-3xl: clamp(2.25rem, 4vw, 3rem);
+	--font-size-4xl: clamp(3rem, 5vw, 4rem);
+	--font-size-5xl: clamp(4rem, 6vw, 5rem);
+
+	/* Line Heights */
+	--line-height-tight: 1.2;
+	--line-height-normal: 1.5;
+	--line-height-relaxed: 1.75;
+	--line-height-loose: 2;
+
+	/* Spacing Scale (8px base unit) */
+	--spacing-0: 0;
+	--spacing-1: 0.25rem;   /* 4px */
+	--spacing-2: 0.5rem;    /* 8px */
+	--spacing-3: 0.75rem;   /* 12px */
+	--spacing-4: 1rem;      /* 16px */
+	--spacing-6: 1.5rem;    /* 24px */
+	--spacing-8: 2rem;      /* 32px */
+	--spacing-10: 2.5rem;   /* 40px */
+	--spacing-12: 3rem;     /* 48px */
+	--spacing-16: 4rem;     /* 64px */
+	--spacing-20: 5rem;     /* 80px */
+	--spacing-24: 6rem;     /* 96px */
+
+	/* Border Radius */
+	--radius-none: 0;
+	--radius-sm: 0.25rem;
+	--radius-base: 0.5rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
+	--radius-full: 9999px;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-base: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+	--shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+	--shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+	/* Glow Effects (for AI/tech aesthetic) */
+	--glow-primary: 0 0 20px rgba(0, 217, 255, 0.3);
+	--glow-secondary: 0 0 20px rgba(123, 97, 255, 0.3);
+	--glow-strong: 0 0 40px rgba(0, 217, 255, 0.5);
+
+	/* Transitions */
+	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Z-index Scale */
+	--z-dropdown: 1000;
+	--z-sticky: 1020;
+	--z-fixed: 1030;
+	--z-modal-backdrop: 1040;
+	--z-modal: 1050;
+	--z-popover: 1060;
+	--z-tooltip: 1070;
+
+	/* Container Queries */
+	--container-sm: 36rem;   /* 576px */
+	--container-md: 48rem;   /* 768px */
+	--container-lg: 64rem;   /* 1024px */
+	--container-xl: 80rem;   /* 1280px */
+	--container-2xl: 96rem;  /* 1536px */
+
+	/* Breakpoints */
+	--bp-mobile: 320px;
+	--bp-sm: 640px;
+	--bp-md: 768px;
+	--bp-lg: 1024px;
+	--bp-xl: 1280px;
+	--bp-2xl: 1536px;
+}
+
+/* Dark mode adjustments (theme is dark by default) */
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+	}
+}

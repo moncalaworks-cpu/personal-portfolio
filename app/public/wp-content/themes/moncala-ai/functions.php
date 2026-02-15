@@ -51,18 +51,10 @@ function moncala_theme_setup() {
 add_action( 'after_setup_theme', 'moncala_theme_setup' );
 
 /**
- * Enqueue theme CSS
- * Loads the main stylesheet
+ * Load asset enqueuing
+ * Includes all CSS and JavaScript resources
  */
-function moncala_enqueue_styles() {
-	wp_enqueue_style(
-		'moncala-style',
-		MONCALA_THEME_URI . '/style.css',
-		array(),
-		MONCALA_VERSION
-	);
-}
-add_action( 'wp_enqueue_scripts', 'moncala_enqueue_styles' );
+require_once MONCALA_THEME_DIR . '/inc/enqueue-assets.php';
 
 /**
  * Register navigation menus
