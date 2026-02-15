@@ -1,0 +1,23 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Custom WordPress portfolio site with automated testing",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report"
+  },
+  "keywords": [
+    "wordpress",
+    "portfolio",
+    "testing",
+    "playwright"
+  ],
+  "author": "moncalaworks-cpu",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

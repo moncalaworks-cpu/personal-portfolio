@@ -47,7 +47,16 @@ Thumbs.db
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+
+# Playwright testing
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.auth/
 
 # Local development
 .env.local
 .env.*.local
+.env
