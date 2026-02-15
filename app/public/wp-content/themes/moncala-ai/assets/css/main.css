@@ -214,9 +214,15 @@ img {
 	position: relative;
 }
 
-.main-navigation a:hover {
+.main-navigation a:hover,
+.main-navigation a:focus-visible {
 	color: var(--color-primary);
 	border-bottom-color: var(--color-primary);
+}
+
+.main-navigation a:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
 }
 
 .main-navigation a.current-menu-item {
@@ -277,6 +283,9 @@ img {
 		width: 100%;
 		padding: var(--spacing-4);
 		border-bottom: 1px solid var(--color-border);
+		min-height: 44px;
+		display: flex;
+		align-items: center;
 	}
 
 	.main-navigation a:hover,

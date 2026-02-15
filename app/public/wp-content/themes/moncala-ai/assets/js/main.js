@@ -94,13 +94,28 @@
 			copyButton.addEventListener('click', function () {
 				const text = codeBlock.textContent;
 
+				// Create live region for screen reader announcements (ADA compliance)
+				const announcement = document.createElement('div');
+				announcement.setAttribute('aria-live', 'polite');
+				announcement.setAttribute('aria-atomic', 'true');
+				announcement.className = 'sr-only';
+				document.body.appendChild(announcement);
+
 				// Use modern clipboard API
 				if (navigator.clipboard) {
 					navigator.clipboard.writeText(text).then(() => {
 						const originalText = copyButton.textContent;
+						const originalLabel = copyButton.getAttribute('aria-label');
+
 						copyButton.textContent = 'Copied!';
+						copyButton.setAttribute('aria-label', 'Code copied to clipboard');
+						announcement.textContent = 'Code copied to clipboard';
+
 						setTimeout(() => {
 							copyButton.textContent = originalText;
+							copyButton.setAttribute('aria-label', originalLabel);
+							announcement.textContent = '';
+							document.body.removeChild(announcement);
 						}, 2000);
 					});
 				} else {
@@ -112,9 +127,18 @@
 					document.execCommand('copy');
 					document.body.removeChild(textarea);
 
+					const originalText = copyButton.textContent;
+					const originalLabel = copyButton.getAttribute('aria-label');
+
 					copyButton.textContent = 'Copied!';
+					copyButton.setAttribute('aria-label', 'Code copied to clipboard');
+					announcement.textContent = 'Code copied to clipboard';
+
 					setTimeout(() => {
-						copyButton.textContent = 'Copy';
+						copyButton.textContent = originalText;
+						copyButton.setAttribute('aria-label', originalLabel);
+						announcement.textContent = '';
+						document.body.removeChild(announcement);
 					}, 2000);
 				}
 			});

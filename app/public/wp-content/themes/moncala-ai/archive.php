@@ -88,7 +88,13 @@ get_header();
 								<?php
 								the_post_thumbnail(
 									'moncala-featured',
-									array( 'class' => 'post-card-image' )
+									array(
+										'class' => 'post-card-image',
+										'alt'   => sprintf(
+											esc_attr__( 'Featured image for %s', 'moncala-ai' ),
+											esc_attr( get_the_title() )
+										),
+									)
 								);
 								?>
 							</figure>

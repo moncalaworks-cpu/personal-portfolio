@@ -59,7 +59,13 @@ get_header();
 									<?php
 									the_post_thumbnail(
 										'moncala-featured',
-										array( 'class' => 'post-card-image' )
+										array(
+											'class' => 'post-card-image',
+											'alt'   => sprintf(
+												esc_attr__( 'Featured image for %s', 'moncala-ai' ),
+												esc_attr( get_the_title() )
+											),
+										)
 									);
 									?>
 								</figure>
@@ -157,8 +163,8 @@ get_header();
 				// Portfolio project 1
 				?>
 				<div class="project-card card">
-					<div class="project-icon">
-						<span class="icon-code">⚙️</span>
+					<div class="project-icon" aria-label="<?php esc_attr_e( 'Code Analysis Icon', 'moncala-ai' ); ?>">
+						<span aria-hidden="true" class="icon-code">⚙️</span>
 					</div>
 					<h3 class="project-title">
 						<?php esc_html_e( 'AI-Powered Legacy Code Analysis', 'moncala-ai' ); ?>
@@ -177,8 +183,8 @@ get_header();
 				// Portfolio project 2
 				?>
 				<div class="project-card card">
-					<div class="project-icon">
-						<span class="icon-ml">🤖</span>
+					<div class="project-icon" aria-label="<?php esc_attr_e( 'Machine Learning Icon', 'moncala-ai' ); ?>">
+						<span aria-hidden="true" class="icon-ml">🤖</span>
 					</div>
 					<h3 class="project-title">
 						<?php esc_html_e( 'Gradual ML Integration Framework', 'moncala-ai' ); ?>
@@ -197,8 +203,8 @@ get_header();
 				// Portfolio project 3
 				?>
 				<div class="project-card card">
-					<div class="project-icon">
-						<span class="icon-database">💾</span>
+					<div class="project-icon" aria-label="<?php esc_attr_e( 'Database Icon', 'moncala-ai' ); ?>">
+						<span aria-hidden="true" class="icon-database">💾</span>
 					</div>
 					<h3 class="project-title">
 						<?php esc_html_e( 'Vector Store Migration Suite', 'moncala-ai' ); ?>

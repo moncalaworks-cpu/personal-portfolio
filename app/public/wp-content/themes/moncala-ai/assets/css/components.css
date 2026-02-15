@@ -129,6 +129,20 @@ input:disabled {
 }
 
 /**
+ * Focus states for keyboard accessibility (ADA compliance)
+ */
+.btn:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+	outline: 3px solid var(--color-primary);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.2);
+}
+
+/**
  * Cards
  */
 .card {
@@ -145,6 +159,12 @@ input:disabled {
 	border-color: var(--color-primary);
 	box-shadow: var(--glow-primary);
 	transform: translateY(-4px);
+}
+
+.card:focus-within {
+	border-color: var(--color-primary);
+	outline: 2px solid var(--color-primary);
+	outline-offset: -1px;
 }
 
 .card-header {
@@ -205,10 +225,11 @@ input:disabled {
 
 /**
  * Badges
+ * Minimum touch target: 44x44px for ADA compliance
  */
 .badge {
 	display: inline-block;
-	padding: var(--spacing-1) var(--spacing-3);
+	padding: var(--spacing-2) var(--spacing-3);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-semibold);
 	border-radius: var(--radius-full);
@@ -217,6 +238,10 @@ input:disabled {
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	line-height: 1;
+	min-height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .badge-primary {

@@ -23,6 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 
+	<!-- Skip to content link for keyboard users (ADA compliance) -->
+	<a href="#main" class="skip-link">
+		<?php esc_html_e( 'Skip to main content', 'moncala-ai' ); ?>
+	</a>
+
 	<div id="page" class="site">
 		<header id="masthead" class="site-header" role="banner">
 			<div class="header-content">

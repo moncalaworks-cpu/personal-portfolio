@@ -16,7 +16,7 @@
 	--color-dark-surface: #141B3A;     /* Elevated surfaces */
 	--color-dark-surface-2: #1F2647;   /* Secondary surfaces */
 	--color-light-text: #E8EBF7;       /* Primary text */
-	--color-muted-text: #9BA3C3;       /* Secondary text */
+	--color-muted-text: #B8C1DB;       /* Secondary text - improved contrast for WCAG AA */
 	--color-border: #2A3150;           /* Border color */
 
 	/* Primary Accent Colors */
