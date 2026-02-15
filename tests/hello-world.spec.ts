@@ -29,19 +29,31 @@ const WORDPRESS_ADMIN_PASSWORD = process.env.WORDPRESS_ADMIN_PASSWORD || 'passwo
  * Required for accessing /wp-admin/ pages
  */
 async function loginToWordPress(page) {
-  await page.goto(`${WORDPRESS_URL}/wp-login.php`);
-  await page.waitForLoadState('networkidle');
+  try {
+    // Navigate to login page
+    await page.goto(`${WORDPRESS_URL}/wp-login.php`, { waitUntil: 'networkidle' });
 
-  // Fill login form
-  await page.fill('input[name="log"]', WORDPRESS_ADMIN_USER);
-  await page.fill('input[name="pwd"]', WORDPRESS_ADMIN_PASSWORD);
+    // Wait for login form to be visible
+    const usernameField = page.locator('input[name="log"]');
+    await usernameField.waitFor({ state: 'visible', timeout: 5000 });
 
-  // Click login button
-  await page.click('input[type="submit"]');
+    // Fill in credentials
+    await usernameField.fill(WORDPRESS_ADMIN_USER);
+    await page.locator('input[name="pwd"]').fill(WORDPRESS_ADMIN_PASSWORD);
 
-  // Wait for redirect to admin
-  await page.waitForURL(`${WORDPRESS_URL}/wp-admin/**`);
-  await page.waitForLoadState('networkidle');
+    // Submit form
+    const submitButton = page.locator('input[type="submit"]');
+    await submitButton.click();
+
+    // Wait for redirect to complete - check if we're logged in
+    // Look for wp-admin dashboard elements
+    const dashboardElement = page.locator('.wp-admin, .wp-heading-inline, h1.wp-heading-inline');
+    await dashboardElement.first().waitFor({ state: 'visible', timeout: 10000 });
+
+  } catch (error) {
+    console.error('Login failed:', error.message);
+    throw new Error(`Failed to login to WordPress admin. Username: ${WORDPRESS_ADMIN_USER}, URL: ${WORDPRESS_URL}/wp-login.php`);
+  }
 }
 
 test.describe('Hello World Plugin', () => {
