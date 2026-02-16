@@ -1,0 +1,11 @@
+# WP-CLI configuration for Local by Flywheel
+path: /Users/kenshinzato/Local Sites/personal-portfolio/app/public
+
+# MySQL connection settings
+url: http://localhost
+
+# Database connection via socket
+dbhost: localhost:/Users/kenshinzato/Library/Application Support/Local/run/zNRD5Zs3r/mysql/mysqld.sock
+dbname: local
+dbuser: root
+dbpass: root
