@@ -17,10 +17,17 @@ test.describe('Task Manager Plugin', () => {
 	// Helper function to get admin URL
 	const getAdminUrl = (page: string) => `http://personal-portfolio.local/wp-admin/admin.php?page=${page}`;
 
+	// Helper function to wait for form to be ready
+	const waitForFormReady = async (page: any) => {
+		await page.waitForLoadState('networkidle');
+		// Wait for first form input to be visible and ready
+		await page.locator('input[type="text"], input[type="email"], textarea, select').first().waitFor({ state: 'visible' });
+	};
+
 	test.describe('Plugin Foundation', () => {
 		test('should have admin menu visible to logged in user', async ({ page }) => {
 			// Navigate to admin dashboard
-			await page.goto('http://personal-portfolio.local/wp-admin/');
+			await page.goto('http://personal-portfolio.local/wp-admin/', { waitUntil: 'networkidle' });
 
 			// Check if Task Manager menu exists
 			const taskManagerMenu = page.locator('text=Task Manager').first();
@@ -29,14 +36,14 @@ test.describe('Task Manager Plugin', () => {
 
 		test('should have Task Manager dashboard page accessible', async ({ page }) => {
 			// Navigate to dashboard
-			await page.goto(getAdminUrl('task-manager'));
+			await page.goto(getAdminUrl('task-manager'), { waitUntil: 'networkidle' });
 
 			// Check page title contains "Task Manager"
 			await expect(page.locator('h1')).toContainText('Task Manager');
 		});
 
 		test('should display statistics cards on dashboard', async ({ page }) => {
-			await page.goto(getAdminUrl('task-manager'));
+			await page.goto(getAdminUrl('task-manager'), { waitUntil: 'networkidle' });
 
 			// Check for statistics cards
 			await expect(page.locator('text=Total Tasks')).toBeVisible();
@@ -48,7 +55,8 @@ test.describe('Task Manager Plugin', () => {
 
 	test.describe('Database Operations', () => {
 		test('should navigate to add task form', async ({ page }) => {
-			await page.goto(getAdminUrl('task-manager-add'));
+			await page.goto(getAdminUrl('task-manager-add'), { waitUntil: 'networkidle' });
+			await waitForFormReady(page);
 
 			// Check form elements
 			await expect(page.locator('input[name="task_title"]')).toBeVisible();
@@ -57,7 +65,8 @@ test.describe('Task Manager Plugin', () => {
 		});
 
 		test('should validate required fields on form submission', async ({ page }) => {
-			await page.goto(getAdminUrl('task-manager-add'));
+			await page.goto(getAdminUrl('task-manager-add'), { waitUntil: 'networkidle' });
+			await waitForFormReady(page);
 
 			// Try to submit empty form
 			await page.locator('input[type="submit"]').click();
@@ -68,13 +77,29 @@ test.describe('Task Manager Plugin', () => {
 		});
 
 		test('should create task with all fields', async ({ page }) => {
-			await page.goto(getAdminUrl('task-manager-add'));
+			await page.goto(getAdminUrl('task-manager-add'), { waitUntil: 'networkidle' });
+			await waitForFormReady(page);
 
 			// Fill form
-			await page.locator('input[name="task_title"]').fill('Test Task ' + Date.now());
+			const taskTitle = 'Test Task ' + Date.now();
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
+			await page.locator('input[name="task_title"]').fill(taskTitle, { timeout: 10000 });
+
+			await page.locator('textarea[name="task_description"]').waitFor({ state: 'visible' });
+			await page.locator('textarea[name="task_description"]').waitFor({ state: 'visible' });
 			await page.locator('textarea[name="task_description"]').fill('This is a test task description');
+
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('todo');
+
+			await page.locator('select[name="task_priority"]').waitFor({ state: 'visible' });
+			await page.locator('select[name="task_priority"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_priority"]').selectOption('high');
+
+			await page.locator('input[name="task_due_date"]').waitFor({ state: 'visible' });
+			await page.locator('input[name="task_due_date"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_due_date"]').fill('2025-12-31');
 
 			// Submit form
@@ -92,8 +117,11 @@ test.describe('Task Manager Plugin', () => {
 
 			// Create task
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('todo');
+			await page.locator('select[name="task_priority"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_priority"]').selectOption('medium');
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -109,7 +137,9 @@ test.describe('Task Manager Plugin', () => {
 			// Create a test task first
 			const taskTitle = 'Status Filter Test ' + Date.now();
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('in_progress');
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -118,6 +148,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.goto(getAdminUrl('task-manager-tasks'));
 
 			// Filter by status
+			await page.locator('select#filter-status').waitFor({ state: 'visible' });
 			await page.locator('select#filter-status').selectOption('in_progress');
 			await page.locator('input[value="Filter"]').click();
 			await page.waitForLoadState('networkidle');
@@ -130,7 +161,9 @@ test.describe('Task Manager Plugin', () => {
 			// Create a test task first
 			const taskTitle = 'Priority Filter Test ' + Date.now();
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
+			await page.locator('select[name="task_priority"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_priority"]').selectOption('high');
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -139,6 +172,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.goto(getAdminUrl('task-manager-tasks'));
 
 			// Filter by priority
+			await page.locator('select#filter-priority').waitFor({ state: 'visible' });
 			await page.locator('select#filter-priority').selectOption('high');
 			await page.locator('input[value="Filter"]').click();
 			await page.waitForLoadState('networkidle');
@@ -151,6 +185,7 @@ test.describe('Task Manager Plugin', () => {
 			// Create a task
 			const taskTitle = 'Update Test ' + Date.now();
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -165,6 +200,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.waitForLoadState('networkidle');
 
 			// Update status
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('done');
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -244,6 +280,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.goto(getAdminUrl('task-manager-settings'));
 
 			// Change a setting
+			await page.locator('select#tm_default_priority').waitFor({ state: 'visible' });
 			await page.locator('select#tm_default_priority').selectOption('high');
 
 			// Submit form
@@ -263,6 +300,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.goto(getAdminUrl('task-manager-settings'));
 
 			// Try to set invalid value
+			await page.locator('input#tm_tasks_per_page').waitFor({ state: 'visible' });
 			await page.locator('input#tm_tasks_per_page').fill('1000');
 
 			// Submit form
@@ -307,6 +345,7 @@ test.describe('Task Manager Plugin', () => {
 			const specialTitle = '<script>alert("XSS")</script> Test Task ' + Date.now();
 
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(specialTitle);
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -327,7 +366,9 @@ test.describe('Task Manager Plugin', () => {
 			// Create a normal task
 			const taskTitle = 'Validation Test ' + Date.now();
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('done');
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
@@ -347,6 +388,7 @@ test.describe('Task Manager Plugin', () => {
 			await page.goto(getAdminUrl('task-manager-add'));
 
 			const taskTitle = 'UX Test ' + Date.now();
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill(taskTitle);
 			await page.locator('input[type="submit"]').click();
 
@@ -362,6 +404,7 @@ test.describe('Task Manager Plugin', () => {
 
 			// Fill in description
 			const description = 'This is a test description';
+			await page.locator('textarea[name="task_description"]').waitFor({ state: 'visible' });
 			await page.locator('textarea[name="task_description"]').fill(description);
 
 			// Try to submit without title
@@ -376,7 +419,8 @@ test.describe('Task Manager Plugin', () => {
 			// Create multiple tasks to trigger pagination
 			for (let i = 0; i < 5; i++) {
 				await page.goto(getAdminUrl('task-manager-add'));
-				await page.locator('input[name="task_title"]').fill(`Pagination Test ${i} - ${Date.now()}`);
+				await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
+			await page.locator('input[name="task_title"]').fill(`Pagination Test ${i} - ${Date.now()}`);
 				await page.locator('input[type="submit"]').click();
 				await page.waitForLoadState('networkidle');
 			}
@@ -393,8 +437,11 @@ test.describe('Task Manager Plugin', () => {
 			const pastDate = '2020-01-01';
 
 			await page.goto(getAdminUrl('task-manager-add'));
+			await page.locator('input[name="task_title"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_title"]').fill('Overdue Task ' + Date.now());
+			await page.locator('select[name="task_status"]').waitFor({ state: 'visible' });
 			await page.locator('select[name="task_status"]').selectOption('todo');
+			await page.locator('input[name="task_due_date"]').waitFor({ state: 'visible' });
 			await page.locator('input[name="task_due_date"]').fill(pastDate);
 			await page.locator('input[type="submit"]').click();
 			await page.waitForLoadState('networkidle');
