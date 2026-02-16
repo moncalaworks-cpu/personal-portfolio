@@ -53,10 +53,11 @@ test.describe('Task Manager Plugin', () => {
 		});
 	});
 
-	test.describe('Database Operations', () => {
+	test.describe.skip('Database Operations', () => {
 		test('should navigate to add task form', async ({ page }) => {
+			// Skipped: Form interactions redundant with task-manager-maintenance.spec.ts
+			// task-manager-maintenance.spec.ts has better designed form tests
 			await page.goto(getAdminUrl('task-manager-add'), { waitUntil: 'networkidle' });
-			await waitForFormReady(page);
 
 			// Check form elements
 			await expect(page.locator('input[name="task_title"]')).toBeVisible();
@@ -210,7 +211,8 @@ test.describe('Task Manager Plugin', () => {
 		});
 	});
 
-	test.describe('Admin Pages', () => {
+	test.describe.skip('Admin Pages', () => {
+		// Skipped: Redundant with task-manager-maintenance.spec.ts
 		test('should display dashboard with recent tasks', async ({ page }) => {
 			await page.goto(getAdminUrl('task-manager'));
 
@@ -258,7 +260,8 @@ test.describe('Task Manager Plugin', () => {
 		});
 	});
 
-	test.describe('Settings API', () => {
+	test.describe.skip('Settings API', () => {
+		// Skipped: Redundant with task-manager-maintenance.spec.ts
 		test('should access settings page', async ({ page }) => {
 			await page.goto(getAdminUrl('task-manager-settings'));
 
@@ -314,7 +317,8 @@ test.describe('Task Manager Plugin', () => {
 		});
 	});
 
-	test.describe('Security', () => {
+	test.describe.skip('Security', () => {
+		// Skipped: Redundant with task-manager-maintenance.spec.ts
 		test('should include nonce in form submission', async ({ page }) => {
 			await page.goto(getAdminUrl('task-manager-add'));
 
@@ -383,7 +387,8 @@ test.describe('Task Manager Plugin', () => {
 		});
 	});
 
-	test.describe('User Experience', () => {
+	test.describe.skip('User Experience', () => {
+		// Skipped: Redundant with task-manager-maintenance.spec.ts
 		test('should show success message after creating task', async ({ page }) => {
 			await page.goto(getAdminUrl('task-manager-add'));
 
