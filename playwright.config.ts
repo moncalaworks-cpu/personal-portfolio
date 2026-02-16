@@ -5,17 +5,20 @@ dotenv.config();
 
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: true,
+  fullyParallel: false, // Disable parallel execution for stability with shared auth
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : 4,
+  retries: process.env.CI ? 2 : 1, // Allow 1 retry locally
+  workers: 1, // Use single worker to prevent auth state conflicts
   reporter: 'html',
-  
+  timeout: 30000, // 30 second timeout per test
+
   use: {
     baseURL: process.env.WORDPRESS_URL || 'http://personal-portfolio.local',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     storageState: 'tests/auth.json',
+    navigationTimeout: 15000, // 15 second page load timeout
+    actionTimeout: 15000, // 15 second action timeout (WordPress admin can be slow)
   },
 
   projects: [
