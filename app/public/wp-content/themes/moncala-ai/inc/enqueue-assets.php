@@ -53,6 +53,15 @@ function moncala_enqueue_stylesheets() {
 		'all'
 	);
 
+	// Blog styles (archive, single posts, components)
+	wp_enqueue_style(
+		'moncala-blog',
+		MONCALA_THEME_URI . '/assets/css/blog.css',
+		array( 'moncala-main' ),
+		MONCALA_VERSION,
+		'all'
+	);
+
 	// WordPress block editor styles (Phase 2+)
 	wp_enqueue_style(
 		'wp-block-library'
@@ -89,6 +98,20 @@ function moncala_enqueue_scripts() {
 			'in_footer' => true,
 		)
 	);
+
+	// Blog functionality (TOC, reading progress, social sharing)
+	if ( moncala_is_blog() ) {
+		wp_enqueue_script(
+			'moncala-blog',
+			MONCALA_THEME_URI . '/assets/js/blog.js',
+			array(),
+			MONCALA_VERSION,
+			array(
+				'strategy'  => 'async',
+				'in_footer' => true,
+			)
+		);
+	}
 
 	// Comment reply script (if comments are enabled)
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

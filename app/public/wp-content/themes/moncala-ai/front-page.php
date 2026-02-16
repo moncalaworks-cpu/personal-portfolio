@@ -140,6 +140,13 @@ get_header();
 					wp_reset_postdata();
 					?>
 				</div>
+
+				<div class="section-cta text-center">
+					<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="btn btn-primary">
+						<?php esc_html_e( 'View All Articles', 'moncala-ai' ); ?>
+						<span aria-hidden="true">→</span>
+					</a>
+				</div>
 				<?php
 			}
 			?>

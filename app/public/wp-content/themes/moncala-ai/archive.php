@@ -16,6 +16,9 @@ get_header();
 ?>
 
 <main id="main" class="site-main">
+	<!-- Breadcrumb Navigation -->
+	<?php get_template_part( 'template-parts/breadcrumb' ); ?>
+
 	<header class="archive-header">
 		<div class="container">
 			<?php
@@ -65,11 +68,79 @@ get_header();
 				<h1 class="archive-title">
 					<?php esc_html_e( 'Blog', 'moncala-ai' ); ?>
 				</h1>
+				<p class="archive-description text-muted">
+					<?php esc_html_e( 'Insights on AI integration, consulting, and development practices', 'moncala-ai' ); ?>
+				</p>
 				<?php
 			}
 			?>
 		</div>
 	</header>
+
+	<!-- Search and Filter Section -->
+	<?php if ( is_home() || is_post_type_archive( 'post' ) ) : ?>
+		<div class="archive-filters">
+			<div class="container">
+				<form method="get" class="archive-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<input
+						type="hidden"
+						name="post_type"
+						value="post"
+					>
+					<input
+						type="search"
+						name="s"
+						class="archive-search-input"
+						placeholder="<?php esc_attr_e( 'Search posts...', 'moncala-ai' ); ?>"
+						value="<?php echo esc_attr( get_search_query() ); ?>"
+						aria-label="<?php esc_attr_e( 'Search posts', 'moncala-ai' ); ?>"
+					>
+					<button type="submit" class="archive-search-button" aria-label="<?php esc_attr_e( 'Search', 'moncala-ai' ); ?>">
+						<svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<circle cx="8.5" cy="8.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+							<path d="M13 13L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+					</button>
+				</form>
+
+				<?php
+				// Category Filter
+				$current_category = get_query_var( 'cat' );
+				$categories       = get_categories(
+					array(
+						'orderby' => 'name',
+						'order'   => 'ASC',
+					)
+				);
+
+				if ( ! empty( $categories ) ) :
+					?>
+					<div class="archive-filter-group">
+						<label for="category-filter" class="archive-filter-label">
+							<?php esc_html_e( 'Category:', 'moncala-ai' ); ?>
+						</label>
+						<select id="category-filter" class="archive-filter-select" onchange="window.location.href=this.value;">
+							<option value="<?php echo esc_url( remove_query_arg( 'cat' ) ); ?>">
+								<?php esc_html_e( 'All Categories', 'moncala-ai' ); ?>
+							</option>
+							<?php
+							foreach ( $categories as $category ) {
+								$category_url = get_category_link( $category );
+								$selected     = selected( $current_category, $category->term_id, false );
+								printf(
+									'<option value="%s" %s>%s</option>',
+									esc_url( $category_url ),
+									$selected,
+									esc_html( $category->name )
+								);
+							}
+							?>
+						</select>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	<?php endif; ?>
 
 	<div class="container">
 		<?php
