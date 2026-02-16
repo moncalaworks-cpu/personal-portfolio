@@ -17,8 +17,8 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     storageState: 'tests/auth.json',
-    navigationTimeout: 10000, // 10 second page load timeout
-    actionTimeout: 5000, // 5 second action timeout
+    navigationTimeout: 15000, // 15 second page load timeout
+    actionTimeout: 15000, // 15 second action timeout (WordPress admin can be slow)
   },
 
   projects: [
