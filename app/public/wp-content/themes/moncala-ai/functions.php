@@ -57,6 +57,12 @@ add_action( 'after_setup_theme', 'moncala_theme_setup' );
 require_once MONCALA_THEME_DIR . '/inc/enqueue-assets.php';
 
 /**
+ * Load SEO functions (Phase 5)
+ * Handles meta tags, Open Graph, schema.org, and SEO optimization
+ */
+require_once MONCALA_THEME_DIR . '/inc/seo-functions.php';
+
+/**
  * Register navigation menus
  * (Phase 3 will expand this)
  */
