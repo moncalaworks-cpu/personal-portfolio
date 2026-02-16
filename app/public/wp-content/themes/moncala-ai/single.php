@@ -17,6 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
+
+// Add heading anchors to post content
+add_filter(
+	'the_content',
+	function( $content ) {
+		if ( is_singular( 'post' ) ) {
+			return moncala_add_heading_anchors( $content );
+		}
+		return $content;
+	}
+);
 ?>
 
 <main id="main" class="site-main">
@@ -25,6 +36,12 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 			?>
+			<!-- Breadcrumb Navigation -->
+			<?php get_template_part( 'template-parts/breadcrumb' ); ?>
+
+			<!-- Reading Progress Indicator -->
+			<div class="reading-progress" id="reading-progress" role="progressbar" aria-label="<?php esc_attr_e( 'Reading progress', 'moncala-ai' ); ?>"></div>
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
 				<header class="post-header">
 					<div class="container">
@@ -94,7 +111,13 @@ get_header();
 
 				<div class="post-content">
 					<div class="container post-body">
+						<!-- Table of Contents -->
+						<?php get_template_part( 'template-parts/toc' ); ?>
+
 						<?php the_content(); ?>
+
+						<!-- Social Sharing Buttons -->
+						<?php get_template_part( 'template-parts/social-share' ); ?>
 
 						<?php
 						// Page navigation for multi-page posts
@@ -181,6 +204,20 @@ get_header();
 						?>
 					</div>
 				</footer>
+
+				<!-- Related Posts -->
+				<?php
+				$related = moncala_get_related_posts( get_the_ID(), 3 );
+				if ( ! empty( $related ) ) {
+					?>
+					<section class="post-related">
+						<div class="container">
+							<?php get_template_part( 'template-parts/related-posts' ); ?>
+						</div>
+					</section>
+					<?php
+				}
+				?>
 
 				<?php
 				// Comments section
