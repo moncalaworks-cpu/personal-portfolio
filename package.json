@@ -4,10 +4,12 @@
   "description": "Custom WordPress portfolio site with automated testing",
   "scripts": {
     "test": "playwright test",
+    "posttest": "node scripts/cleanup-tests.js",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
     "test:headed": "playwright test --headed",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "test:cleanup": "node scripts/cleanup-tests.js"
   },
   "keywords": [
     "wordpress",
