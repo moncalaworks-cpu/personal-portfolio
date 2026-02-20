@@ -319,6 +319,12 @@ function pes_enqueue_admin_styles( $hook ) {
 		return;
 	}
 
+	// Check if this is our custom post type
+	global $post;
+	if ( ! isset( $post ) || 'pes_article' !== $post->post_type ) {
+		return;
+	}
+
 	wp_enqueue_style(
 		'pes-admin-styles',
 		plugin_dir_url( __FILE__ ) . 'css/editor-styles.css',
