@@ -29,27 +29,38 @@ test.describe('Task Manager Plugin', () => {
 			// Navigate to admin dashboard
 			await page.goto('http://personal-portfolio.local/wp-admin/', { waitUntil: 'networkidle' });
 
+			// Wait for admin menu to load
+			await page.waitForSelector('#adminmenu', { timeout: 10000 });
+
 			// Check if Task Manager menu exists
 			const taskManagerMenu = page.locator('text=Task Manager').first();
-			await expect(taskManagerMenu).toBeVisible();
+			await expect(taskManagerMenu).toBeVisible({ timeout: 10000 });
 		});
 
 		test('should have Task Manager dashboard page accessible', async ({ page }) => {
 			// Navigate to dashboard
 			await page.goto(getAdminUrl('task-manager'), { waitUntil: 'networkidle' });
 
+			// Wait for h1 to be visible and contain text
+			await page.waitForSelector('h1', { timeout: 10000 });
+			await page.waitForLoadState('networkidle');
+
 			// Check page title contains "Task Manager"
-			await expect(page.locator('h1')).toContainText('Task Manager');
+			await expect(page.locator('h1')).toContainText('Task Manager', { timeout: 10000 });
 		});
 
 		test('should display statistics cards on dashboard', async ({ page }) => {
 			await page.goto(getAdminUrl('task-manager'), { waitUntil: 'networkidle' });
 
-			// Check for statistics cards
-			await expect(page.locator('text=Total Tasks')).toBeVisible();
-			await expect(page.locator('text=To Do')).toBeVisible();
-			await expect(page.locator('text=In Progress')).toBeVisible();
-			await expect(page.locator('text=Done')).toBeVisible();
+			// Wait for page to fully load
+			await page.waitForLoadState('networkidle');
+			await page.waitForSelector('.tm-statistics', { timeout: 10000 });
+
+			// Check for statistics cards with explicit waits
+			await expect(page.locator('text=Total Tasks')).toBeVisible({ timeout: 10000 });
+			await expect(page.locator('text=To Do')).toBeVisible({ timeout: 10000 });
+			await expect(page.locator('text=In Progress')).toBeVisible({ timeout: 10000 });
+			await expect(page.locator('text=Done')).toBeVisible({ timeout: 10000 });
 		});
 	});
 

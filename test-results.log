@@ -1,0 +1,331 @@
+
+> personal-portfolio@1.0.0 test
+> playwright test
+
+
+Running 106 tests using 1 worker
+
+🔐 Global Setup: Logging in to WordPress...
+✅ Successfully logged in to WordPress admin
+📦 Activating post-editor-showcase plugin...
+✅ post-editor-showcase activated
+📦 Activating task-manager plugin...
+✅ task-manager activated
+🔄 Reloading admin to load updated capabilities...
+✅ Admin dashboard reloaded
+✅ Auth state saved to /Users/kenshinzato/Local Sites/personal-portfolio/tests/auth.json
+[1A[2K[1/106] [chromium] › auth-only.spec.ts:12:7 › Authentication Only › Should login to WordPress admin
+[1A[2K[2m[chromium] › auth-only.spec.ts:12:7 › Authentication Only › Should login to WordPress admin[22m
+Attempting login to http://personal-portfolio.local
+
+[1A[2KUsername: admin
+
+[1A[2KStep 1: Navigating to login page...
+
+[1A[2KStep 2: Checking login form...
+
+[1A[2K✓ Login form found
+
+[1A[2KStep 3: Filling credentials...
+
+[1A[2K✓ Credentials entered
+
+[1A[2KStep 4: Submitting login form...
+
+[1A[2K✓ Form submitted
+
+[1A[2KStep 5: Waiting for redirect...
+
+[1A[2KCurrent URL before wait: http://personal-portfolio.local/wp-admin/
+
+[1A[2K✓ URL changed to: http://personal-portfolio.local/wp-admin/
+
+[1A[2KStep 6: Verifying admin access...
+
+[1A[2KBody classes: wp-admin wp-core-ui js index-php auto-fold admin-bar branch-6-9 version-6-9-1 admin-color-fresh locale-en-us svg wp-theme-moncala-ai customize-support sticky-menu
+
+[1A[2KAdmin bar visible: true
+
+[1A[2K✓ Login successful!
+
+[1A[2K[2/106] [chromium] › database-explorer.spec.ts:31:6 › Database Explorer Plugin › Plugin should be installed and activated
+[1A[2K[3/106] [chromium] › database-explorer.spec.ts:39:6 › Database Explorer Plugin › Plugin should register admin menu item
+[1A[2K[4/106] [chromium] › database-explorer.spec.ts:47:6 › Database Explorer Plugin › Admin page should display options data
+[1A[2K[5/106] [chromium] › database-explorer.spec.ts:70:6 › Database Explorer Plugin › Admin page should display posts and post meta data
+[1A[2K[6/106] [chromium] › database-explorer.spec.ts:95:6 › Database Explorer Plugin › Admin page should display post meta filtering results
+[1A[2K[7/106] [chromium] › database-explorer.spec.ts:112:6 › Database Explorer Plugin › Admin page should display taxonomies and terms
+[1A[2K[8/106] [chromium] › database-explorer.spec.ts:133:6 › Database Explorer Plugin › Admin page should display users and capabilities
+[1A[2K[9/106] [chromium] › database-explorer.spec.ts:155:6 › Database Explorer Plugin › Admin page layout should be responsive
+[1A[2K[10/106] [chromium] › database-explorer.spec.ts:172:6 › Database Explorer Plugin › Post meta should filter results correctly
+[1A[2K[11/106] [chromium] › database-explorer.spec.ts:195:6 › Database Explorer Plugin › WP_Query should order results by priority
+[1A[2K[12/106] [chromium] › database-explorer.spec.ts:222:6 › Database Explorer Plugin › Portfolio category should be linked to sample posts
+[1A[2K[13/106] [chromium] › database-explorer.spec.ts:243:6 › Database Explorer Plugin › Admin user should have edit_posts capability
+[1A[2K[14/106] [chromium] › database-explorer.spec.ts:263:6 › Database Explorer Plugin › Sample posts should have correct meta values
+[1A[2K[15/106] [chromium] › database-explorer.spec.ts:287:6 › Database Explorer Plugin › Access control should prevent non-admin users
+[1A[2K[16/106] [chromium] › database-explorer.spec.ts:296:6 › Database Explorer Plugin › Plugin should store and retrieve options correctly
+[1A[2K[17/106] [chromium] › database-explorer.spec.ts:309:6 › Database Explorer Plugin › Database Explorer page should load in reasonable time
+[1A[2K[18/106] [chromium] › debug-explorer.spec.ts:29:5 › Debug: Database Explorer page content
+[1A[2K[2m[chromium] › debug-explorer.spec.ts:29:5 › Debug: Database Explorer page content[22m
+
+=== PAGE HTML (first 2000 chars) ===
+
+[1A[2K<!DOCTYPE html><html class="wp-toolbar" lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Database Explorer ‹ Personal Portfolio — WordPress</title>
+<script type="text/javascript">
+addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+var ajaxurl = '/wp-admin/admin-ajax.php',
+	pagenow = 'toplevel_page_de-explorer',
+	typenow = '',
+	adminpage = 'toplevel_page_de-explorer',
+	thousandsSeparator = ',',
+	decimalPoint = '.',
+	isRtl = 0;
+</script>
+<link rel="stylesheet" href="http://personal-portfolio.local/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5Bchunk_1%5D=,site-icon,l10n,buttons,wp-auth-check,wp-components,wp-commands&amp;ver=6.9.1" media="all">
+<style>
+@media print { #wpadminbar { display:none; } }
+/*# sourceURL=css-inline-concat-dashicons%2Cadmin-bar%2Ccommon%2Cforms%2Cadmin-menu%2Cdashboard%2Clist-tables%2Cedit%2Crevisions%2Cmedia%2Cthemes%2Cabout%2Cnav-menus%2Cwp-pointer%2Cwidgets%2Csite-icon%2Cl10n%2Cbuttons%2Cwp-auth-check%2Cwp-components%2Cwp-commands */
+</style>
+<link rel="stylesheet" id="task-manager-admin-css" href="http://personal-portfolio.local/wp-content/plugins/task-manager/assets/css/admin-styles.css?ver=1.1.0" media="all">
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+
+<script>
+/* <![CDATA[ */
+var userSettings = {"url":"/","uid":"1","time":"1771613799","secure":""};
+//# sourceURL=js-inline-concat-jque
+
+[1A[2K
+=== Found 4 h2 elements ===
+
+[1A[2Kh2[0]: "WordPress Options (wp_options table)" | visible: true
+
+[1A[2Kh2[1]: "Posts and Post Meta (wp_posts, wp_postmeta tables)" | visible: true
+
+[1A[2Kh2[2]: "Taxonomies & Terms (wp_terms, wp_term_taxonomy, wp_term_relationships)" | visible: true
+
+[1A[2Kh2[3]: "Users & Capabilities (wp_users, wp_usermeta)" | visible: true
+
+[1A[2K
+=== Found 4 .card elements ===
+
+[1A[2Kcard[0]: visible=true, html length=200
+
+[1A[2K  Content preview: 
+			<h2>WordPress Options (wp_options table)</h2>
+			<p><strong>Plugin Title:</strong> Database Explorer</p>
+			<p><strong>Plugin Version:</strong> 1.
+
+[1A[2Kcard[1]: visible=true, html length=752
+
+[1A[2K  Content preview: 
+			<h2>Posts and Post Meta (wp_posts, wp_postmeta tables)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>ID</th><th>Title</th><th>Status
+
+[1A[2Kcard[2]: visible=true, html length=1687
+
+[1A[2K  Content preview: 
+			<h2>Taxonomies &amp; Terms (wp_terms, wp_term_taxonomy, wp_term_relationships)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>Term ID
+
+[1A[2Kcard[3]: visible=true, html length=386
+
+[1A[2K  Content preview: 
+			<h2>Users &amp; Capabilities (wp_users, wp_usermeta)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>User ID</th><th>Username</th><th>
+
+[1A[2K
+=== Found 3 table elements ===
+
+[1A[2Ktable[0]: visible=true, rows=3
+
+[1A[2Ktable[1]: visible=true, rows=9
+
+[1A[2Ktable[2]: visible=true, rows=1
+
+[1A[2K
+=== Wrap element ===
+
+[1A[2KVisible: true
+
+[1A[2KHTML length: 3627
+
+[1A[2K
+Screenshot saved to /tmp/debug-explorer.png
+
+[1A[2K[19/106] [chromium] › hello-world.spec.ts:34:7 › Hello World Plugin › Plugin is visible in WordPress admin
+[1A[2K[20/106] [chromium] › hello-world.spec.ts:50:7 › Hello World Plugin › Hello World page exists and is published
+[1A[2K[21/106] [chromium] › hello-world.spec.ts:62:7 › Hello World Plugin › Hello World page displays on frontend
+[1A[2K[22/106] [chromium] › hello-world.spec.ts:74:7 › Hello World Plugin › Hello World page displays custom styling
+[1A[2K[23/106] [chromium] › hello-world.spec.ts:101:7 › Hello World Plugin › Hello World page has gradient background
+[1A[2K[24/106] [chromium] › hello-world.spec.ts:120:7 › Hello World Plugin › Hello World page content is preserved
+[1A[2K[25/106] [chromium] › hello-world.spec.ts:136:7 › Hello World Plugin › Hello World page is responsive on mobile
+[1A[2K[26/106] [chromium] › hello-world.spec.ts:157:7 › Hello World Plugin › Hello World page title is semantic HTML
+[1A[2K[27/106] [chromium] › hello-world.spec.ts:173:7 › Hello World Plugin › Hello World CSS file is loaded correctly
+[1A[2K[28/106] [chromium] › hello-world.spec.ts:191:7 › Hello World Plugin › WordPress init hook executed (page created)
+[1A[2K[29/106] [chromium] › hello-world.spec.ts:203:7 › Hello World Plugin › the_content filter applied (custom styling wrapper)
+[1A[2K[30/106] [chromium] › hello-world.spec.ts:218:7 › Hello World Plugin › wp_enqueue_style hook executed (CSS loaded)
+[1A[2K[31/106] [chromium] › hello-world.spec.ts:239:7 › Hello World Plugin - Error Handling › Plugin does not break other pages
+[1A[2K[32/106] [chromium] › hello-world.spec.ts:254:7 › Hello World Plugin - Error Handling › Admin area works correctly
+[1A[2K[33/106] [chromium] › hello-world.spec.ts:272:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Core File Structure demonstrated
+[1A[2K[34/106] [chromium] › hello-world.spec.ts:282:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Hook System demonstrated (init, wp_enqueue_scripts, the_content)
+[1A[2K[35/106] [chromium] › hello-world.spec.ts:308:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Bootstrap Process demonstrated
+[1A[2K[36/106] [chromium] › hello-world.spec.ts:321:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Plugin API demonstrated (add_action, add_filter, wp_insert_post)
+[1A[2K[37/106] [chromium] › post-editor-showcase.spec.ts:17:6 › Post Editor Showcase Plugin › should have custom post type registered and accessible
+[1A[2K[38/106] [chromium] › post-editor-showcase.spec.ts:30:6 › Post Editor Showcase Plugin › should allow creating new custom post article
+[1A[2K[39/106] [chromium] › post-editor-showcase.spec.ts:57:6 › Post Editor Showcase Plugin › should display metaboxes on edit screen
+[1A[2K[40/106] [chromium] › post-editor-showcase.spec.ts:78:6 › Post Editor Showcase Plugin › should display Editor Metadata metabox fields
+[1A[2K[41/106] [chromium] › post-editor-showcase.spec.ts:104:6 › Post Editor Showcase Plugin › should display Advanced Fields metabox with selects
+[1A[2K[42/106] [chromium] › post-editor-showcase.spec.ts:121:6 › Post Editor Showcase Plugin › should have correct select options for priority
+[1A[2K[43/106] [chromium] › post-editor-showcase.spec.ts:137:6 › Post Editor Showcase Plugin › should have correct select options for status
+[1A[2K[44/106] [chromium] › post-editor-showcase.spec.ts:153:6 › Post Editor Showcase Plugin › should display Editor Information metabox
+[1A[2K[45/106] [chromium] › post-editor-showcase.spec.ts:174:6 › Post Editor Showcase Plugin › should save and retrieve metadata
+[1A[2K[46/106] [chromium] › post-editor-showcase.spec.ts:195:6 › Post Editor Showcase Plugin › should display featured image URL placeholder
+[1A[2K[47/106] [chromium] › post-editor-showcase.spec.ts:208:6 › Post Editor Showcase Plugin › should display tags input placeholder
+[1A[2K[48/106] [chromium] › post-editor-showcase.spec.ts:221:6 › Post Editor Showcase Plugin › should have nonce security field in metabox
+[1A[2K[49/106] [chromium] › post-editor-showcase.spec.ts:233:6 › Post Editor Showcase Plugin › should enqueue editor styles
+[1A[2K[50/106] [chromium] › post-editor-showcase.spec.ts:253:6 › Post Editor Showcase Plugin › should allow updating priority field
+[1A[2K[51/106] [chromium] › post-editor-showcase.spec.ts:269:6 › Post Editor Showcase Plugin › should allow updating status field
+[1A[2K[52/106] [chromium] › post-editor-showcase.spec.ts:285:6 › Post Editor Showcase Plugin › should display post author in info box
+[1A[2K[53/106] [chromium] › post-editor-showcase.spec.ts:299:6 › Post Editor Showcase Plugin › should display post creation date
+[1A[2K[54/106] [chromium] › post-editor-showcase.spec.ts:313:6 › Post Editor Showcase Plugin › should display post modification date
+[1A[2K[55/106] [chromium] › post-editor-showcase.spec.ts:327:6 › Post Editor Showcase Plugin › should display revision count
+[1A[2K[56/106] [chromium] › task-manager-maintenance.spec.ts:16:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 1. Plugin activates without errors
+[1A[2K[57/106] [chromium] › task-manager-maintenance.spec.ts:34:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 2. Database is initialized after activation
+[1A[2K[58/106] [chromium] › task-manager-maintenance.spec.ts:43:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 3. Dashboard loads successfully
+[1A[2K[59/106] [chromium] › task-manager-maintenance.spec.ts:55:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 4. All Task Manager pages load without errors
+[1A[2K[60/106] [chromium] › task-manager-maintenance.spec.ts:75:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 5. Can view task list
+[1A[2K[61/106] [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task
+[1A[2K[62/106] [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task[33m (retry #1)[39m
+[1A[2K[31m  1) [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+       95 | 			const form = page.locator('form');
+       96 | 			const formOrInput = await form.count() > 0 || await page.locator('input').count() > 0;
+    >  97 | 			expect(formOrInput).toBeTruthy();
+          | 			                    ^
+       98 | 		});
+       99 |
+      100 | 		test('7. Settings page loads with form', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:97:24[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium/test-failed-2.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+       95 | 			const form = page.locator('form');
+       96 | 			const formOrInput = await form.count() > 0 || await page.locator('input').count() > 0;
+    >  97 | 			expect(formOrInput).toBeTruthy();
+          | 			                    ^
+       98 | 		});
+       99 |
+      100 | 		test('7. Settings page loads with form', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:97:24[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[63/106] [chromium] › task-manager-maintenance.spec.ts:100:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 7. Settings page loads with form
+[1A[2K[64/106] [chromium] › task-manager-maintenance.spec.ts:108:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 8. Task statistics display
+[1A[2K[65/106] [chromium] › task-manager-maintenance.spec.ts:126:7 › Task Manager Maintenance & Best Practices › Security & Validation › 9. Nonce protection on forms
+[1A[2K[66/106] [chromium] › task-manager-maintenance.spec.ts:138:7 › Task Manager Maintenance & Best Practices › Security & Validation › 10. Form validation on task creation
+[1A[2K[67/106] [chromium] › task-manager-maintenance.spec.ts:153:7 › Task Manager Maintenance & Best Practices › Security & Validation › 11. Capability checking prevents unauthorized access
+[1A[2K[68/106] [chromium] › task-manager-maintenance.spec.ts:163:7 › Task Manager Maintenance & Best Practices › Security & Validation › 12. XSS prevention in task display
+[1A[2K[69/106] [chromium] › task-manager-maintenance.spec.ts:180:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 13. Task list persists after navigation
+[1A[2K[70/106] [chromium] › task-manager-maintenance.spec.ts:195:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 14. Settings are preserved
+[1A[2K[71/106] [chromium] › task-manager-maintenance.spec.ts:211:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 15. Database table exists and is queryable
+[1A[2K[72/106] [chromium] › task-manager-maintenance.spec.ts:223:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 16. User roles and capabilities enforced
+[1A[2K[73/106] [chromium] › task-manager-maintenance.spec.ts:245:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 17. Task Manager menu appears in admin
+[1A[2K[74/106] [chromium] › task-manager-maintenance.spec.ts:253:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 18. Submenus are registered
+[1A[2K[75/106] [chromium] › task-manager-maintenance.spec.ts:261:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 19. Admin styles are enqueued
+[1A[2K[76/106] [chromium] › task-manager-maintenance.spec.ts:272:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 20. Plugin doesn't break other admin pages
+[1A[2K[77/106] [chromium] › task-manager-maintenance.spec.ts:295:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 21. Dashboard loads within reasonable time
+[1A[2K[78/106] [chromium] › task-manager-maintenance.spec.ts:305:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 22. Task list loads without timeouts
+[1A[2K[79/106] [chromium] › task-manager-maintenance.spec.ts:316:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 23. No JavaScript errors on main pages
+[1A[2K[80/106] [chromium] › task-manager-maintenance.spec.ts:335:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 24. Settings can be accessed and form displays
+[1A[2K[81/106] [chromium] › task-manager-maintenance.spec.ts:343:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 25. Plugin is responsive to user interactions
+[1A[2K[82/106] [chromium] › task-manager.spec.ts:28:7 › Task Manager Plugin › Plugin Foundation › should have admin menu visible to logged in user
+[1A[2K[83/106] [chromium] › task-manager.spec.ts:40:7 › Task Manager Plugin › Plugin Foundation › should have Task Manager dashboard page accessible
+[1A[2K[84/106] [chromium] › task-manager.spec.ts:52:7 › Task Manager Plugin › Plugin Foundation › should display statistics cards on dashboard
+[1A[2K[85/106] [chromium] › task-manager.spec.ts:68:7 › Task Manager Plugin › Database Operations › should navigate to add task form
+[1A[2K[86/106] [chromium] › task-manager.spec.ts:79:7 › Task Manager Plugin › Database Operations › should validate required fields on form submission
+[1A[2K[87/106] [chromium] › task-manager.spec.ts:91:7 › Task Manager Plugin › Database Operations › should create task with all fields
+[1A[2K[88/106] [chromium] › task-manager.spec.ts:127:7 › Task Manager Plugin › Database Operations › should display created task in task list
+[1A[2K[89/106] [chromium] › task-manager.spec.ts:148:7 › Task Manager Plugin › Database Operations › should filter tasks by status
+[1A[2K[90/106] [chromium] › task-manager.spec.ts:172:7 › Task Manager Plugin › Database Operations › should filter tasks by priority
+[1A[2K[91/106] [chromium] › task-manager.spec.ts:196:7 › Task Manager Plugin › Database Operations › should update existing task
+[1A[2K[92/106] [chromium] › task-manager.spec.ts:227:7 › Task Manager Plugin › Admin Pages › should display dashboard with recent tasks
+[1A[2K[93/106] [chromium] › task-manager.spec.ts:237:7 › Task Manager Plugin › Admin Pages › should display all tasks page with table
+[1A[2K[94/106] [chromium] › task-manager.spec.ts:249:7 › Task Manager Plugin › Admin Pages › should display add task form with nonce
+[1A[2K[95/106] [chromium] › task-manager.spec.ts:261:7 › Task Manager Plugin › Admin Pages › should have functional date picker
+[1A[2K[96/106] [chromium] › task-manager.spec.ts:276:7 › Task Manager Plugin › Settings API › should access settings page
+[1A[2K[97/106] [chromium] › task-manager.spec.ts:283:7 › Task Manager Plugin › Settings API › should display all settings fields
+[1A[2K[98/106] [chromium] › task-manager.spec.ts:293:7 › Task Manager Plugin › Settings API › should save settings
+[1A[2K[99/106] [chromium] › task-manager.spec.ts:313:7 › Task Manager Plugin › Settings API › should validate tasks per page range
+[1A[2K[100/106] [chromium] › task-manager.spec.ts:333:7 › Task Manager Plugin › Security › should include nonce in form submission
+[1A[2K[101/106] [chromium] › task-manager.spec.ts:348:7 › Task Manager Plugin › Security › should display capabilities check message on unauthorized access
+[1A[2K[102/106] [chromium] › task-manager.spec.ts:358:7 › Task Manager Plugin › Security › should sanitize and escape task title display
+[1A[2K[103/106] [chromium] › task-manager.spec.ts:379:7 › Task Manager Plugin › Security › should validate status values against whitelist
+[1A[2K[104/106] [chromium] › task-manager.spec.ts:403:7 › Task Manager Plugin › User Experience › should show success message after creating task
+[1A[2K[105/106] [chromium] › task-manager.spec.ts:418:7 › Task Manager Plugin › User Experience › should maintain form state on validation error
+[1A[2K[106/106] [chromium] › task-manager.spec.ts:434:7 › Task Manager Plugin › User Experience › should show pagination in task list
+[1A[2K[107/106] (retries) [chromium] › task-manager.spec.ts:451:7 › Task Manager Plugin › User Experience › should highlight overdue tasks
+
+🧹 Global Teardown: Cleaning up test artifacts...
+✅ Test results available at: /Users/kenshinzato/Local Sites/personal-portfolio/test-results
+✅ Cleanup completed successfully
+✅ All test processes should be terminated
+
+📊 Final status:
+   - Test framework: Stopped
+   - Browser instances: Closed
+   - Resources: Released
+
+[1A[2K[33m  Slow test file: [39m[chromium] › hello-world.spec.ts[33m (19.0s)[39m
+[33m  Slow test file: [39m[chromium] › post-editor-showcase.spec.ts[33m (16.3s)[39m
+[33m  Consider splitting slow test files to speed up parallel execution[39m
+
+[31m  1 failed[39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task [39m
+[33m  23 skipped[39m
+[32m  82 passed[39m[2m (1.1m)[22m
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m
