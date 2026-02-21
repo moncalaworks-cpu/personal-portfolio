@@ -1,0 +1,2269 @@
+
+> personal-portfolio@1.0.0 test
+> playwright test
+
+
+Running 106 tests using 1 worker
+
+🔐 Global Setup: Logging in to WordPress...
+✅ Successfully logged in to WordPress admin
+📦 Activating post-editor-showcase plugin...
+✅ post-editor-showcase activated
+📦 Activating task-manager plugin...
+✅ task-manager activated
+🔄 Reloading admin to load updated capabilities...
+✅ Admin dashboard reloaded
+✅ Auth state saved to /Users/kenshinzato/Local Sites/personal-portfolio/tests/auth.json
+[1A[2K[1/106] [chromium] › auth-only.spec.ts:12:7 › Authentication Only › Should login to WordPress admin
+[1A[2K[2m[chromium] › auth-only.spec.ts:12:7 › Authentication Only › Should login to WordPress admin[22m
+Attempting login to http://personal-portfolio.local
+
+[1A[2KUsername: admin
+
+[1A[2KStep 1: Navigating to login page...
+
+[1A[2KStep 2: Checking login form...
+
+[1A[2K✓ Login form found
+
+[1A[2KStep 3: Filling credentials...
+
+[1A[2K✓ Credentials entered
+
+[1A[2KStep 4: Submitting login form...
+
+[1A[2K✓ Form submitted
+
+[1A[2KStep 5: Waiting for redirect...
+
+[1A[2KCurrent URL before wait: http://personal-portfolio.local/wp-admin/
+
+[1A[2K✓ URL changed to: http://personal-portfolio.local/wp-admin/
+
+[1A[2KStep 6: Verifying admin access...
+
+[1A[2KBody classes: wp-admin wp-core-ui js index-php auto-fold admin-bar branch-6-9 version-6-9-1 admin-color-fresh locale-en-us svg wp-theme-moncala-ai customize-support sticky-menu
+
+[1A[2KAdmin bar visible: true
+
+[1A[2K✓ Login successful!
+
+[1A[2K[2/106] [chromium] › database-explorer.spec.ts:31:6 › Database Explorer Plugin › Plugin should be installed and activated
+[1A[2K[3/106] [chromium] › database-explorer.spec.ts:39:6 › Database Explorer Plugin › Plugin should register admin menu item
+[1A[2K[4/106] [chromium] › database-explorer.spec.ts:47:6 › Database Explorer Plugin › Admin page should display options data
+[1A[2K[5/106] [chromium] › database-explorer.spec.ts:70:6 › Database Explorer Plugin › Admin page should display posts and post meta data
+[1A[2K[6/106] [chromium] › database-explorer.spec.ts:95:6 › Database Explorer Plugin › Admin page should display post meta filtering results
+[1A[2K[7/106] [chromium] › database-explorer.spec.ts:112:6 › Database Explorer Plugin › Admin page should display taxonomies and terms
+[1A[2K[8/106] [chromium] › database-explorer.spec.ts:133:6 › Database Explorer Plugin › Admin page should display users and capabilities
+[1A[2K[9/106] [chromium] › database-explorer.spec.ts:155:6 › Database Explorer Plugin › Admin page layout should be responsive
+[1A[2K[10/106] [chromium] › database-explorer.spec.ts:172:6 › Database Explorer Plugin › Post meta should filter results correctly
+[1A[2K[11/106] [chromium] › database-explorer.spec.ts:195:6 › Database Explorer Plugin › WP_Query should order results by priority
+[1A[2K[12/106] [chromium] › database-explorer.spec.ts:222:6 › Database Explorer Plugin › Portfolio category should be linked to sample posts
+[1A[2K[13/106] [chromium] › database-explorer.spec.ts:243:6 › Database Explorer Plugin › Admin user should have edit_posts capability
+[1A[2K[14/106] [chromium] › database-explorer.spec.ts:263:6 › Database Explorer Plugin › Sample posts should have correct meta values
+[1A[2K[15/106] [chromium] › database-explorer.spec.ts:287:6 › Database Explorer Plugin › Access control should prevent non-admin users
+[1A[2K[16/106] [chromium] › database-explorer.spec.ts:296:6 › Database Explorer Plugin › Plugin should store and retrieve options correctly
+[1A[2K[17/106] [chromium] › database-explorer.spec.ts:309:6 › Database Explorer Plugin › Database Explorer page should load in reasonable time
+[1A[2K[18/106] [chromium] › debug-explorer.spec.ts:29:5 › Debug: Database Explorer page content
+[1A[2K[2m[chromium] › debug-explorer.spec.ts:29:5 › Debug: Database Explorer page content[22m
+
+=== PAGE HTML (first 2000 chars) ===
+
+[1A[2K<!DOCTYPE html><html class="wp-toolbar" lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Database Explorer ‹ Personal Portfolio — WordPress</title>
+<script type="text/javascript">
+addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+var ajaxurl = '/wp-admin/admin-ajax.php',
+	pagenow = 'toplevel_page_de-explorer',
+	typenow = '',
+	adminpage = 'toplevel_page_de-explorer',
+	thousandsSeparator = ',',
+	decimalPoint = '.',
+	isRtl = 0;
+</script>
+<link rel="stylesheet" href="http://personal-portfolio.local/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5Bchunk_1%5D=,site-icon,l10n,buttons,wp-auth-check,wp-components,wp-commands&amp;ver=6.9.1" media="all">
+<style>
+@media print { #wpadminbar { display:none; } }
+/*# sourceURL=css-inline-concat-dashicons%2Cadmin-bar%2Ccommon%2Cforms%2Cadmin-menu%2Cdashboard%2Clist-tables%2Cedit%2Crevisions%2Cmedia%2Cthemes%2Cabout%2Cnav-menus%2Cwp-pointer%2Cwidgets%2Csite-icon%2Cl10n%2Cbuttons%2Cwp-auth-check%2Cwp-components%2Cwp-commands */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+
+<script>
+/* <![CDATA[ */
+var userSettings = {"url":"/","uid":"1","time":"1771614663","secure":""};
+//# sourceURL=js-inline-concat-jquery-core%2Cjquery-migrate%2Cutils
+/* ]]> */
+</script>
+<script src="http://personal-portfolio.local/wp-admin/load-scripts.php?c=0&amp;load%5Bchunk_0%5D=jquery-core,jquery-migr
+
+[1A[2K
+=== Found 4 h2 elements ===
+
+[1A[2Kh2[0]: "WordPress Options (wp_options table)" | visible: true
+
+[1A[2Kh2[1]: "Posts and Post Meta (wp_posts, wp_postmeta tables)" | visible: true
+
+[1A[2Kh2[2]: "Taxonomies & Terms (wp_terms, wp_term_taxonomy, wp_term_relationships)" | visible: true
+
+[1A[2Kh2[3]: "Users & Capabilities (wp_users, wp_usermeta)" | visible: true
+
+[1A[2K
+=== Found 4 .card elements ===
+
+[1A[2Kcard[0]: visible=true, html length=200
+
+[1A[2K  Content preview: 
+			<h2>WordPress Options (wp_options table)</h2>
+			<p><strong>Plugin Title:</strong> Database Explorer</p>
+			<p><strong>Plugin Version:</strong> 1.
+
+[1A[2Kcard[1]: visible=true, html length=752
+
+[1A[2K  Content preview: 
+			<h2>Posts and Post Meta (wp_posts, wp_postmeta tables)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>ID</th><th>Title</th><th>Status
+
+[1A[2Kcard[2]: visible=true, html length=1687
+
+[1A[2K  Content preview: 
+			<h2>Taxonomies &amp; Terms (wp_terms, wp_term_taxonomy, wp_term_relationships)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>Term ID
+
+[1A[2Kcard[3]: visible=true, html length=386
+
+[1A[2K  Content preview: 
+			<h2>Users &amp; Capabilities (wp_users, wp_usermeta)</h2>
+			<table class="wp-list-table widefat"><thead><tr><th>User ID</th><th>Username</th><th>
+
+[1A[2K
+=== Found 3 table elements ===
+
+[1A[2Ktable[0]: visible=true, rows=3
+
+[1A[2Ktable[1]: visible=true, rows=9
+
+[1A[2Ktable[2]: visible=true, rows=1
+
+[1A[2K
+=== Wrap element ===
+
+[1A[2KVisible: true
+
+[1A[2KHTML length: 3627
+
+[1A[2K
+Screenshot saved to /tmp/debug-explorer.png
+
+[1A[2K[19/106] [chromium] › hello-world.spec.ts:34:7 › Hello World Plugin › Plugin is visible in WordPress admin
+[1A[2K[20/106] [chromium] › hello-world.spec.ts:50:7 › Hello World Plugin › Hello World page exists and is published
+[1A[2K[21/106] [chromium] › hello-world.spec.ts:62:7 › Hello World Plugin › Hello World page displays on frontend
+[1A[2K[22/106] [chromium] › hello-world.spec.ts:74:7 › Hello World Plugin › Hello World page displays custom styling
+[1A[2K[23/106] [chromium] › hello-world.spec.ts:101:7 › Hello World Plugin › Hello World page has gradient background
+[1A[2K[24/106] [chromium] › hello-world.spec.ts:120:7 › Hello World Plugin › Hello World page content is preserved
+[1A[2K[25/106] [chromium] › hello-world.spec.ts:136:7 › Hello World Plugin › Hello World page is responsive on mobile
+[1A[2K[26/106] [chromium] › hello-world.spec.ts:157:7 › Hello World Plugin › Hello World page title is semantic HTML
+[1A[2K[27/106] [chromium] › hello-world.spec.ts:173:7 › Hello World Plugin › Hello World CSS file is loaded correctly
+[1A[2K[28/106] [chromium] › hello-world.spec.ts:191:7 › Hello World Plugin › WordPress init hook executed (page created)
+[1A[2K[29/106] [chromium] › hello-world.spec.ts:203:7 › Hello World Plugin › the_content filter applied (custom styling wrapper)
+[1A[2K[30/106] [chromium] › hello-world.spec.ts:218:7 › Hello World Plugin › wp_enqueue_style hook executed (CSS loaded)
+[1A[2K[31/106] [chromium] › hello-world.spec.ts:239:7 › Hello World Plugin - Error Handling › Plugin does not break other pages
+[1A[2K[32/106] [chromium] › hello-world.spec.ts:254:7 › Hello World Plugin - Error Handling › Admin area works correctly
+[1A[2K[33/106] [chromium] › hello-world.spec.ts:272:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Core File Structure demonstrated
+[1A[2K[34/106] [chromium] › hello-world.spec.ts:282:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Hook System demonstrated (init, wp_enqueue_scripts, the_content)
+[1A[2K[35/106] [chromium] › hello-world.spec.ts:308:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Bootstrap Process demonstrated
+[1A[2K[36/106] [chromium] › hello-world.spec.ts:321:7 › Issue #1 - Core Codebase Overview - Validation › ✅ Issue #1: Plugin API demonstrated (add_action, add_filter, wp_insert_post)
+[1A[2K[37/106] [chromium] › post-editor-showcase.spec.ts:17:6 › Post Editor Showcase Plugin › should have custom post type registered and accessible
+[1A[2K[38/106] [chromium] › post-editor-showcase.spec.ts:17:6 › Post Editor Showcase Plugin › should have custom post type registered and accessible[33m (retry #1)[39m
+[1A[2K[31m  1) [chromium] › post-editor-showcase.spec.ts:17:6 › Post Editor Showcase Plugin › should have custom post type registered and accessible [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('h1') to be visible
+    ============================================================
+
+      23 |
+      24 | 		// Check page title contains "Editor Showcase Articles"
+    > 25 | 		await page.waitForSelector('h1', { timeout: 10000 });
+         | 		           ^
+      26 | 		const pageTitle = await page.locator('h1').first().textContent();
+      27 | 		expect(pageTitle).toContain('Editor Showcase Articles');
+      28 | 	});
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:25:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plug-c7686-have-custom-post-type-registered-and-accessible-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('h1') to be visible
+    ============================================================
+
+      23 |
+      24 | 		// Check page title contains "Editor Showcase Articles"
+    > 25 | 		await page.waitForSelector('h1', { timeout: 10000 });
+         | 		           ^
+      26 | 		const pageTitle = await page.locator('h1').first().textContent();
+      27 | 		expect(pageTitle).toContain('Editor Showcase Articles');
+      28 | 	});
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:25:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plug-c7686-have-custom-post-type-registered-and-accessible-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plug-c7686-have-custom-post-type-registered-and-accessible-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plug-c7686-have-custom-post-type-registered-and-accessible-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[39/106] [chromium] › post-editor-showcase.spec.ts:30:6 › Post Editor Showcase Plugin › should allow creating new custom post article
+[1A[2K[40/106] [chromium] › post-editor-showcase.spec.ts:30:6 › Post Editor Showcase Plugin › should allow creating new custom post article[33m (retry #1)[39m
+[1A[2K[31m  2) [chromium] › post-editor-showcase.spec.ts:30:6 › Post Editor Showcase Plugin › should allow creating new custom post article [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('input[name="post_title"]') to be visible
+    ============================================================
+
+      33 |
+      34 | 		// Should be on the new post screen - wait for it to load
+    > 35 | 		await page.waitForSelector('input[name="post_title"]', { timeout: 10000 });
+         | 		           ^
+      36 | 		await expect(page.locator('input[name="post_title"]')).toBeVisible({ timeout: 10000 });
+      37 |
+      38 | 		// Verify all metabox fields are present for new post
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:35:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-creating-new-custom-post-article-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('input[name="post_title"]') to be visible
+    ============================================================
+
+      33 |
+      34 | 		// Should be on the new post screen - wait for it to load
+    > 35 | 		await page.waitForSelector('input[name="post_title"]', { timeout: 10000 });
+         | 		           ^
+      36 | 		await expect(page.locator('input[name="post_title"]')).toBeVisible({ timeout: 10000 });
+      37 |
+      38 | 		// Verify all metabox fields are present for new post
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:35:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-creating-new-custom-post-article-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-creating-new-custom-post-article-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-creating-new-custom-post-article-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[41/106] [chromium] › post-editor-showcase.spec.ts:57:6 › Post Editor Showcase Plugin › should display metaboxes on edit screen
+[1A[2K[42/106] [chromium] › post-editor-showcase.spec.ts:57:6 › Post Editor Showcase Plugin › should display metaboxes on edit screen[33m (retry #1)[39m
+[1A[2K[31m  3) [chromium] › post-editor-showcase.spec.ts:57:6 › Post Editor Showcase Plugin › should display metaboxes on edit screen [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      59 |
+      60 | 		// Get the first article - wait for table to load
+    > 61 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+         | 		           ^
+      62 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      63 | 		await firstArticleLink.click({ timeout: 10000 });
+      64 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:61:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-metaboxes-on-edit-screen-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      59 |
+      60 | 		// Get the first article - wait for table to load
+    > 61 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+         | 		           ^
+      62 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      63 | 		await firstArticleLink.click({ timeout: 10000 });
+      64 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:61:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-metaboxes-on-edit-screen-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-metaboxes-on-edit-screen-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-metaboxes-on-edit-screen-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[43/106] [chromium] › post-editor-showcase.spec.ts:78:6 › Post Editor Showcase Plugin › should display Editor Metadata metabox fields
+[1A[2K[44/106] [chromium] › post-editor-showcase.spec.ts:78:6 › Post Editor Showcase Plugin › should display Editor Metadata metabox fields[33m (retry #1)[39m
+[1A[2K[31m  4) [chromium] › post-editor-showcase.spec.ts:78:6 › Post Editor Showcase Plugin › should display Editor Metadata metabox fields [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      79 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      80 |
+    > 81 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+         | 		           ^
+      82 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      83 | 		await firstArticleLink.click({ timeout: 10000 });
+      84 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:81:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Metadata-metabox-fields-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      79 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      80 |
+    > 81 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+         | 		           ^
+      82 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      83 | 		await firstArticleLink.click({ timeout: 10000 });
+      84 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:81:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Metadata-metabox-fields-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Metadata-metabox-fields-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Metadata-metabox-fields-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[45/106] [chromium] › post-editor-showcase.spec.ts:104:6 › Post Editor Showcase Plugin › should display Advanced Fields metabox with selects
+[1A[2K[46/106] [chromium] › post-editor-showcase.spec.ts:104:6 › Post Editor Showcase Plugin › should display Advanced Fields metabox with selects[33m (retry #1)[39m
+[1A[2K[31m  5) [chromium] › post-editor-showcase.spec.ts:104:6 › Post Editor Showcase Plugin › should display Advanced Fields metabox with selects [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      105 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      106 |
+    > 107 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      108 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      109 | 		await firstArticleLink.click({ timeout: 10000 });
+      110 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:107:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Advanced-Fields-metabox-with-selects-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      105 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      106 |
+    > 107 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      108 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      109 | 		await firstArticleLink.click({ timeout: 10000 });
+      110 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:107:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Advanced-Fields-metabox-with-selects-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Advanced-Fields-metabox-with-selects-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Advanced-Fields-metabox-with-selects-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[47/106] [chromium] › post-editor-showcase.spec.ts:121:6 › Post Editor Showcase Plugin › should have correct select options for priority
+[1A[2K[48/106] [chromium] › post-editor-showcase.spec.ts:121:6 › Post Editor Showcase Plugin › should have correct select options for priority[33m (retry #1)[39m
+[1A[2K[31m  6) [chromium] › post-editor-showcase.spec.ts:121:6 › Post Editor Showcase Plugin › should have correct select options for priority [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      122 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      123 |
+    > 124 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      125 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      126 | 		await firstArticleLink.click({ timeout: 10000 });
+      127 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:124:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-priority-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      122 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      123 |
+    > 124 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      125 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      126 | 		await firstArticleLink.click({ timeout: 10000 });
+      127 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:124:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-priority-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-priority-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-priority-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[49/106] [chromium] › post-editor-showcase.spec.ts:137:6 › Post Editor Showcase Plugin › should have correct select options for status
+[1A[2K[50/106] [chromium] › post-editor-showcase.spec.ts:137:6 › Post Editor Showcase Plugin › should have correct select options for status[33m (retry #1)[39m
+[1A[2K[31m  7) [chromium] › post-editor-showcase.spec.ts:137:6 › Post Editor Showcase Plugin › should have correct select options for status [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      138 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      139 |
+    > 140 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      141 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      142 | 		await firstArticleLink.click({ timeout: 10000 });
+      143 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:140:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-status-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      138 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      139 |
+    > 140 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      141 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      142 | 		await firstArticleLink.click({ timeout: 10000 });
+      143 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:140:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-status-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-status-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-correct-select-options-for-status-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[51/106] [chromium] › post-editor-showcase.spec.ts:153:6 › Post Editor Showcase Plugin › should display Editor Information metabox
+[1A[2K[52/106] [chromium] › post-editor-showcase.spec.ts:153:6 › Post Editor Showcase Plugin › should display Editor Information metabox[33m (retry #1)[39m
+[1A[2K[31m  8) [chromium] › post-editor-showcase.spec.ts:153:6 › Post Editor Showcase Plugin › should display Editor Information metabox [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      154 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      155 |
+    > 156 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      157 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      158 | 		await firstArticleLink.click({ timeout: 10000 });
+      159 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:156:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Information-metabox-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      154 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      155 |
+    > 156 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      157 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      158 | 		await firstArticleLink.click({ timeout: 10000 });
+      159 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:156:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Information-metabox-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Information-metabox-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-Editor-Information-metabox-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[53/106] [chromium] › post-editor-showcase.spec.ts:174:6 › Post Editor Showcase Plugin › should save and retrieve metadata
+[1A[2K[54/106] [chromium] › post-editor-showcase.spec.ts:174:6 › Post Editor Showcase Plugin › should save and retrieve metadata[33m (retry #1)[39m
+[1A[2K[31m  9) [chromium] › post-editor-showcase.spec.ts:174:6 › Post Editor Showcase Plugin › should save and retrieve metadata [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      175 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      176 |
+    > 177 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      178 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      179 | 		await firstArticleLink.click({ timeout: 10000 });
+      180 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:177:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-save-and-retrieve-metadata-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      175 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      176 |
+    > 177 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      178 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      179 | 		await firstArticleLink.click({ timeout: 10000 });
+      180 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:177:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-save-and-retrieve-metadata-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-save-and-retrieve-metadata-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-save-and-retrieve-metadata-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[55/106] [chromium] › post-editor-showcase.spec.ts:195:6 › Post Editor Showcase Plugin › should display featured image URL placeholder
+[1A[2K[56/106] [chromium] › post-editor-showcase.spec.ts:195:6 › Post Editor Showcase Plugin › should display featured image URL placeholder[33m (retry #1)[39m
+[1A[2K[31m  10) [chromium] › post-editor-showcase.spec.ts:195:6 › Post Editor Showcase Plugin › should display featured image URL placeholder [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      196 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      197 |
+    > 198 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      199 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      200 | 		await firstArticleLink.click({ timeout: 10000 });
+      201 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:198:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-featured-image-URL-placeholder-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      196 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      197 |
+    > 198 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      199 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      200 | 		await firstArticleLink.click({ timeout: 10000 });
+      201 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:198:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-featured-image-URL-placeholder-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-featured-image-URL-placeholder-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-featured-image-URL-placeholder-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[57/106] [chromium] › post-editor-showcase.spec.ts:208:6 › Post Editor Showcase Plugin › should display tags input placeholder
+[1A[2K[58/106] [chromium] › post-editor-showcase.spec.ts:208:6 › Post Editor Showcase Plugin › should display tags input placeholder[33m (retry #1)[39m
+[1A[2K[31m  11) [chromium] › post-editor-showcase.spec.ts:208:6 › Post Editor Showcase Plugin › should display tags input placeholder [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      209 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      210 |
+    > 211 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      212 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      213 | 		await firstArticleLink.click({ timeout: 10000 });
+      214 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:211:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-tags-input-placeholder-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      209 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      210 |
+    > 211 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      212 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      213 | 		await firstArticleLink.click({ timeout: 10000 });
+      214 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:211:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-tags-input-placeholder-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-tags-input-placeholder-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-tags-input-placeholder-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[59/106] [chromium] › post-editor-showcase.spec.ts:221:6 › Post Editor Showcase Plugin › should have nonce security field in metabox
+[1A[2K[60/106] [chromium] › post-editor-showcase.spec.ts:221:6 › Post Editor Showcase Plugin › should have nonce security field in metabox[33m (retry #1)[39m
+[1A[2K[31m  12) [chromium] › post-editor-showcase.spec.ts:221:6 › Post Editor Showcase Plugin › should have nonce security field in metabox [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      222 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      223 |
+    > 224 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      225 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      226 | 		await firstArticleLink.click({ timeout: 10000 });
+      227 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:224:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-nonce-security-field-in-metabox-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      222 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      223 |
+    > 224 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      225 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      226 | 		await firstArticleLink.click({ timeout: 10000 });
+      227 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:224:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-nonce-security-field-in-metabox-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-nonce-security-field-in-metabox-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-have-nonce-security-field-in-metabox-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[61/106] [chromium] › post-editor-showcase.spec.ts:233:6 › Post Editor Showcase Plugin › should enqueue editor styles
+[1A[2K[62/106] [chromium] › post-editor-showcase.spec.ts:233:6 › Post Editor Showcase Plugin › should enqueue editor styles[33m (retry #1)[39m
+[1A[2K[31m  13) [chromium] › post-editor-showcase.spec.ts:233:6 › Post Editor Showcase Plugin › should enqueue editor styles [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      234 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      235 |
+    > 236 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      237 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      238 | 		await firstArticleLink.click({ timeout: 10000 });
+      239 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:236:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-enqueue-editor-styles-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      234 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      235 |
+    > 236 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      237 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      238 | 		await firstArticleLink.click({ timeout: 10000 });
+      239 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:236:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-enqueue-editor-styles-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-enqueue-editor-styles-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-enqueue-editor-styles-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[63/106] [chromium] › post-editor-showcase.spec.ts:253:6 › Post Editor Showcase Plugin › should allow updating priority field
+[1A[2K[64/106] [chromium] › post-editor-showcase.spec.ts:253:6 › Post Editor Showcase Plugin › should allow updating priority field[33m (retry #1)[39m
+[1A[2K[31m  14) [chromium] › post-editor-showcase.spec.ts:253:6 › Post Editor Showcase Plugin › should allow updating priority field [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      254 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      255 |
+    > 256 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      257 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      258 | 		await firstArticleLink.click({ timeout: 10000 });
+      259 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:256:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-priority-field-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      254 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      255 |
+    > 256 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      257 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      258 | 		await firstArticleLink.click({ timeout: 10000 });
+      259 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:256:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-priority-field-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-priority-field-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-priority-field-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[65/106] [chromium] › post-editor-showcase.spec.ts:269:6 › Post Editor Showcase Plugin › should allow updating status field
+[1A[2K[66/106] [chromium] › post-editor-showcase.spec.ts:269:6 › Post Editor Showcase Plugin › should allow updating status field[33m (retry #1)[39m
+[1A[2K[31m  15) [chromium] › post-editor-showcase.spec.ts:269:6 › Post Editor Showcase Plugin › should allow updating status field [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      270 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      271 |
+    > 272 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      273 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      274 | 		await firstArticleLink.click({ timeout: 10000 });
+      275 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:272:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-status-field-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      270 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      271 |
+    > 272 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      273 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      274 | 		await firstArticleLink.click({ timeout: 10000 });
+      275 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:272:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-status-field-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-status-field-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-allow-updating-status-field-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[67/106] [chromium] › post-editor-showcase.spec.ts:285:6 › Post Editor Showcase Plugin › should display post author in info box
+[1A[2K[68/106] [chromium] › post-editor-showcase.spec.ts:285:6 › Post Editor Showcase Plugin › should display post author in info box[33m (retry #1)[39m
+[1A[2K[31m  16) [chromium] › post-editor-showcase.spec.ts:285:6 › Post Editor Showcase Plugin › should display post author in info box [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      286 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      287 |
+    > 288 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      289 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      290 | 		await firstArticleLink.click({ timeout: 10000 });
+      291 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:288:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-author-in-info-box-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      286 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      287 |
+    > 288 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      289 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      290 | 		await firstArticleLink.click({ timeout: 10000 });
+      291 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:288:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-author-in-info-box-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-author-in-info-box-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-author-in-info-box-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[69/106] [chromium] › post-editor-showcase.spec.ts:299:6 › Post Editor Showcase Plugin › should display post creation date
+[1A[2K[70/106] [chromium] › post-editor-showcase.spec.ts:299:6 › Post Editor Showcase Plugin › should display post creation date[33m (retry #1)[39m
+[1A[2K[31m  17) [chromium] › post-editor-showcase.spec.ts:299:6 › Post Editor Showcase Plugin › should display post creation date [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      300 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      301 |
+    > 302 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      303 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      304 | 		await firstArticleLink.click({ timeout: 10000 });
+      305 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:302:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-creation-date-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      300 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      301 |
+    > 302 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      303 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      304 | 		await firstArticleLink.click({ timeout: 10000 });
+      305 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:302:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-creation-date-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-creation-date-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-creation-date-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[71/106] [chromium] › post-editor-showcase.spec.ts:313:6 › Post Editor Showcase Plugin › should display post modification date
+[1A[2K[72/106] [chromium] › post-editor-showcase.spec.ts:313:6 › Post Editor Showcase Plugin › should display post modification date[33m (retry #1)[39m
+[1A[2K[31m  18) [chromium] › post-editor-showcase.spec.ts:313:6 › Post Editor Showcase Plugin › should display post modification date [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      314 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      315 |
+    > 316 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      317 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      318 | 		await firstArticleLink.click({ timeout: 10000 });
+      319 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:316:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-modification-date-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      314 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      315 |
+    > 316 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      317 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      318 | 		await firstArticleLink.click({ timeout: 10000 });
+      319 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:316:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-modification-date-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-modification-date-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-post-modification-date-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[73/106] [chromium] › post-editor-showcase.spec.ts:327:6 › Post Editor Showcase Plugin › should display revision count
+[1A[2K[74/106] [chromium] › post-editor-showcase.spec.ts:327:6 › Post Editor Showcase Plugin › should display revision count[33m (retry #1)[39m
+[1A[2K[31m  19) [chromium] › post-editor-showcase.spec.ts:327:6 › Post Editor Showcase Plugin › should display revision count [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      328 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      329 |
+    > 330 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      331 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      332 | 		await firstArticleLink.click({ timeout: 10000 });
+      333 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:330:14[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-revision-count-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('table.wp-list-table tbody tr td.column-title a') to be visible
+    ============================================================
+
+      328 | 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
+      329 |
+    > 330 | 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
+          | 		           ^
+      331 | 		const firstArticleLink = page.locator('table.wp-list-table tbody tr td.column-title a').first();
+      332 | 		await firstArticleLink.click({ timeout: 10000 });
+      333 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/post-editor-showcase.spec.ts:330:14[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-revision-count-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-revision-count-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/post-editor-showcase-Post-Editor-Showcase-Plugin-should-display-revision-count-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[75/106] [chromium] › task-manager-maintenance.spec.ts:16:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 1. Plugin activates without errors
+[1A[2K[76/106] [chromium] › task-manager-maintenance.spec.ts:34:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 2. Database is initialized after activation
+[1A[2K[77/106] [chromium] › task-manager-maintenance.spec.ts:34:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 2. Database is initialized after activation[33m (retry #1)[39m
+[1A[2K[31m  20) [chromium] › task-manager-maintenance.spec.ts:34:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 2. Database is initialized after activation [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      38 | 			// Task Manager menu should exist (proves plugin activated)
+      39 | 			const taskManagerLink = page.locator('a[href*="task-manager"]');
+    > 40 | 			expect(await taskManagerLink.count()).toBeGreaterThan(0);
+         | 			                                      ^
+      41 | 		});
+      42 |
+      43 | 		test('3. Dashboard loads successfully', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:40:42[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-4ad7c-ment-2-Database-is-initialized-after-activation-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      38 | 			// Task Manager menu should exist (proves plugin activated)
+      39 | 			const taskManagerLink = page.locator('a[href*="task-manager"]');
+    > 40 | 			expect(await taskManagerLink.count()).toBeGreaterThan(0);
+         | 			                                      ^
+      41 | 		});
+      42 |
+      43 | 		test('3. Dashboard loads successfully', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:40:42[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-4ad7c-ment-2-Database-is-initialized-after-activation-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-4ad7c-ment-2-Database-is-initialized-after-activation-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-4ad7c-ment-2-Database-is-initialized-after-activation-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[78/106] [chromium] › task-manager-maintenance.spec.ts:43:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 3. Dashboard loads successfully
+[1A[2K[79/106] [chromium] › task-manager-maintenance.spec.ts:43:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 3. Dashboard loads successfully[33m (retry #1)[39m
+[1A[2K[31m  21) [chromium] › task-manager-maintenance.spec.ts:43:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 3. Dashboard loads successfully [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      50 | 			// Check for content
+      51 | 			const content = page.locator('.wrap, main');
+    > 52 | 			expect(await content.count()).toBeGreaterThan(0);
+         | 			                              ^
+      53 | 		});
+      54 |
+      55 | 		test('4. All Task Manager pages load without errors', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:52:34[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-37812-rsion-Management-3-Dashboard-loads-successfully-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      50 | 			// Check for content
+      51 | 			const content = page.locator('.wrap, main');
+    > 52 | 			expect(await content.count()).toBeGreaterThan(0);
+         | 			                              ^
+      53 | 		});
+      54 |
+      55 | 		test('4. All Task Manager pages load without errors', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:52:34[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-37812-rsion-Management-3-Dashboard-loads-successfully-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-37812-rsion-Management-3-Dashboard-loads-successfully-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-37812-rsion-Management-3-Dashboard-loads-successfully-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[80/106] [chromium] › task-manager-maintenance.spec.ts:55:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 4. All Task Manager pages load without errors
+[1A[2K[81/106] [chromium] › task-manager-maintenance.spec.ts:75:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 5. Can view task list
+[1A[2K[82/106] [chromium] › task-manager-maintenance.spec.ts:75:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 5. Can view task list[33m (retry #1)[39m
+[1A[2K[31m  22) [chromium] › task-manager-maintenance.spec.ts:75:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 5. Can view task list [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      78 | 			// Page should load
+      79 | 			const pageContent = page.locator('.wrap');
+    > 80 | 			expect(await pageContent.count()).toBeGreaterThan(0);
+         | 			                                  ^
+      81 |
+      82 | 			// Should have a table for task list
+      83 | 			const taskTable = page.locator('table');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:80:38[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-924bc--Core-Plugin-Functionality-5-Can-view-task-list-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      78 | 			// Page should load
+      79 | 			const pageContent = page.locator('.wrap');
+    > 80 | 			expect(await pageContent.count()).toBeGreaterThan(0);
+         | 			                                  ^
+      81 |
+      82 | 			// Should have a table for task list
+      83 | 			const taskTable = page.locator('table');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:80:38[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-924bc--Core-Plugin-Functionality-5-Can-view-task-list-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-924bc--Core-Plugin-Functionality-5-Can-view-task-list-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-924bc--Core-Plugin-Functionality-5-Can-view-task-list-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[83/106] [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task
+[1A[2K[84/106] [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task[33m (retry #1)[39m
+[1A[2K[31m  23) [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap') to be visible
+    ============================================================
+
+      90 |
+      91 | 			// Wait for page content to be visible
+    > 92 | 			await page.waitForSelector('.wrap', { timeout: 10000 });
+         | 			           ^
+      93 |
+      94 | 			// Page should load and display content
+      95 | 			const pageContent = page.locator('.wrap');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:92:15[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap') to be visible
+    ============================================================
+
+      90 |
+      91 | 			// Wait for page content to be visible
+    > 92 | 			await page.waitForSelector('.wrap', { timeout: 10000 });
+         | 			           ^
+      93 |
+      94 | 			// Page should load and display content
+      95 | 			const pageContent = page.locator('.wrap');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:92:15[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-44ba8-Core-Plugin-Functionality-6-Can-create-new-task-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[85/106] [chromium] › task-manager-maintenance.spec.ts:105:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 7. Settings page loads with form
+[1A[2K[86/106] [chromium] › task-manager-maintenance.spec.ts:105:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 7. Settings page loads with form[33m (retry #1)[39m
+[1A[2K[31m  24) [chromium] › task-manager-maintenance.spec.ts:105:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 7. Settings page loads with form [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      108 | 			// Settings form should exist
+      109 | 			const settingsForm = page.locator('form');
+    > 110 | 			expect(await settingsForm.count()).toBeGreaterThan(0);
+          | 			                                   ^
+      111 | 		});
+      112 |
+      113 | 		test('8. Task statistics display', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:110:39[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-0502c-n-Functionality-7-Settings-page-loads-with-form-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      108 | 			// Settings form should exist
+      109 | 			const settingsForm = page.locator('form');
+    > 110 | 			expect(await settingsForm.count()).toBeGreaterThan(0);
+          | 			                                   ^
+      111 | 		});
+      112 |
+      113 | 		test('8. Task statistics display', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:110:39[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-0502c-n-Functionality-7-Settings-page-loads-with-form-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-0502c-n-Functionality-7-Settings-page-loads-with-form-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-0502c-n-Functionality-7-Settings-page-loads-with-form-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[87/106] [chromium] › task-manager-maintenance.spec.ts:113:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 8. Task statistics display
+[1A[2K[88/106] [chromium] › task-manager-maintenance.spec.ts:113:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 8. Task statistics display[33m (retry #1)[39m
+[1A[2K[31m  25) [chromium] › task-manager-maintenance.spec.ts:113:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 8. Task statistics display [39m
+
+    locator.textContent: Timeout 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap')
+    ============================================================
+
+      116 | 			// Dashboard should show some content
+      117 | 			const dashboardContent = page.locator('.wrap');
+    > 118 | 			const textContent = await dashboardContent.textContent();
+          | 			                                           ^
+      119 |
+      120 | 			// Check for common dashboard terms
+      121 | 			const hasContent = textContent && (textContent.includes('Task') || textContent.includes('task'));
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:118:47[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-c4032--Plugin-Functionality-8-Task-statistics-display-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    locator.textContent: Timeout 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap')
+    ============================================================
+
+      116 | 			// Dashboard should show some content
+      117 | 			const dashboardContent = page.locator('.wrap');
+    > 118 | 			const textContent = await dashboardContent.textContent();
+          | 			                                           ^
+      119 |
+      120 | 			// Check for common dashboard terms
+      121 | 			const hasContent = textContent && (textContent.includes('Task') || textContent.includes('task'));
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:118:47[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-c4032--Plugin-Functionality-8-Task-statistics-display-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-c4032--Plugin-Functionality-8-Task-statistics-display-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-c4032--Plugin-Functionality-8-Task-statistics-display-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[89/106] [chromium] › task-manager-maintenance.spec.ts:131:7 › Task Manager Maintenance & Best Practices › Security & Validation › 9. Nonce protection on forms
+[1A[2K[90/106] [chromium] › task-manager-maintenance.spec.ts:143:7 › Task Manager Maintenance & Best Practices › Security & Validation › 10. Form validation on task creation
+[1A[2K[91/106] [chromium] › task-manager-maintenance.spec.ts:158:7 › Task Manager Maintenance & Best Practices › Security & Validation › 11. Capability checking prevents unauthorized access
+[1A[2K[92/106] [chromium] › task-manager-maintenance.spec.ts:168:7 › Task Manager Maintenance & Best Practices › Security & Validation › 12. XSS prevention in task display
+[1A[2K[93/106] [chromium] › task-manager-maintenance.spec.ts:185:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 13. Task list persists after navigation
+[1A[2K[94/106] [chromium] › task-manager-maintenance.spec.ts:185:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 13. Task list persists after navigation[33m (retry #1)[39m
+[1A[2K[31m  26) [chromium] › task-manager-maintenance.spec.ts:185:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 13. Task list persists after navigation [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      194 |
+      195 | 			// Both loads should succeed
+    > 196 | 			expect(firstLoad).toBeGreaterThan(0);
+          | 			                  ^
+      197 | 			expect(secondLoad).toBeGreaterThan(0);
+      198 | 		});
+      199 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:196:22[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-36da1-erations-13-Task-list-persists-after-navigation-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      194 |
+      195 | 			// Both loads should succeed
+    > 196 | 			expect(firstLoad).toBeGreaterThan(0);
+          | 			                  ^
+      197 | 			expect(secondLoad).toBeGreaterThan(0);
+      198 | 		});
+      199 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:196:22[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-36da1-erations-13-Task-list-persists-after-navigation-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-36da1-erations-13-Task-list-persists-after-navigation-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-36da1-erations-13-Task-list-persists-after-navigation-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[95/106] [chromium] › task-manager-maintenance.spec.ts:200:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 14. Settings are preserved
+[1A[2K[96/106] [chromium] › task-manager-maintenance.spec.ts:200:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 14. Settings are preserved[33m (retry #1)[39m
+[1A[2K[31m  27) [chromium] › task-manager-maintenance.spec.ts:200:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 14. Settings are preserved [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      203 | 			// Settings form should load
+      204 | 			const form = page.locator('form');
+    > 205 | 			expect(await form.count()).toBeGreaterThan(0);
+          | 			                           ^
+      206 |
+      207 | 			// Navigate away and back
+      208 | 			await page.goto('/wp-admin/');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:205:31[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-9f48c-abase-Data-Operations-14-Settings-are-preserved-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      203 | 			// Settings form should load
+      204 | 			const form = page.locator('form');
+    > 205 | 			expect(await form.count()).toBeGreaterThan(0);
+          | 			                           ^
+      206 |
+      207 | 			// Navigate away and back
+      208 | 			await page.goto('/wp-admin/');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:205:31[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-9f48c-abase-Data-Operations-14-Settings-are-preserved-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-9f48c-abase-Data-Operations-14-Settings-are-preserved-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-9f48c-abase-Data-Operations-14-Settings-are-preserved-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[97/106] [chromium] › task-manager-maintenance.spec.ts:216:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 15. Database table exists and is queryable
+[1A[2K[98/106] [chromium] › task-manager-maintenance.spec.ts:216:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 15. Database table exists and is queryable[33m (retry #1)[39m
+[1A[2K[31m  28) [chromium] › task-manager-maintenance.spec.ts:216:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 15. Database table exists and is queryable [39m
+
+    locator.textContent: Timeout 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap')
+    ============================================================
+
+      220 | 			// Should be able to render task list (table query works)
+      221 | 			const pageContent = page.locator('.wrap');
+    > 222 | 			const content = await pageContent.textContent();
+          | 			                                  ^
+      223 |
+      224 | 			// Page should have rendered successfully
+      225 | 			expect(content).toBeTruthy();
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:222:38[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-565bd-tions-15-Database-table-exists-and-is-queryable-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    locator.textContent: Timeout 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.wrap')
+    ============================================================
+
+      220 | 			// Should be able to render task list (table query works)
+      221 | 			const pageContent = page.locator('.wrap');
+    > 222 | 			const content = await pageContent.textContent();
+          | 			                                  ^
+      223 |
+      224 | 			// Page should have rendered successfully
+      225 | 			expect(content).toBeTruthy();
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:222:38[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-565bd-tions-15-Database-table-exists-and-is-queryable-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-565bd-tions-15-Database-table-exists-and-is-queryable-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-565bd-tions-15-Database-table-exists-and-is-queryable-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[99/106] [chromium] › task-manager-maintenance.spec.ts:228:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 16. User roles and capabilities enforced
+[1A[2K[100/106] [chromium] › task-manager-maintenance.spec.ts:228:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 16. User roles and capabilities enforced[33m (retry #1)[39m
+[1A[2K[31m  29) [chromium] › task-manager-maintenance.spec.ts:228:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 16. User roles and capabilities enforced [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      232 | 			// Should see Task Manager menu (has manage_tasks capability)
+      233 | 			const menuLink = page.locator('a[href*="task-manager"]');
+    > 234 | 			expect(await menuLink.count()).toBeGreaterThan(0);
+          | 			                               ^
+      235 |
+      236 | 			// Navigate to page
+      237 | 			await page.goto('/wp-admin/admin.php?page=task-manager');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:234:35[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-ecd7f-rations-16-User-roles-and-capabilities-enforced-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      232 | 			// Should see Task Manager menu (has manage_tasks capability)
+      233 | 			const menuLink = page.locator('a[href*="task-manager"]');
+    > 234 | 			expect(await menuLink.count()).toBeGreaterThan(0);
+          | 			                               ^
+      235 |
+      236 | 			// Navigate to page
+      237 | 			await page.goto('/wp-admin/admin.php?page=task-manager');
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:234:35[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-ecd7f-rations-16-User-roles-and-capabilities-enforced-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-ecd7f-rations-16-User-roles-and-capabilities-enforced-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-ecd7f-rations-16-User-roles-and-capabilities-enforced-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[101/106] [chromium] › task-manager-maintenance.spec.ts:250:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 17. Task Manager menu appears in admin
+[1A[2K[102/106] [chromium] › task-manager-maintenance.spec.ts:250:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 17. Task Manager menu appears in admin[33m (retry #1)[39m
+[1A[2K[31m  30) [chromium] › task-manager-maintenance.spec.ts:250:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 17. Task Manager menu appears in admin [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      253 | 			// Task Manager menu should be visible
+      254 | 			const taskManagerMenu = page.locator('text="Task Manager"').first();
+    > 255 | 			expect(await taskManagerMenu.isVisible()).toBeTruthy();
+          | 			                                          ^
+      256 | 		});
+      257 |
+      258 | 		test('18. Submenus are registered', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:255:46[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-06881-atibility-17-Task-Manager-menu-appears-in-admin-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      253 | 			// Task Manager menu should be visible
+      254 | 			const taskManagerMenu = page.locator('text="Task Manager"').first();
+    > 255 | 			expect(await taskManagerMenu.isVisible()).toBeTruthy();
+          | 			                                          ^
+      256 | 		});
+      257 |
+      258 | 		test('18. Submenus are registered', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:255:46[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-06881-atibility-17-Task-Manager-menu-appears-in-admin-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-06881-atibility-17-Task-Manager-menu-appears-in-admin-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-06881-atibility-17-Task-Manager-menu-appears-in-admin-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[103/106] [chromium] › task-manager-maintenance.spec.ts:258:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 18. Submenus are registered
+[1A[2K[104/106] [chromium] › task-manager-maintenance.spec.ts:258:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 18. Submenus are registered[33m (retry #1)[39m
+[1A[2K[31m  31) [chromium] › task-manager-maintenance.spec.ts:258:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 18. Submenus are registered [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m1[39m
+    Received:   [31m0[39m
+
+      261 | 			// Should have multiple menu items under Task Manager
+      262 | 			const taskManagerLinks = page.locator('a[href*="task-manager"]');
+    > 263 | 			expect(await taskManagerLinks.count()).toBeGreaterThan(1);
+          | 			                                       ^
+      264 | 		});
+      265 |
+      266 | 		test('19. Admin styles are enqueued', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:263:43[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-dc7e9-ration-Compatibility-18-Submenus-are-registered-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m1[39m
+    Received:   [31m0[39m
+
+      261 | 			// Should have multiple menu items under Task Manager
+      262 | 			const taskManagerLinks = page.locator('a[href*="task-manager"]');
+    > 263 | 			expect(await taskManagerLinks.count()).toBeGreaterThan(1);
+          | 			                                       ^
+      264 | 		});
+      265 |
+      266 | 		test('19. Admin styles are enqueued', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:263:43[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-dc7e9-ration-Compatibility-18-Submenus-are-registered-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-dc7e9-ration-Compatibility-18-Submenus-are-registered-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-dc7e9-ration-Compatibility-18-Submenus-are-registered-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[105/106] [chromium] › task-manager-maintenance.spec.ts:266:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 19. Admin styles are enqueued
+[1A[2K[106/106] [chromium] › task-manager-maintenance.spec.ts:277:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 20. Plugin doesn't break other admin pages
+[1A[2K[107/106] (retries) [chromium] › task-manager-maintenance.spec.ts:277:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 20. Plugin doesn't break other admin pages[33m (retry #1)[39m
+[1A[2K[31m  32) [chromium] › task-manager-maintenance.spec.ts:277:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 20. Plugin doesn't break other admin pages [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      289 | 			await page.goto('/wp-admin/admin.php?page=task-manager');
+      290 | 			const tmPage = page.locator('.wrap');
+    > 291 | 			expect(await tmPage.count()).toBeGreaterThan(0);
+          | 			                             ^
+      292 | 		});
+      293 | 	});
+      294 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:291:33[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-a121a-ility-20-Plugin-doesn-t-break-other-admin-pages-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: > [32m0[39m
+    Received:   [31m0[39m
+
+      289 | 			await page.goto('/wp-admin/admin.php?page=task-manager');
+      290 | 			const tmPage = page.locator('.wrap');
+    > 291 | 			expect(await tmPage.count()).toBeGreaterThan(0);
+          | 			                             ^
+      292 | 		});
+      293 | 	});
+      294 |
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:291:33[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-a121a-ility-20-Plugin-doesn-t-break-other-admin-pages-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-a121a-ility-20-Plugin-doesn-t-break-other-admin-pages-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-a121a-ility-20-Plugin-doesn-t-break-other-admin-pages-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[108/106] (retries) [chromium] › task-manager-maintenance.spec.ts:300:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 21. Dashboard loads within reasonable time
+[1A[2K[109/106] (retries) [chromium] › task-manager-maintenance.spec.ts:310:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 22. Task list loads without timeouts
+[1A[2K[110/106] (retries) [chromium] › task-manager-maintenance.spec.ts:321:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 23. No JavaScript errors on main pages
+[1A[2K[111/106] (retries) [chromium] › task-manager-maintenance.spec.ts:321:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 23. No JavaScript errors on main pages[33m (retry #1)[39m
+[1A[2K[31m  33) [chromium] › task-manager-maintenance.spec.ts:321:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 23. No JavaScript errors on main pages [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m3[39m
+
+      335 |
+      336 | 			// Should have no critical errors
+    > 337 | 			expect(consoleErrors.length).toBe(0);
+          | 			                             ^
+      338 | 		});
+      339 |
+      340 | 		test('24. Settings can be accessed and form displays', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:337:33[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-85360-e-Quality-23-No-JavaScript-errors-on-main-pages-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m3[39m
+
+      335 |
+      336 | 			// Should have no critical errors
+    > 337 | 			expect(consoleErrors.length).toBe(0);
+          | 			                             ^
+      338 | 		});
+      339 |
+      340 | 		test('24. Settings can be accessed and form displays', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:337:33[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-85360-e-Quality-23-No-JavaScript-errors-on-main-pages-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-85360-e-Quality-23-No-JavaScript-errors-on-main-pages-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-85360-e-Quality-23-No-JavaScript-errors-on-main-pages-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[112/106] (retries) [chromium] › task-manager-maintenance.spec.ts:340:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 24. Settings can be accessed and form displays
+[1A[2K[113/106] (retries) [chromium] › task-manager-maintenance.spec.ts:340:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 24. Settings can be accessed and form displays[33m (retry #1)[39m
+[1A[2K[31m  34) [chromium] › task-manager-maintenance.spec.ts:340:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 24. Settings can be accessed and form displays [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      343 | 			// Form should exist and be visible
+      344 | 			const form = page.locator('form');
+    > 345 | 			expect(await form.isVisible()).toBeTruthy();
+          | 			                               ^
+      346 | 		});
+      347 |
+      348 | 		test('25. Plugin is responsive to user interactions', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:345:35[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-aa5f8-y-24-Settings-can-be-accessed-and-form-displays-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      343 | 			// Form should exist and be visible
+      344 | 			const form = page.locator('form');
+    > 345 | 			expect(await form.isVisible()).toBeTruthy();
+          | 			                               ^
+      346 | 		});
+      347 |
+      348 | 		test('25. Plugin is responsive to user interactions', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager-maintenance.spec.ts:345:35[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-aa5f8-y-24-Settings-can-be-accessed-and-form-displays-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-maintenance-Task-Manager-Maintena-aa5f8-y-24-Settings-can-be-accessed-and-form-displays-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-maintenance-Task-Manager-Maintena-aa5f8-y-24-Settings-can-be-accessed-and-form-displays-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[114/106] (retries) [chromium] › task-manager-maintenance.spec.ts:348:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 25. Plugin is responsive to user interactions
+[1A[2K[115/106] (retries) [chromium] › task-manager.spec.ts:28:7 › Task Manager Plugin › Plugin Foundation › should have admin menu visible to logged in user
+[1A[2K[116/106] (retries) [chromium] › task-manager.spec.ts:28:7 › Task Manager Plugin › Plugin Foundation › should have admin menu visible to logged in user[33m (retry #1)[39m
+[1A[2K[31m  35) [chromium] › task-manager.spec.ts:28:7 › Task Manager Plugin › Plugin Foundation › should have admin menu visible to logged in user [39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeVisible[2m()[22m
+    Call log:
+      [2m- expect.toBeVisible with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Task Manager').first()[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  - waiting for locator('text=Task Manager').first()[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+
+
+      35 | 			// Check if Task Manager menu exists
+      36 | 			const taskManagerMenu = page.locator('text=Task Manager').first();
+    > 37 | 			await expect(taskManagerMenu).toBeVisible({ timeout: 10000 });
+         | 			                              ^
+      38 | 		});
+      39 |
+      40 | 		test('should have Task Manager dashboard page accessible', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:37:34[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-have-admin-menu-visible-to-logged-in-user-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeVisible[2m()[22m
+    Call log:
+      [2m- expect.toBeVisible with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Task Manager').first()[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  - waiting for locator('text=Task Manager').first()[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+    [2m  -   unexpected value "hidden"[22m
+
+
+      35 | 			// Check if Task Manager menu exists
+      36 | 			const taskManagerMenu = page.locator('text=Task Manager').first();
+    > 37 | 			await expect(taskManagerMenu).toBeVisible({ timeout: 10000 });
+         | 			                              ^
+      38 | 		});
+      39 |
+      40 | 		test('should have Task Manager dashboard page accessible', async ({ page }) => {
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:37:34[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-have-admin-menu-visible-to-logged-in-user-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-have-admin-menu-visible-to-logged-in-user-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-have-admin-menu-visible-to-logged-in-user-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[117/106] (retries) [chromium] › task-manager.spec.ts:40:7 › Task Manager Plugin › Plugin Foundation › should have Task Manager dashboard page accessible
+[1A[2K[118/106] (retries) [chromium] › task-manager.spec.ts:40:7 › Task Manager Plugin › Plugin Foundation › should have Task Manager dashboard page accessible[33m (retry #1)[39m
+[1A[2K[31m  36) [chromium] › task-manager.spec.ts:40:7 › Task Manager Plugin › Plugin Foundation › should have Task Manager dashboard page accessible [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('h1') to be visible
+    ============================================================
+
+      43 |
+      44 | 			// Wait for h1 to be visible and contain text
+    > 45 | 			await page.waitForSelector('h1', { timeout: 10000 });
+         | 			           ^
+      46 | 			await page.waitForLoadState('networkidle');
+      47 |
+      48 | 			// Check page title contains "Task Manager"
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:45:15[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Founda-51277-uld-have-Task-Manager-dashboard-page-accessible-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('h1') to be visible
+    ============================================================
+
+      43 |
+      44 | 			// Wait for h1 to be visible and contain text
+    > 45 | 			await page.waitForSelector('h1', { timeout: 10000 });
+         | 			           ^
+      46 | 			await page.waitForLoadState('networkidle');
+      47 |
+      48 | 			// Check page title contains "Task Manager"
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:45:15[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Founda-51277-uld-have-Task-Manager-dashboard-page-accessible-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-Task-Manager-Plugin-Plugin-Founda-51277-uld-have-Task-Manager-dashboard-page-accessible-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Founda-51277-uld-have-Task-Manager-dashboard-page-accessible-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[119/106] (retries) [chromium] › task-manager.spec.ts:52:7 › Task Manager Plugin › Plugin Foundation › should display statistics cards on dashboard
+[1A[2K[120/106] (retries) [chromium] › task-manager.spec.ts:52:7 › Task Manager Plugin › Plugin Foundation › should display statistics cards on dashboard[33m (retry #1)[39m
+[1A[2K[31m  37) [chromium] › task-manager.spec.ts:52:7 › Task Manager Plugin › Plugin Foundation › should display statistics cards on dashboard [39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.tm-statistics') to be visible
+    ============================================================
+
+      55 | 			// Wait for page to fully load
+      56 | 			await page.waitForLoadState('networkidle');
+    > 57 | 			await page.waitForSelector('.tm-statistics', { timeout: 10000 });
+         | 			           ^
+      58 |
+      59 | 			// Check for statistics cards with explicit waits
+      60 | 			await expect(page.locator('text=Total Tasks')).toBeVisible({ timeout: 10000 });
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:57:15[22m
+
+[36m    attachment #1: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-display-statistics-cards-on-dashboard-chromium/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[90m    Retry #1 [90m---------------------------------------------------------------------------------------[90m[39m
+
+    page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.tm-statistics') to be visible
+    ============================================================
+
+      55 | 			// Wait for page to fully load
+      56 | 			await page.waitForLoadState('networkidle');
+    > 57 | 			await page.waitForSelector('.tm-statistics', { timeout: 10000 });
+         | 			           ^
+      58 |
+      59 | 			// Check for statistics cards with explicit waits
+      60 | 			await expect(page.locator('text=Total Tasks')).toBeVisible({ timeout: 10000 });
+
+    [2m    at /Users/kenshinzato/Local Sites/personal-portfolio/tests/task-manager.spec.ts:57:15[22m
+
+[36m    attachment #1: trace (application/zip) [90m---------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-display-statistics-cards-on-dashboard-chromium-retry1/trace.zip[39m
+[36m    Usage:[39m
+
+[36m        npx playwright show-trace test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-display-statistics-cards-on-dashboard-chromium-retry1/trace.zip[39m
+
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+[36m    attachment #2: screenshot (image/png) [90m----------------------------------------------------------[36m[39m
+[36m    test-results/task-manager-Task-Manager-Plugin-Plugin-Foundation-should-display-statistics-cards-on-dashboard-chromium-retry1/test-failed-1.png[39m
+[36m    [90m------------------------------------------------------------------------------------------------[36m[39m
+
+
+[1A[2K[121/106] (retries) [chromium] › task-manager.spec.ts:68:7 › Task Manager Plugin › Database Operations › should navigate to add task form
+[1A[2K[122/106] (retries) [chromium] › task-manager.spec.ts:79:7 › Task Manager Plugin › Database Operations › should validate required fields on form submission
+[1A[2K[123/106] (retries) [chromium] › task-manager.spec.ts:91:7 › Task Manager Plugin › Database Operations › should create task with all fields
+[1A[2K[124/106] (retries) [chromium] › task-manager.spec.ts:127:7 › Task Manager Plugin › Database Operations › should display created task in task list
+[1A[2K[125/106] (retries) [chromium] › task-manager.spec.ts:148:7 › Task Manager Plugin › Database Operations › should filter tasks by status
+[1A[2K[126/106] (retries) [chromium] › task-manager.spec.ts:172:7 › Task Manager Plugin › Database Operations › should filter tasks by priority
+[1A[2K[127/106] (retries) [chromium] › task-manager.spec.ts:196:7 › Task Manager Plugin › Database Operations › should update existing task
+[1A[2K[128/106] (retries) [chromium] › task-manager.spec.ts:227:7 › Task Manager Plugin › Admin Pages › should display dashboard with recent tasks
+[1A[2K[129/106] (retries) [chromium] › task-manager.spec.ts:237:7 › Task Manager Plugin › Admin Pages › should display all tasks page with table
+[1A[2K[130/106] (retries) [chromium] › task-manager.spec.ts:249:7 › Task Manager Plugin › Admin Pages › should display add task form with nonce
+[1A[2K[131/106] (retries) [chromium] › task-manager.spec.ts:261:7 › Task Manager Plugin › Admin Pages › should have functional date picker
+[1A[2K[132/106] (retries) [chromium] › task-manager.spec.ts:276:7 › Task Manager Plugin › Settings API › should access settings page
+[1A[2K[133/106] (retries) [chromium] › task-manager.spec.ts:283:7 › Task Manager Plugin › Settings API › should display all settings fields
+[1A[2K[134/106] (retries) [chromium] › task-manager.spec.ts:293:7 › Task Manager Plugin › Settings API › should save settings
+[1A[2K[135/106] (retries) [chromium] › task-manager.spec.ts:313:7 › Task Manager Plugin › Settings API › should validate tasks per page range
+[1A[2K[136/106] (retries) [chromium] › task-manager.spec.ts:333:7 › Task Manager Plugin › Security › should include nonce in form submission
+[1A[2K[137/106] (retries) [chromium] › task-manager.spec.ts:348:7 › Task Manager Plugin › Security › should display capabilities check message on unauthorized access
+[1A[2K[138/106] (retries) [chromium] › task-manager.spec.ts:358:7 › Task Manager Plugin › Security › should sanitize and escape task title display
+[1A[2K[139/106] (retries) [chromium] › task-manager.spec.ts:379:7 › Task Manager Plugin › Security › should validate status values against whitelist
+[1A[2K[140/106] (retries) [chromium] › task-manager.spec.ts:403:7 › Task Manager Plugin › User Experience › should show success message after creating task
+[1A[2K[141/106] (retries) [chromium] › task-manager.spec.ts:418:7 › Task Manager Plugin › User Experience › should maintain form state on validation error
+[1A[2K[142/106] (retries) [chromium] › task-manager.spec.ts:434:7 › Task Manager Plugin › User Experience › should show pagination in task list
+[1A[2K[143/106] (retries) [chromium] › task-manager.spec.ts:451:7 › Task Manager Plugin › User Experience › should highlight overdue tasks
+
+🧹 Global Teardown: Cleaning up test artifacts...
+✅ Test results available at: /Users/kenshinzato/Local Sites/personal-portfolio/test-results
+✅ Cleanup completed successfully
+✅ All test processes should be terminated
+
+📊 Final status:
+   - Test framework: Stopped
+   - Browser instances: Closed
+   - Resources: Released
+
+[1A[2K[33m  Slow test file: [39m[chromium] › post-editor-showcase.spec.ts[33m (6.7m)[39m
+[33m  Slow test file: [39m[chromium] › task-manager-maintenance.spec.ts[33m (1.6m)[39m
+[33m  Slow test file: [39m[chromium] › task-manager.spec.ts[33m (1.2m)[39m
+[33m  Slow test file: [39m[chromium] › hello-world.spec.ts[33m (17.4s)[39m
+[33m  Consider splitting slow test files to speed up parallel execution[39m
+
+[31m  37 failed[39m
+[31m    [chromium] › post-editor-showcase.spec.ts:17:6 › Post Editor Showcase Plugin › should have custom post type registered and accessible [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:30:6 › Post Editor Showcase Plugin › should allow creating new custom post article [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:57:6 › Post Editor Showcase Plugin › should display metaboxes on edit screen [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:78:6 › Post Editor Showcase Plugin › should display Editor Metadata metabox fields [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:104:6 › Post Editor Showcase Plugin › should display Advanced Fields metabox with selects [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:121:6 › Post Editor Showcase Plugin › should have correct select options for priority [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:137:6 › Post Editor Showcase Plugin › should have correct select options for status [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:153:6 › Post Editor Showcase Plugin › should display Editor Information metabox [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:174:6 › Post Editor Showcase Plugin › should save and retrieve metadata [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:195:6 › Post Editor Showcase Plugin › should display featured image URL placeholder [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:208:6 › Post Editor Showcase Plugin › should display tags input placeholder [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:221:6 › Post Editor Showcase Plugin › should have nonce security field in metabox [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:233:6 › Post Editor Showcase Plugin › should enqueue editor styles [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:253:6 › Post Editor Showcase Plugin › should allow updating priority field [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:269:6 › Post Editor Showcase Plugin › should allow updating status field [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:285:6 › Post Editor Showcase Plugin › should display post author in info box [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:299:6 › Post Editor Showcase Plugin › should display post creation date [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:313:6 › Post Editor Showcase Plugin › should display post modification date [39m
+[31m    [chromium] › post-editor-showcase.spec.ts:327:6 › Post Editor Showcase Plugin › should display revision count [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:34:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 2. Database is initialized after activation [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:43:7 › Task Manager Maintenance & Best Practices › Plugin Activation & Version Management › 3. Dashboard loads successfully [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:75:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 5. Can view task list [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:87:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 6. Can create new task [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:105:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 7. Settings page loads with form [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:113:7 › Task Manager Maintenance & Best Practices › Core Plugin Functionality › 8. Task statistics display [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:185:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 13. Task list persists after navigation [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:200:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 14. Settings are preserved [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:216:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 15. Database table exists and is queryable [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:228:7 › Task Manager Maintenance & Best Practices › Database & Data Operations › 16. User roles and capabilities enforced [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:250:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 17. Task Manager menu appears in admin [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:258:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 18. Submenus are registered [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:277:7 › Task Manager Maintenance & Best Practices › Plugin Integration & Compatibility › 20. Plugin doesn't break other admin pages [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:321:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 23. No JavaScript errors on main pages [39m
+[31m    [chromium] › task-manager-maintenance.spec.ts:340:7 › Task Manager Maintenance & Best Practices › Performance & Code Quality › 24. Settings can be accessed and form displays [39m
+[31m    [chromium] › task-manager.spec.ts:28:7 › Task Manager Plugin › Plugin Foundation › should have admin menu visible to logged in user [39m
+[31m    [chromium] › task-manager.spec.ts:40:7 › Task Manager Plugin › Plugin Foundation › should have Task Manager dashboard page accessible [39m
+[31m    [chromium] › task-manager.spec.ts:52:7 › Task Manager Plugin › Plugin Foundation › should display statistics cards on dashboard [39m
+[33m  23 skipped[39m
+[32m  46 passed[39m[2m (10.6m)[22m
+
+[36m  Serving HTML report at http://localhost:50048. Press Ctrl+C to quit.[39m

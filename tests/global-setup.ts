@@ -61,12 +61,6 @@ async function globalSetup(config: FullConfig) {
       console.log('ℹ️  task-manager already active');
     }
 
-    // Reload admin dashboard to ensure capabilities are loaded into session
-    console.log('🔄 Reloading admin to load updated capabilities...');
-    await page.goto(`${WORDPRESS_URL}/wp-admin/`, { waitUntil: 'networkidle' });
-    await page.waitForLoadState('networkidle');
-    console.log('✅ Admin dashboard reloaded');
-
     // Save authentication state
     await context.storageState({ path: authFile });
     console.log(`✅ Auth state saved to ${authFile}`);

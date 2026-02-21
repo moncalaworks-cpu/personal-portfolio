@@ -85,16 +85,21 @@ test.describe('Task Manager Maintenance & Best Practices', () => {
 		});
 
 		test('6. Can create new task', async ({ page }) => {
-			await page.goto('/wp-admin/admin.php?page=task-manager-add');
+			// Use full URL and wait for page load
+			await page.goto('http://personal-portfolio.local/wp-admin/admin.php?page=task-manager-add', { waitUntil: 'networkidle' });
+
+			// Wait for page content to be visible
+			await page.waitForSelector('.wrap', { timeout: 10000 });
 
 			// Page should load and display content
 			const pageContent = page.locator('.wrap');
 			expect(await pageContent.count()).toBeGreaterThan(0);
 
 			// Should have form or input fields
-			const form = page.locator('form');
-			const formOrInput = await form.count() > 0 || await page.locator('input').count() > 0;
-			expect(formOrInput).toBeTruthy();
+			const formCount = await page.locator('form').count();
+			const inputCount = await page.locator('input').count();
+			const hasFormOrInput = formCount > 0 || inputCount > 0;
+			expect(hasFormOrInput).toBeTruthy();
 		});
 
 		test('7. Settings page loads with form', async ({ page }) => {
