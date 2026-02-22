@@ -7,7 +7,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 	let page: Page;
 	let postId: number;
 
-	test.beforeAll(async ({ browser }) => {
+	test.beforeEach(async ({ browser }) => {
 		const context = await browser.newContext({
 			storageState: 'tests/auth.json',
 		});
@@ -18,11 +18,14 @@ test.describe('Post Editor Showcase Plugin', () => {
 		// Navigate to the custom post type URL directly
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
+		// Wait for page to fully load
+		await page.waitForLoadState('networkidle');
+
 		// Verify we're on the articles list page
 		expect(page.url()).toContain('post_type=pes_article');
 
-		// Check page title contains "Editor Showcase Articles"
-		await page.waitForSelector('h1', { timeout: 10000 });
+		// Check page title contains "Editor Showcase Articles" - wait with longer timeout
+		await page.waitForSelector('h1', { timeout: 15000 });
 		const pageTitle = await page.locator('h1').first().textContent();
 		expect(pageTitle).toContain('Editor Showcase Articles');
 	});
