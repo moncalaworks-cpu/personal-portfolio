@@ -38,8 +38,8 @@ async function globalSetup(config: FullConfig) {
     // Activate plugins if not already active
     await page.goto(`${WORDPRESS_URL}/wp-admin/plugins.php`, { waitUntil: 'networkidle' });
 
-    // Activate post-editor-showcase plugin
-    const activateLink1 = page.locator('a[href*="post-editor-showcase"]').filter({ hasText: /activate|activate plugin/i }).first();
+    // Activate post-editor-showcase plugin (match action=activate in href to avoid matching Deactivate links)
+    const activateLink1 = page.locator('a[href*="post-editor-showcase"][href*="action=activate"]').first();
     if (await activateLink1.count() > 0) {
       console.log('📦 Activating post-editor-showcase plugin...');
       await activateLink1.click();
@@ -51,7 +51,7 @@ async function globalSetup(config: FullConfig) {
 
     // Activate task-manager plugin
     await page.reload({ waitUntil: 'networkidle' });
-    const activateLink2 = page.locator('a[href*="task-manager"]').filter({ hasText: /activate|activate plugin/i }).first();
+    const activateLink2 = page.locator('a[href*="task-manager"][href*="action=activate"]').first();
     if (await activateLink2.count() > 0) {
       console.log('📦 Activating task-manager plugin...');
       await activateLink2.click();

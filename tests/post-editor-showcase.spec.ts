@@ -1,20 +1,10 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 // Tests for Post Editor Showcase Plugin
 // Demonstrates: Custom post types, metaboxes, metadata, security, and editing workflow
 
 test.describe('Post Editor Showcase Plugin', () => {
-	let page: Page;
-	let postId: number;
-
-	test.beforeEach(async ({ browser }) => {
-		const context = await browser.newContext({
-			storageState: 'tests/auth.json',
-		});
-		page = await context.newPage();
-	});
-
-	test('should have custom post type registered and accessible', async () => {
+	test('should have custom post type registered and accessible', async ({ page }) => {
 		// Navigate to the custom post type URL directly
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
@@ -30,7 +20,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(pageTitle).toContain('Editor Showcase Articles');
 	});
 
-	test('should allow creating new custom post article', async () => {
+	test('should allow creating new custom post article', async ({ page }) => {
 		// Navigate to add new article page directly
 		await page.goto('http://personal-portfolio.local/wp-admin/post-new.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
@@ -57,7 +47,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(advancedFieldsHeading).toBeVisible();
 	});
 
-	test('should display metaboxes on edit screen', async () => {
+	test('should display metaboxes on edit screen', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		// Get the first article - wait for table to load
@@ -78,7 +68,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(editorInfoHeading).toBeVisible();
 	});
 
-	test('should display Editor Metadata metabox fields', async () => {
+	test('should display Editor Metadata metabox fields', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -104,7 +94,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(imageLabel).toBeVisible();
 	});
 
-	test('should display Advanced Fields metabox with selects', async () => {
+	test('should display Advanced Fields metabox with selects', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -121,7 +111,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(tagsInput).toBeVisible();
 	});
 
-	test('should have correct select options for priority', async () => {
+	test('should have correct select options for priority', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -137,7 +127,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(options.nth(3)).toHaveAttribute('value', 'high');
 	});
 
-	test('should have correct select options for status', async () => {
+	test('should have correct select options for status', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -153,7 +143,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(options.nth(3)).toHaveAttribute('value', 'published');
 	});
 
-	test('should display Editor Information metabox', async () => {
+	test('should display Editor Information metabox', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -174,7 +164,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(revisionsInfo).toBeVisible();
 	});
 
-	test('should save and retrieve metadata', async () => {
+	test('should save and retrieve metadata', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -195,7 +185,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(initialDescription?.length || 0).toBeGreaterThanOrEqual(0);
 	});
 
-	test('should display featured image URL placeholder', async () => {
+	test('should display featured image URL placeholder', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -208,7 +198,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(placeholder).toContain('https://example.com/image.jpg');
 	});
 
-	test('should display tags input placeholder', async () => {
+	test('should display tags input placeholder', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -221,7 +211,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(placeholder).toContain('wordpress, php, editing');
 	});
 
-	test('should have nonce security field in metabox', async () => {
+	test('should have nonce security field in metabox', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -233,7 +223,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(nonceField).toHaveCount(2); // One in each metabox that calls wp_nonce_field
 	});
 
-	test('should enqueue editor styles', async () => {
+	test('should enqueue editor styles', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -253,7 +243,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(styles).toBeTruthy();
 	});
 
-	test('should allow updating priority field', async () => {
+	test('should allow updating priority field', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -269,7 +259,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(prioritySelect).toHaveValue('medium');
 	});
 
-	test('should allow updating status field', async () => {
+	test('should allow updating status field', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -285,7 +275,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		await expect(statusSelect).toHaveValue('draft');
 	});
 
-	test('should display post author in info box', async () => {
+	test('should display post author in info box', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -299,7 +289,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(authorText).toContain('Author:');
 	});
 
-	test('should display post creation date', async () => {
+	test('should display post creation date', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -313,7 +303,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(createdText).toContain('Created:');
 	});
 
-	test('should display post modification date', async () => {
+	test('should display post modification date', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });
@@ -327,7 +317,7 @@ test.describe('Post Editor Showcase Plugin', () => {
 		expect(modifiedText).toContain('Last Modified:');
 	});
 
-	test('should display revision count', async () => {
+	test('should display revision count', async ({ page }) => {
 		await page.goto('http://personal-portfolio.local/wp-admin/edit.php?post_type=pes_article', { waitUntil: 'networkidle' });
 
 		await page.waitForSelector('table.wp-list-table tbody tr td.column-title a', { timeout: 10000 });

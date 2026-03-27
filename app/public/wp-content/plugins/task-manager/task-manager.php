@@ -210,6 +210,7 @@ if ( is_admin() ) {
 		'admin_menu',
 		function () {
 			require_once TM_PLUGIN_DIR . 'admin/class-admin-pages.php';
+			require_once TM_PLUGIN_DIR . 'admin/class-task-form.php';
 			TaskManager\Admin\AdminPages::register_menus();
 		}
 	);
