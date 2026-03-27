@@ -25,6 +25,9 @@ require_once MONCALA_THEME_DIR . '/inc/blog-helpers.php';
 // Load blog configuration
 require_once MONCALA_THEME_DIR . '/inc/blog-config.php';
 
+// Load blog performance optimizations
+require_once MONCALA_THEME_DIR . '/inc/blog-performance.php';
+
 /**
  * Phase 1 Setup: Basic theme configuration
  * Enables title tags, post thumbnails, and basic features
