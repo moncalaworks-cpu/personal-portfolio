@@ -61,6 +61,18 @@ async function globalSetup(config: FullConfig) {
       console.log('ℹ️  task-manager already active');
     }
 
+    // Activate analytics-dashboard plugin
+    await page.reload({ waitUntil: 'networkidle' });
+    const activateLink3 = page.locator('a[href*="analytics-dashboard"][href*="action=activate"]').first();
+    if (await activateLink3.count() > 0) {
+      console.log('📦 Activating analytics-dashboard plugin...');
+      await activateLink3.click();
+      await page.waitForLoadState('networkidle');
+      console.log('✅ analytics-dashboard activated');
+    } else {
+      console.log('ℹ️  analytics-dashboard already active');
+    }
+
     // Save authentication state
     await context.storageState({ path: authFile });
     console.log(`✅ Auth state saved to ${authFile}`);
